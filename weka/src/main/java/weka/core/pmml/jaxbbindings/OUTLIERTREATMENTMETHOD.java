@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for OUTLIER-TREATMENT-METHOD.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -26,34 +24,34 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum OUTLIERTREATMENTMETHOD {
 
-    @XmlEnumValue("asExtremeValues")
-    AS_EXTREME_VALUES("asExtremeValues"),
-    @XmlEnumValue("asIs")
-    AS_IS("asIs"),
-    @XmlEnumValue("asMissingValues")
-    AS_MISSING_VALUES("asMissingValues");
-    private final String value;
+	@XmlEnumValue("asExtremeValues")
+	AS_EXTREME_VALUES("asExtremeValues"),
+	@XmlEnumValue("asIs")
+	AS_IS("asIs"),
+	@XmlEnumValue("asMissingValues")
+	AS_MISSING_VALUES("asMissingValues");
+	private final String value;
 
-    OUTLIERTREATMENTMETHOD(String v) {
-        value = v;
-    }
+	OUTLIERTREATMENTMETHOD(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static OUTLIERTREATMENTMETHOD fromValue(String v) {
-        for (OUTLIERTREATMENTMETHOD c: OUTLIERTREATMENTMETHOD.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static OUTLIERTREATMENTMETHOD fromValue(String v) {
+		for (OUTLIERTREATMENTMETHOD c : OUTLIERTREATMENTMETHOD.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

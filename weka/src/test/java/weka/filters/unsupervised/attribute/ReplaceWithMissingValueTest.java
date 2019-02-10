@@ -21,7 +21,6 @@ package weka.filters.unsupervised.attribute;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import weka.core.Attribute;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
@@ -35,25 +34,27 @@ import weka.filters.Filter;
  */
 public class ReplaceWithMissingValueTest extends AbstractFilterTest {
 
-  public ReplaceWithMissingValueTest(String name) { super(name);  }
+	public ReplaceWithMissingValueTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default ReplaceMissingValues */
-  public Filter getFilter() {
-    return new ReplaceWithMissingValue();
-  }
+	/** Creates a default ReplaceMissingValues */
+	public Filter getFilter() {
+		return new ReplaceWithMissingValue();
+	}
 
-  public void testTypical() {
-    Instances result = useFilter();
-    // Number of attributes and instances shouldn't change
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-  }
+	public void testTypical() {
+		Instances result = useFilter();
+		// Number of attributes and instances shouldn't change
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
+	}
 
-  public static Test suite() {
-    return new TestSuite(ReplaceWithMissingValueTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(ReplaceWithMissingValueTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

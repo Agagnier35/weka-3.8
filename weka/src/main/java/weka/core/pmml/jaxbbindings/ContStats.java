@@ -5,24 +5,18 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for ContStats element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="ContStats">
  *   &lt;complexType>
@@ -40,162 +34,161 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension",
-    "interval",
-    "numarray"
+		"extension",
+		"interval",
+		"numarray"
 })
 @XmlRootElement(name = "ContStats")
 public class ContStats {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlElement(name = "Interval", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Interval> interval;
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<ArrayType> numarray;
-    @XmlAttribute
-    protected Double totalSquaresSum;
-    @XmlAttribute
-    protected Double totalValuesSum;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlElement(name = "Interval", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Interval> interval;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<ArrayType> numarray;
+	@XmlAttribute
+	protected Double totalSquaresSum;
+	@XmlAttribute
+	protected Double totalValuesSum;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the interval property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the interval property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getInterval().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Interval }
-     * 
-     * 
-     */
-    public List<Interval> getInterval() {
-        if (interval == null) {
-            interval = new ArrayList<Interval>();
-        }
-        return this.interval;
-    }
+	/**
+	 * Gets the value of the interval property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the interval property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getInterval().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Interval }
+	 *
+	 *
+	 */
+	public List<Interval> getInterval() {
+		if (interval == null) {
+			interval = new ArrayList<Interval>();
+		}
+		return this.interval;
+	}
 
-    /**
-     * Gets the value of the numarray property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the numarray property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNUMARRAY().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ArrayType }
-     * 
-     * 
-     */
-    public List<ArrayType> getNUMARRAY() {
-        if (numarray == null) {
-            numarray = new ArrayList<ArrayType>();
-        }
-        return this.numarray;
-    }
+	/**
+	 * Gets the value of the numarray property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the numarray property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getNUMARRAY().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link ArrayType }
+	 *
+	 *
+	 */
+	public List<ArrayType> getNUMARRAY() {
+		if (numarray == null) {
+			numarray = new ArrayList<ArrayType>();
+		}
+		return this.numarray;
+	}
 
-    /**
-     * Gets the value of the totalSquaresSum property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getTotalSquaresSum() {
-        return totalSquaresSum;
-    }
+	/**
+	 * Gets the value of the totalSquaresSum property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getTotalSquaresSum() {
+		return totalSquaresSum;
+	}
 
-    /**
-     * Sets the value of the totalSquaresSum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setTotalSquaresSum(Double value) {
-        this.totalSquaresSum = value;
-    }
+	/**
+	 * Sets the value of the totalSquaresSum property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setTotalSquaresSum(Double value) {
+		this.totalSquaresSum = value;
+	}
 
-    /**
-     * Gets the value of the totalValuesSum property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getTotalValuesSum() {
-        return totalValuesSum;
-    }
+	/**
+	 * Gets the value of the totalValuesSum property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getTotalValuesSum() {
+		return totalValuesSum;
+	}
 
-    /**
-     * Sets the value of the totalValuesSum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setTotalValuesSum(Double value) {
-        this.totalValuesSum = value;
-    }
-
+	/**
+	 * Sets the value of the totalValuesSum property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setTotalValuesSum(Double value) {
+		this.totalValuesSum = value;
+	}
 }

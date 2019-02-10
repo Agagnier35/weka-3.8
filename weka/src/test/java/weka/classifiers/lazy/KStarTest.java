@@ -19,11 +19,10 @@
 
 package weka.classifiers.lazy;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests KStar. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class KStarTest extends AbstractClassifierTest {
 
-  public KStarTest(String name) { super(name);  }
+	public KStarTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default KStar */
-  public Classifier getClassifier() {
-    return new KStar();
-  }
+	/** Creates a default KStar */
+	public Classifier getClassifier() {
+		return new KStar();
+	}
 
-  public static Test suite() {
-    return new TestSuite(KStarTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(KStarTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

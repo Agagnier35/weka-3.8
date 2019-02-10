@@ -21,7 +21,6 @@
 
 package weka.gui.beans;
 
-
 /**
  * Interface to something that can produce a training set
  *
@@ -30,18 +29,17 @@ package weka.gui.beans;
  */
 public interface TrainingSetProducer {
 
-  /**
-   * Add a training set listener
-   *
-   * @param tsl a <code>TrainingSetListener</code> value
-   */
-  void addTrainingSetListener(TrainingSetListener tsl);
+	/**
+	 * Add a training set listener
+	 *
+	 * @param tsl a <code>TrainingSetListener</code> value
+	 */
+	void addTrainingSetListener(TrainingSetListener tsl);
 
-  /**
-   * Remove a training set listener
-   *
-   * @param tsl a <code>TrainingSetListener</code> value
-   */
-  void removeTrainingSetListener(TrainingSetListener tsl);
-
+	/**
+	 * Remove a training set listener
+	 *
+	 * @param tsl a <code>TrainingSetListener</code> value
+	 */
+	void removeTrainingSetListener(TrainingSetListener tsl);
 }

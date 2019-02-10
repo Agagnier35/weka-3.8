@@ -19,167 +19,172 @@
  *
  */
 
-
 package weka.gui;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
- * A helper class for JList GUI elements with DefaultListModel or 
+ * A helper class for JList GUI elements with DefaultListModel or
  * derived models.
  *
- * @author  FracPete (fracpete at waikato dot ac dot nz)
+ * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  * @see     JList
  * @see     DefaultListModel
  */
 public class JListHelper {
-  
-  /** moves items up */
-  public final static int MOVE_UP = 0;
 
-  /** moves items down */
-  public final static int MOVE_DOWN = 1;
-  
-  /**
-   * moves the selected items by a certain amount of items in a given direction
-   *
-   * @param list        the JList to work on
-   * @param moveby      the number of items to move by
-   * @param direction   the direction to move in
-   * @see               #MOVE_UP
-   * @see               #MOVE_DOWN
-   */
-  protected static void moveItems(JList list, int moveby, int direction) {
-    int[]               indices;
-    int                 i;
-    Object              o;
-    DefaultListModel    model;
+	/** moves items up */
+	public final static int MOVE_UP = 0;
 
-    model = (DefaultListModel) list.getModel();
+	/** moves items down */
+	public final static int MOVE_DOWN = 1;
 
-    switch (direction) {
-      case MOVE_UP:
-        indices = list.getSelectedIndices();
-        for (i = 0; i < indices.length; i++) {
-          if (indices[i] == 0)
-            continue;
-          o = model.remove(indices[i]);
-          indices[i] -= moveby;
-          model.insertElementAt(o, indices[i]);
-        }
-        list.setSelectedIndices(indices);
-        break;
+	/**
+	 * moves the selected items by a certain amount of items in a given direction
+	 *
+	 * @param list        the JList to work on
+	 * @param moveby      the number of items to move by
+	 * @param direction   the direction to move in
+	 * @see               #MOVE_UP
+	 * @see               #MOVE_DOWN
+	 */
+	protected static void moveItems(JList list, int moveby, int direction) {
+		int[] indices;
+		int i;
+		Object o;
+		DefaultListModel model;
 
-      case MOVE_DOWN:
-        indices = list.getSelectedIndices();
-        for (i = indices.length - 1; i >= 0; i--) {
-          if (indices[i] == model.getSize() - 1)
-            continue;
-          o = model.remove(indices[i]);
-          indices[i] += moveby;
-          model.insertElementAt(o, indices[i]);
-        }
-        list.setSelectedIndices(indices);
-        break;
+		model = (DefaultListModel) list.getModel();
 
-      default:
-        System.err.println(
-            JListHelper.class.getName() + ": direction '" 
-            + direction + "' is unknown!");
-    }
-  }
+		switch (direction) {
+			case MOVE_UP:
+				indices = list.getSelectedIndices();
+				for (i = 0; i < indices.length; i++) {
+					if (indices[i] == 0) {
+						continue;
+					}
+					o = model.remove(indices[i]);
+					indices[i] -= moveby;
+					model.insertElementAt(o, indices[i]);
+				}
+				list.setSelectedIndices(indices);
+				break;
 
-  /**
-   * moves the selected items up by 1
-   *
-   * @param list        the JList to work on
-   */
-  public static void moveUp(JList list) {
-    if (canMoveUp(list))
-      moveItems(list, 1, MOVE_UP);
-  }
+			case MOVE_DOWN:
+				indices = list.getSelectedIndices();
+				for (i = indices.length - 1; i >= 0; i--) {
+					if (indices[i] == model.getSize() - 1) {
+						continue;
+					}
+					o = model.remove(indices[i]);
+					indices[i] += moveby;
+					model.insertElementAt(o, indices[i]);
+				}
+				list.setSelectedIndices(indices);
+				break;
 
-  /**
-   * moves the selected item down by 1
-   *
-   * @param list        the JList to work on
-   */
-  public static void moveDown(JList list) {
-    if (canMoveDown(list))
-      moveItems(list, 1, MOVE_DOWN);
-  }
+			default:
+				System.err.println(
+						JListHelper.class.getName() + ": direction '"
+								+ direction + "' is unknown!");
+		}
+	}
 
-  /**
-   * moves the selected items to the top
-   *
-   * @param list        the JList to work on
-   */
-  public static void moveTop(JList list) {
-    int[]     indices;
-    int       diff;
+	/**
+	 * moves the selected items up by 1
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static void moveUp(JList list) {
+		if (canMoveUp(list)) {
+			moveItems(list, 1, MOVE_UP);
+		}
+	}
 
-    if (canMoveUp(list)) {
-      indices = list.getSelectedIndices();
-      diff    = indices[0];
-      moveItems(list, diff, MOVE_UP);
-    }
-  }
+	/**
+	 * moves the selected item down by 1
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static void moveDown(JList list) {
+		if (canMoveDown(list)) {
+			moveItems(list, 1, MOVE_DOWN);
+		}
+	}
 
-  /**
-   * moves the selected items to the end
-   *
-   * @param list        the JList to work on
-   */
-  public static void moveBottom(JList list) {
-    int[]     indices;
-    int       diff;
+	/**
+	 * moves the selected items to the top
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static void moveTop(JList list) {
+		int[] indices;
+		int diff;
 
-    if (canMoveDown(list)) {
-      indices = list.getSelectedIndices();
-      diff    = list.getModel().getSize() - 1 - indices[indices.length - 1];
-      moveItems(list, diff, MOVE_DOWN);
-    }
-  }
+		if (canMoveUp(list)) {
+			indices = list.getSelectedIndices();
+			diff = indices[0];
+			moveItems(list, diff, MOVE_UP);
+		}
+	}
 
-  /**
-   * checks whether the selected items can be moved up
-   *
-   * @param list        the JList to work on
-   */
-  public static boolean canMoveUp(JList list) {
-    boolean   result;
-    int[]     indices;
+	/**
+	 * moves the selected items to the end
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static void moveBottom(JList list) {
+		int[] indices;
+		int diff;
 
-    result = false;
-    
-    indices = list.getSelectedIndices();
-    if (indices.length > 0) {
-      if (indices[0] > 0)
-        result = true;
-    }
+		if (canMoveDown(list)) {
+			indices = list.getSelectedIndices();
+			diff = list.getModel().getSize() - 1 - indices[indices.length - 1];
+			moveItems(list, diff, MOVE_DOWN);
+		}
+	}
 
-    return result;
-  }
+	/**
+	 * checks whether the selected items can be moved up
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static boolean canMoveUp(JList list) {
+		boolean result;
+		int[] indices;
 
-  /**
-   * checks whether the selected items can be moved down
-   *
-   * @param list        the JList to work on
-   */
-  public static boolean canMoveDown(JList list) {
-    boolean   result;
-    int[]     indices;
+		result = false;
 
-    result = false;
-    
-    indices = list.getSelectedIndices();
-    if (indices.length > 0) {
-      if (indices[indices.length - 1] < list.getModel().getSize() - 1)
-        result = true;
-    }
+		indices = list.getSelectedIndices();
+		if (indices.length > 0) {
+			if (indices[0] > 0) {
+				result = true;
+			}
+		}
 
-    return result;
-  }
+		return result;
+	}
+
+	/**
+	 * checks whether the selected items can be moved down
+	 *
+	 * @param list        the JList to work on
+	 */
+	public static boolean canMoveDown(JList list) {
+		boolean result;
+		int[] indices;
+
+		result = false;
+
+		indices = list.getSelectedIndices();
+		if (indices.length > 0) {
+			if (indices[indices.length - 1] < list.getModel().getSize() - 1) {
+				result = true;
+			}
+		}
+
+		return result;
+	}
 }

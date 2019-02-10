@@ -23,9 +23,7 @@ package weka.gui.streams;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 import weka.core.Instance;
 import weka.core.Instances;
@@ -39,116 +37,116 @@ import weka.core.Instances;
  * @version $Revision$
  */
 public class InstanceViewer
-  extends JPanel
-  implements InstanceListener {
+		extends JPanel
+		implements InstanceListener {
 
-  /** for serialization */
-  private static final long serialVersionUID = -4925729441294121772L;
-  
-  private JTextArea m_OutputTex;
-  private boolean m_Debug;
-  private boolean m_Clear;
-  private String m_UpdateString;
+	/** for serialization */
+	private static final long serialVersionUID = -4925729441294121772L;
 
-  private void updateOutput() {
-    
-    m_OutputTex.append(m_UpdateString);
-    m_UpdateString = "";
-  }
+	private JTextArea m_OutputTex;
+	private boolean m_Debug;
+	private boolean m_Clear;
+	private String m_UpdateString;
 
-  private void clearOutput() {
-    
-    m_UpdateString = "";
-    m_OutputTex.setText("");
-  }
+	private void updateOutput() {
 
-  public void inputFormat(Instances instanceInfo) {
-    
-    if (m_Debug) {
-      System.err.println("InstanceViewer::inputFormat()\n"
-			 + instanceInfo.toString());
-    }
-    if (m_Clear) {
-      clearOutput();
-    }
-    m_UpdateString += instanceInfo.toString();
-    updateOutput();
-  }
-
-  public void input(Instance instance) throws Exception {
-    
-    if (m_Debug) {
-      System.err.println("InstanceViewer::input(" + instance +")");
-    }
-    m_UpdateString += instance.toString() + "\n";
-    updateOutput();
-  }
-  
-  public void batchFinished() {
-    
-    updateOutput();
-    if (m_Debug) {
-      System.err.println("InstanceViewer::batchFinished()");
-    }
-  }
-
-  public InstanceViewer() {
-    
-    setLayout(new BorderLayout());
-    m_UpdateString = "";
-    setClearEachDataset(true);
-    m_OutputTex = new JTextArea(10,20);
-    m_OutputTex.setEditable(false);
-    add("Center", new JScrollPane(m_OutputTex));
-  }
-
-  public void setClearEachDataset(boolean clear) {
-    
-    m_Clear = clear;
-  }
-  
-  public boolean getClearEachDataset() {
-    
-    return m_Clear;
-  }
-  
-  public void setDebug(boolean debug) {
-    
-    m_Debug = debug;
-  }
-  
-  public boolean getDebug() {
-    
-    return m_Debug;
-  }
-
-  public void instanceProduced(InstanceEvent e) {
-    
-    Object source = e.getSource();
-    if (source instanceof InstanceProducer) { 
-      try {
-	InstanceProducer a = (InstanceProducer) source;
-	switch (e.getID()) {
-	case InstanceEvent.FORMAT_AVAILABLE:
-	  inputFormat(a.outputFormat());
-	  break;
-	case InstanceEvent.INSTANCE_AVAILABLE:
-	  input(a.outputPeek());
-	  break;
-	case InstanceEvent.BATCH_FINISHED:
-	  batchFinished();
-	  break;
-	default:
-	  System.err.println("InstanceViewer::instanceProduced()"
-			     + " - unknown event type");
-	  break;
+		m_OutputTex.append(m_UpdateString);
+		m_UpdateString = "";
 	}
-      } catch (Exception ex) {
-	System.err.println(ex.getMessage());
-      }
-    } else {
-      System.err.println("InstanceViewer::instanceProduced()"
-			 + " - Unknown source object type");
-    }
-  }
+
+	private void clearOutput() {
+
+		m_UpdateString = "";
+		m_OutputTex.setText("");
+	}
+
+	public void inputFormat(Instances instanceInfo) {
+
+		if (m_Debug) {
+			System.err.println("InstanceViewer::inputFormat()\n"
+					+ instanceInfo.toString());
+		}
+		if (m_Clear) {
+			clearOutput();
+		}
+		m_UpdateString += instanceInfo.toString();
+		updateOutput();
+	}
+
+	public void input(Instance instance) throws Exception {
+
+		if (m_Debug) {
+			System.err.println("InstanceViewer::input(" + instance + ")");
+		}
+		m_UpdateString += instance.toString() + "\n";
+		updateOutput();
+	}
+
+	public void batchFinished() {
+
+		updateOutput();
+		if (m_Debug) {
+			System.err.println("InstanceViewer::batchFinished()");
+		}
+	}
+
+	public InstanceViewer() {
+
+		setLayout(new BorderLayout());
+		m_UpdateString = "";
+		setClearEachDataset(true);
+		m_OutputTex = new JTextArea(10, 20);
+		m_OutputTex.setEditable(false);
+		add("Center", new JScrollPane(m_OutputTex));
+	}
+
+	public void setClearEachDataset(boolean clear) {
+
+		m_Clear = clear;
+	}
+
+	public boolean getClearEachDataset() {
+
+		return m_Clear;
+	}
+
+	public void setDebug(boolean debug) {
+
+		m_Debug = debug;
+	}
+
+	public boolean getDebug() {
+
+		return m_Debug;
+	}
+
+	public void instanceProduced(InstanceEvent e) {
+
+		Object source = e.getSource();
+		if (source instanceof InstanceProducer) {
+			try {
+				InstanceProducer a = (InstanceProducer) source;
+				switch (e.getID()) {
+					case InstanceEvent.FORMAT_AVAILABLE:
+						inputFormat(a.outputFormat());
+						break;
+					case InstanceEvent.INSTANCE_AVAILABLE:
+						input(a.outputPeek());
+						break;
+					case InstanceEvent.BATCH_FINISHED:
+						batchFinished();
+						break;
+					default:
+						System.err.println("InstanceViewer::instanceProduced()"
+								+ " - unknown event type");
+						break;
+				}
+			} catch (Exception ex) {
+				System.err.println(ex.getMessage());
+			}
+		} else {
+			System.err.println("InstanceViewer::instanceProduced()"
+					+ " - Unknown source object type");
+		}
+	}
 }

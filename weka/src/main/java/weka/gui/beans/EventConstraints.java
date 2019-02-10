@@ -21,7 +21,6 @@
 
 package weka.gui.beans;
 
-
 /**
  * Interface for objects that want to be able to specify at any given
  * time whether their current configuration allows a particular event
@@ -31,13 +30,13 @@ package weka.gui.beans;
  * @version $Revision$
  */
 public interface EventConstraints {
-  
-  /**
-   * Returns true if, at the current time, the named event could be
-   * generated.
-   *
-   * @param eventName the name of the event in question
-   * @return true if the named event could be generated
-   */
-  boolean eventGeneratable(String eventName);
+
+	/**
+	 * Returns true if, at the current time, the named event could be
+	 * generated.
+	 *
+	 * @param eventName the name of the event in question
+	 * @return true if the named event could be generated
+	 */
+	boolean eventGeneratable(String eventName);
 }

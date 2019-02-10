@@ -19,14 +19,11 @@
 
 package weka.filters.unsupervised.attribute;
 
-import weka.core.Attribute;
-import weka.core.Instances;
-import weka.core.SelectedTag;
-import weka.filters.AbstractFilterTest;
-import weka.filters.Filter;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.core.*;
+import weka.filters.AbstractFilterTest;
+import weka.filters.Filter;
 
 /**
  * Tests RandomProjection. Run from the command line with: <p/>
@@ -35,84 +32,84 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class RandomProjectionTest 
-  extends AbstractFilterTest {
-  
-  public RandomProjectionTest(String name) { 
-    super(name);  
-  }
+public class RandomProjectionTest
+		extends AbstractFilterTest {
 
-  /** Need to remove string attributes, set class index */
-  protected void setUp() throws Exception {
-    super.setUp();
+	public RandomProjectionTest(String name) {
+		super(name);
+	}
 
-    m_Instances.deleteAttributeType(Attribute.STRING);
+	/** Need to remove string attributes, set class index */
+	protected void setUp() throws Exception {
+		super.setUp();
 
-    // class index
-    m_Instances.setClassIndex(1);
-  }
-  
-  /** Creates a default RandomProjection */
-  public Filter getFilter() {
-    return getFilter(new RandomProjection().getNumberOfAttributes());
-  }
-  
-  /** Creates a RandomProjection with the number of attributes */
-  protected Filter getFilter(int numAtts) {
-    RandomProjection f = new RandomProjection();
-    f.setNumberOfAttributes(numAtts);
-    return f;
-  }
+		m_Instances.deleteAttributeType(Attribute.STRING);
 
-  /**
-   * performs some checks on the given result
-   *
-   * @param result the instances to compare against original dataset
-   */
-  protected void checkResult(Instances result) {
-    assertEquals(
-        ((RandomProjection) m_Filter).getNumberOfAttributes() + 1, 
-        result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-  }
+		// class index
+		m_Instances.setClassIndex(1);
+	}
 
-  /**
-   * tests the given distribution type
-   *
-   * @param type the distribution type to use
-   * @see RandomProjection#TAGS_DSTRS_TYPE
-   */
-  protected void checkDistributionType(int type) {
-    m_Filter = getFilter();
-    ((RandomProjection) m_Filter).setDistribution(
-        new SelectedTag(type, RandomProjection.TAGS_DSTRS_TYPE));
-    Instances result = useFilter();
-    checkResult(result);
-  }
+	/** Creates a default RandomProjection */
+	public Filter getFilter() {
+		return getFilter(new RandomProjection().getNumberOfAttributes());
+	}
 
-  public void testSparse1() {
-    checkDistributionType(RandomProjection.SPARSE1);
-  }
+	/** Creates a RandomProjection with the number of attributes */
+	protected Filter getFilter(int numAtts) {
+		RandomProjection f = new RandomProjection();
+		f.setNumberOfAttributes(numAtts);
+		return f;
+	}
 
-  public void testSparse2() {
-    checkDistributionType(RandomProjection.SPARSE2);
-  }
+	/**
+	 * performs some checks on the given result
+	 *
+	 * @param result the instances to compare against original dataset
+	 */
+	protected void checkResult(Instances result) {
+		assertEquals(
+				((RandomProjection) m_Filter).getNumberOfAttributes() + 1,
+				result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
+	}
 
-  public void testGaussian() {
-    checkDistributionType(RandomProjection.GAUSSIAN);
-  }
+	/**
+	 * tests the given distribution type
+	 *
+	 * @param type the distribution type to use
+	 * @see RandomProjection#TAGS_DSTRS_TYPE
+	 */
+	protected void checkDistributionType(int type) {
+		m_Filter = getFilter();
+		((RandomProjection) m_Filter).setDistribution(
+				new SelectedTag(type, RandomProjection.TAGS_DSTRS_TYPE));
+		Instances result = useFilter();
+		checkResult(result);
+	}
 
-  public void testNumberOfAttributes() {
-    m_Filter = getFilter(5);
-    Instances result = useFilter();
-    checkResult(result);
-  }
+	public void testSparse1() {
+		checkDistributionType(RandomProjection.SPARSE1);
+	}
 
-  public static Test suite() {
-    return new TestSuite(RandomProjectionTest.class);
-  }
+	public void testSparse2() {
+		checkDistributionType(RandomProjection.SPARSE2);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public void testGaussian() {
+		checkDistributionType(RandomProjection.GAUSSIAN);
+	}
+
+	public void testNumberOfAttributes() {
+		m_Filter = getFilter(5);
+		Instances result = useFilter();
+		checkResult(result);
+	}
+
+	public static Test suite() {
+		return new TestSuite(RandomProjectionTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

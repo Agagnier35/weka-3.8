@@ -21,50 +21,48 @@
 
 package weka.gui.beans;
 
-import java.beans.BeanDescriptor;
-import java.beans.EventSetDescriptor;
-import java.beans.SimpleBeanInfo;
+import java.beans.*;
 
 /**
  * BeanInfo class for the Sorter step
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  */
 public class SorterBeanInfo extends SimpleBeanInfo {
-  
-  /**
-   * Returns the event set descriptors
-   *
-   * @return an <code>EventSetDescriptor[]</code> value
-   */
-  public EventSetDescriptor [] getEventSetDescriptors() {
-    try {
-      EventSetDescriptor [] esds = 
-      {       
-          new EventSetDescriptor(DataSource.class, 
-              "instance", 
-              InstanceListener.class, 
-          "acceptInstance"),
-          new EventSetDescriptor(DataSource.class, 
-              "dataSet", 
-              DataSourceListener.class, 
-          "acceptDataSet")
-      };
-      return esds;
-    } catch (Exception ex) {
-      ex.printStackTrace();
-    }
-    return null;
-  }
-  
-  /**
-   * Get the bean descriptor for this bean
-   *
-   * @return a <code>BeanDescriptor</code> value
-   */
-  public BeanDescriptor getBeanDescriptor() {
-    return new BeanDescriptor(Sorter.class,
-                              SorterCustomizer.class);
-  }
+
+	/**
+	 * Returns the event set descriptors
+	 *
+	 * @return an <code>EventSetDescriptor[]</code> value
+	 */
+	public EventSetDescriptor[] getEventSetDescriptors() {
+		try {
+			EventSetDescriptor[] esds =
+					{
+							new EventSetDescriptor(DataSource.class,
+									"instance",
+									InstanceListener.class,
+									"acceptInstance"),
+							new EventSetDescriptor(DataSource.class,
+									"dataSet",
+									DataSourceListener.class,
+									"acceptDataSet")
+					};
+			return esds;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Get the bean descriptor for this bean
+	 *
+	 * @return a <code>BeanDescriptor</code> value
+	 */
+	public BeanDescriptor getBeanDescriptor() {
+		return new BeanDescriptor(Sorter.class,
+				SorterCustomizer.class);
+	}
 }

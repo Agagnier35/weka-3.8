@@ -19,13 +19,12 @@
 
 package weka.filters.unsupervised.attribute;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests NumericToNominal. Run from the command line with:<p>
@@ -35,33 +34,35 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class NumericToNominalTest extends AbstractFilterTest {
-  
-  public NumericToNominalTest(String name) { 
-    super(name);
-  }
 
-  /** Creates a default NumericToNominal */
-  public Filter getFilter() {
-    return new NumericToNominal();
-  }
+	public NumericToNominalTest(String name) {
+		super(name);
+	}
 
-  public void testTypical() {
-    Instances result = useFilter();
-    // Number of attributes and instances shouldn't change
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-    // no date and numeric attributes should remain
-    if (result.checkForAttributeType(Attribute.DATE))
-      fail("Date attribute(s) left over!");
-    if (result.checkForAttributeType(Attribute.NUMERIC))
-      fail("Numeric attribute(s) left over!");
-  }
+	/** Creates a default NumericToNominal */
+	public Filter getFilter() {
+		return new NumericToNominal();
+	}
 
-  public static Test suite() {
-    return new TestSuite(NumericToNominalTest.class);
-  }
+	public void testTypical() {
+		Instances result = useFilter();
+		// Number of attributes and instances shouldn't change
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
+		// no date and numeric attributes should remain
+		if (result.checkForAttributeType(Attribute.DATE)) {
+			fail("Date attribute(s) left over!");
+		}
+		if (result.checkForAttributeType(Attribute.NUMERIC)) {
+			fail("Numeric attribute(s) left over!");
+		}
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static Test suite() {
+		return new TestSuite(NumericToNominalTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

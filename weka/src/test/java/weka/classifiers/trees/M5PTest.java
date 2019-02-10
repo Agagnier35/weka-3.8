@@ -19,11 +19,10 @@
 
 package weka.classifiers.trees;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests M5P. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class M5PTest extends AbstractClassifierTest {
 
-  public M5PTest(String name) { super(name);  }
+	public M5PTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default M5P */
-  public Classifier getClassifier() {
-    return new M5P();
-  }
+	/** Creates a default M5P */
+	public Classifier getClassifier() {
+		return new M5P();
+	}
 
-  public static Test suite() {
-    return new TestSuite(M5PTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(M5PTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

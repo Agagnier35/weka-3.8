@@ -19,14 +19,13 @@
 
 package weka.filters.unsupervised.attribute;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 /**
  * Tests PrincipalComponents. Run from the command line with: <p/>
@@ -35,118 +34,116 @@ import junit.textui.TestRunner;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class PrincipalComponentsTest 
-  extends AbstractFilterTest {
-  
-  /**
-   * Initializes the test.
-   * 
-   * @param name	the name of the test
-   */
-  public PrincipalComponentsTest(String name) { 
-    super(name);  
-  }
+public class PrincipalComponentsTest
+		extends AbstractFilterTest {
 
-  /**
-   * Need to remove non-numeric attributes.
-   * 
-   * @throws Exception	if something goes wrong in setup
-   */
-  protected void setUp() throws Exception {
-    super.setUp();
+	/**
+	 * Initializes the test.
+	 *
+	 * @param name    the name of the test
+	 */
+	public PrincipalComponentsTest(String name) {
+		super(name);
+	}
 
-    m_Instances.deleteAttributeType(Attribute.STRING);
-    
-    // class index
-    m_Instances.setClassIndex(1);
-  }
+	/**
+	 * Need to remove non-numeric attributes.
+	 *
+	 * @throws Exception    if something goes wrong in setup
+	 */
+	protected void setUp() throws Exception {
+		super.setUp();
 
-  /**
-   * Creates a default PrincipalComponents filter.
-   * 
-   * @return		the default filter
-   */
-  public Filter getFilter() {
-    return new PrincipalComponents();
-  }
+		m_Instances.deleteAttributeType(Attribute.STRING);
 
-  /**
-   * performs the actual test.
-   */
-  protected void performTest() {
-    Instances icopy = new Instances(m_Instances);
-    Instances result = null;
-    try {
-      m_Filter.setInputFormat(icopy);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
-    }
-    try {
-      result = Filter.useFilter(icopy, m_Filter);
-      assertNotNull(result);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on useFilter(): \n" + ex.getMessage());
-    }
+		// class index
+		m_Instances.setClassIndex(1);
+	}
 
-    assertEquals(icopy.numInstances(), result.numInstances());
-  }
+	/**
+	 * Creates a default PrincipalComponents filter.
+	 *
+	 * @return the default filter
+	 */
+	public Filter getFilter() {
+		return new PrincipalComponents();
+	}
 
-  /**
-   * Only tests whether the number of instances stay the same, with default 
-   * setup of filter.
-   */
-  public void testTypical() {
-    m_Filter = getFilter();
-    performTest();
-  }
+	/**
+	 * performs the actual test.
+	 */
+	protected void performTest() {
+		Instances icopy = new Instances(m_Instances);
+		Instances result = null;
+		try {
+			m_Filter.setInputFormat(icopy);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
+		}
+		try {
+			result = Filter.useFilter(icopy, m_Filter);
+			assertNotNull(result);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on useFilter(): \n" + ex.getMessage());
+		}
 
-  /**
-   * Runs filter with covariance matrix + centering rather than correlation
-   * + standardizing.
-   */
-  public void testCovariance() {
-    m_Filter = getFilter();
-    ((PrincipalComponents) m_Filter).setCenterData(true);
-    performTest();
-  }
+		assertEquals(icopy.numInstances(), result.numInstances());
+	}
 
-  /**
-   * Runs filter with different variance.
-   */
-  public void testVariance() {
-    m_Filter = getFilter();
-    ((PrincipalComponents) m_Filter).setVarianceCovered(0.8);
-    performTest();
-  }
+	/**
+	 * Only tests whether the number of instances stay the same, with default
+	 * setup of filter.
+	 */
+	public void testTypical() {
+		m_Filter = getFilter();
+		performTest();
+	}
 
-  /**
-   * Runs filter with a maximum number of attributes.
-   */
-  public void testMaxAttributes() {
-    m_Filter = getFilter();
-    ((PrincipalComponents) m_Filter).setMaximumAttributeNames(2);
-    performTest();
-  }
-  
-  /**
-   * Returns a configures test suite.
-   * 
-   * @return		a configured test suite
-   */
-  public static Test suite() {
-    return new TestSuite(PrincipalComponentsTest.class);
-  }
+	/**
+	 * Runs filter with covariance matrix + centering rather than correlation
+	 * + standardizing.
+	 */
+	public void testCovariance() {
+		m_Filter = getFilter();
+		((PrincipalComponents) m_Filter).setCenterData(true);
+		performTest();
+	}
 
-  /**
-   * For running the test from commandline.
-   * 
-   * @param args	ignored
-   */
-  public static void main(String[] args){
-    TestRunner.run(suite());
-  }
+	/**
+	 * Runs filter with different variance.
+	 */
+	public void testVariance() {
+		m_Filter = getFilter();
+		((PrincipalComponents) m_Filter).setVarianceCovered(0.8);
+		performTest();
+	}
+
+	/**
+	 * Runs filter with a maximum number of attributes.
+	 */
+	public void testMaxAttributes() {
+		m_Filter = getFilter();
+		((PrincipalComponents) m_Filter).setMaximumAttributeNames(2);
+		performTest();
+	}
+
+	/**
+	 * Returns a configures test suite.
+	 *
+	 * @return a configured test suite
+	 */
+	public static Test suite() {
+		return new TestSuite(PrincipalComponentsTest.class);
+	}
+
+	/**
+	 * For running the test from commandline.
+	 *
+	 * @param args    ignored
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(suite());
+	}
 }

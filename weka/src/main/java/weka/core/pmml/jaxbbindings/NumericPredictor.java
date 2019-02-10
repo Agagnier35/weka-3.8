@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for NumericPredictor element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="NumericPredictor">
  *   &lt;complexType>
@@ -40,128 +34,128 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension"
+		"extension"
 })
 @XmlRootElement(name = "NumericPredictor")
 public class NumericPredictor {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlAttribute(required = true)
-    protected double coefficient;
-    @XmlAttribute
-    protected BigInteger exponent;
-    @XmlAttribute(required = true)
-    protected String name;
-    
-    public NumericPredictor() {}
-    
-    public NumericPredictor(String name, BigInteger exponent, double coefficient) {
-    	this.name = name;
-    	this.exponent = exponent;
-    	this.coefficient = coefficient;
-    }
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlAttribute(required = true)
+	protected double coefficient;
+	@XmlAttribute
+	protected BigInteger exponent;
+	@XmlAttribute(required = true)
+	protected String name;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	public NumericPredictor() {
+	}
 
-    /**
-     * Gets the value of the coefficient property.
-     * 
-     */
-    public double getCoefficient() {
-        return coefficient;
-    }
+	public NumericPredictor(String name, BigInteger exponent, double coefficient) {
+		this.name = name;
+		this.exponent = exponent;
+		this.coefficient = coefficient;
+	}
 
-    /**
-     * Sets the value of the coefficient property.
-     * 
-     */
-    public void setCoefficient(double value) {
-        this.coefficient = value;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the exponent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getExponent() {
-        if (exponent == null) {
-            return new BigInteger("1");
-        } else {
-            return exponent;
-        }
-    }
+	/**
+	 * Gets the value of the coefficient property.
+	 *
+	 */
+	public double getCoefficient() {
+		return coefficient;
+	}
 
-    /**
-     * Sets the value of the exponent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setExponent(BigInteger value) {
-        this.exponent = value;
-    }
+	/**
+	 * Sets the value of the coefficient property.
+	 *
+	 */
+	public void setCoefficient(double value) {
+		this.coefficient = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the exponent property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getExponent() {
+		if (exponent == null) {
+			return new BigInteger("1");
+		} else {
+			return exponent;
+		}
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the exponent property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setExponent(BigInteger value) {
+		this.exponent = value;
+	}
 
+	/**
+	 * Gets the value of the name property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the value of the name property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 }

@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for INTERPOLATION-METHOD.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -27,36 +25,36 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum INTERPOLATIONMETHOD {
 
-    @XmlEnumValue("cubicSpline")
-    CUBIC_SPLINE("cubicSpline"),
-    @XmlEnumValue("exponentialSpline")
-    EXPONENTIAL_SPLINE("exponentialSpline"),
-    @XmlEnumValue("linear")
-    LINEAR("linear"),
-    @XmlEnumValue("none")
-    NONE("none");
-    private final String value;
+	@XmlEnumValue("cubicSpline")
+	CUBIC_SPLINE("cubicSpline"),
+	@XmlEnumValue("exponentialSpline")
+	EXPONENTIAL_SPLINE("exponentialSpline"),
+	@XmlEnumValue("linear")
+	LINEAR("linear"),
+	@XmlEnumValue("none")
+	NONE("none");
+	private final String value;
 
-    INTERPOLATIONMETHOD(String v) {
-        value = v;
-    }
+	INTERPOLATIONMETHOD(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static INTERPOLATIONMETHOD fromValue(String v) {
-        for (INTERPOLATIONMETHOD c: INTERPOLATIONMETHOD.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static INTERPOLATIONMETHOD fromValue(String v) {
+		for (INTERPOLATIONMETHOD c : INTERPOLATIONMETHOD.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

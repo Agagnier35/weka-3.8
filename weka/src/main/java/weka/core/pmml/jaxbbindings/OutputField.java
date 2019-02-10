@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for OutputField element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="OutputField">
  *   &lt;complexType>
@@ -80,677 +74,676 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension",
-    "decisions",
-    "constant",
-    "fieldRef",
-    "normContinuous",
-    "normDiscrete",
-    "discretize",
-    "mapValues",
-    "apply",
-    "aggregate"
+		"extension",
+		"decisions",
+		"constant",
+		"fieldRef",
+		"normContinuous",
+		"normDiscrete",
+		"discretize",
+		"mapValues",
+		"apply",
+		"aggregate"
 })
 @XmlRootElement(name = "OutputField")
 public class OutputField {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlElement(name = "Decisions", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Decisions decisions;
-    @XmlElement(name = "Constant", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Constant constant;
-    @XmlElement(name = "FieldRef", namespace = "http://www.dmg.org/PMML-4_1")
-    protected FieldRef fieldRef;
-    @XmlElement(name = "NormContinuous", namespace = "http://www.dmg.org/PMML-4_1")
-    protected NormContinuous normContinuous;
-    @XmlElement(name = "NormDiscrete", namespace = "http://www.dmg.org/PMML-4_1")
-    protected NormDiscrete normDiscrete;
-    @XmlElement(name = "Discretize", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Discretize discretize;
-    @XmlElement(name = "MapValues", namespace = "http://www.dmg.org/PMML-4_1")
-    protected MapValues mapValues;
-    @XmlElement(name = "Apply", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Apply apply;
-    @XmlElement(name = "Aggregate", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Aggregate aggregate;
-    @XmlAttribute
-    protected String algorithm;
-    @XmlAttribute
-    protected DATATYPE dataType;
-    @XmlAttribute
-    protected String displayName;
-    @XmlAttribute
-    protected RESULTFEATURE feature;
-    @XmlAttribute
-    protected String isMultiValued;
-    @XmlAttribute(required = true)
-    protected String name;
-    @XmlAttribute
-    protected OPTYPE optype;
-    @XmlAttribute
-    protected BigInteger rank;
-    @XmlAttribute
-    protected String rankBasis;
-    @XmlAttribute
-    protected String rankOrder;
-    @XmlAttribute
-    protected RULEFEATURE ruleFeature;
-    @XmlAttribute
-    protected String segmentId;
-    @XmlAttribute
-    protected String targetField;
-    @XmlAttribute
-    protected String value;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlElement(name = "Decisions", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Decisions decisions;
+	@XmlElement(name = "Constant", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Constant constant;
+	@XmlElement(name = "FieldRef", namespace = "http://www.dmg.org/PMML-4_1")
+	protected FieldRef fieldRef;
+	@XmlElement(name = "NormContinuous", namespace = "http://www.dmg.org/PMML-4_1")
+	protected NormContinuous normContinuous;
+	@XmlElement(name = "NormDiscrete", namespace = "http://www.dmg.org/PMML-4_1")
+	protected NormDiscrete normDiscrete;
+	@XmlElement(name = "Discretize", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Discretize discretize;
+	@XmlElement(name = "MapValues", namespace = "http://www.dmg.org/PMML-4_1")
+	protected MapValues mapValues;
+	@XmlElement(name = "Apply", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Apply apply;
+	@XmlElement(name = "Aggregate", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Aggregate aggregate;
+	@XmlAttribute
+	protected String algorithm;
+	@XmlAttribute
+	protected DATATYPE dataType;
+	@XmlAttribute
+	protected String displayName;
+	@XmlAttribute
+	protected RESULTFEATURE feature;
+	@XmlAttribute
+	protected String isMultiValued;
+	@XmlAttribute(required = true)
+	protected String name;
+	@XmlAttribute
+	protected OPTYPE optype;
+	@XmlAttribute
+	protected BigInteger rank;
+	@XmlAttribute
+	protected String rankBasis;
+	@XmlAttribute
+	protected String rankOrder;
+	@XmlAttribute
+	protected RULEFEATURE ruleFeature;
+	@XmlAttribute
+	protected String segmentId;
+	@XmlAttribute
+	protected String targetField;
+	@XmlAttribute
+	protected String value;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the decisions property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Decisions }
-     *     
-     */
-    public Decisions getDecisions() {
-        return decisions;
-    }
+	/**
+	 * Gets the value of the decisions property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Decisions }
+	 *
+	 */
+	public Decisions getDecisions() {
+		return decisions;
+	}
 
-    /**
-     * Sets the value of the decisions property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Decisions }
-     *     
-     */
-    public void setDecisions(Decisions value) {
-        this.decisions = value;
-    }
+	/**
+	 * Sets the value of the decisions property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Decisions }
+	 *
+	 */
+	public void setDecisions(Decisions value) {
+		this.decisions = value;
+	}
 
-    /**
-     * Gets the value of the constant property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Constant }
-     *     
-     */
-    public Constant getConstant() {
-        return constant;
-    }
+	/**
+	 * Gets the value of the constant property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Constant }
+	 *
+	 */
+	public Constant getConstant() {
+		return constant;
+	}
 
-    /**
-     * Sets the value of the constant property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Constant }
-     *     
-     */
-    public void setConstant(Constant value) {
-        this.constant = value;
-    }
+	/**
+	 * Sets the value of the constant property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Constant }
+	 *
+	 */
+	public void setConstant(Constant value) {
+		this.constant = value;
+	}
 
-    /**
-     * Gets the value of the fieldRef property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FieldRef }
-     *     
-     */
-    public FieldRef getFieldRef() {
-        return fieldRef;
-    }
+	/**
+	 * Gets the value of the fieldRef property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link FieldRef }
+	 *
+	 */
+	public FieldRef getFieldRef() {
+		return fieldRef;
+	}
 
-    /**
-     * Sets the value of the fieldRef property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FieldRef }
-     *     
-     */
-    public void setFieldRef(FieldRef value) {
-        this.fieldRef = value;
-    }
+	/**
+	 * Sets the value of the fieldRef property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link FieldRef }
+	 *
+	 */
+	public void setFieldRef(FieldRef value) {
+		this.fieldRef = value;
+	}
 
-    /**
-     * Gets the value of the normContinuous property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link NormContinuous }
-     *     
-     */
-    public NormContinuous getNormContinuous() {
-        return normContinuous;
-    }
+	/**
+	 * Gets the value of the normContinuous property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link NormContinuous }
+	 *
+	 */
+	public NormContinuous getNormContinuous() {
+		return normContinuous;
+	}
 
-    /**
-     * Sets the value of the normContinuous property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link NormContinuous }
-     *     
-     */
-    public void setNormContinuous(NormContinuous value) {
-        this.normContinuous = value;
-    }
+	/**
+	 * Sets the value of the normContinuous property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link NormContinuous }
+	 *
+	 */
+	public void setNormContinuous(NormContinuous value) {
+		this.normContinuous = value;
+	}
 
-    /**
-     * Gets the value of the normDiscrete property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link NormDiscrete }
-     *     
-     */
-    public NormDiscrete getNormDiscrete() {
-        return normDiscrete;
-    }
+	/**
+	 * Gets the value of the normDiscrete property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link NormDiscrete }
+	 *
+	 */
+	public NormDiscrete getNormDiscrete() {
+		return normDiscrete;
+	}
 
-    /**
-     * Sets the value of the normDiscrete property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link NormDiscrete }
-     *     
-     */
-    public void setNormDiscrete(NormDiscrete value) {
-        this.normDiscrete = value;
-    }
+	/**
+	 * Sets the value of the normDiscrete property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link NormDiscrete }
+	 *
+	 */
+	public void setNormDiscrete(NormDiscrete value) {
+		this.normDiscrete = value;
+	}
 
-    /**
-     * Gets the value of the discretize property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Discretize }
-     *     
-     */
-    public Discretize getDiscretize() {
-        return discretize;
-    }
+	/**
+	 * Gets the value of the discretize property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Discretize }
+	 *
+	 */
+	public Discretize getDiscretize() {
+		return discretize;
+	}
 
-    /**
-     * Sets the value of the discretize property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Discretize }
-     *     
-     */
-    public void setDiscretize(Discretize value) {
-        this.discretize = value;
-    }
+	/**
+	 * Sets the value of the discretize property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Discretize }
+	 *
+	 */
+	public void setDiscretize(Discretize value) {
+		this.discretize = value;
+	}
 
-    /**
-     * Gets the value of the mapValues property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MapValues }
-     *     
-     */
-    public MapValues getMapValues() {
-        return mapValues;
-    }
+	/**
+	 * Gets the value of the mapValues property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link MapValues }
+	 *
+	 */
+	public MapValues getMapValues() {
+		return mapValues;
+	}
 
-    /**
-     * Sets the value of the mapValues property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MapValues }
-     *     
-     */
-    public void setMapValues(MapValues value) {
-        this.mapValues = value;
-    }
+	/**
+	 * Sets the value of the mapValues property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link MapValues }
+	 *
+	 */
+	public void setMapValues(MapValues value) {
+		this.mapValues = value;
+	}
 
-    /**
-     * Gets the value of the apply property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Apply }
-     *     
-     */
-    public Apply getApply() {
-        return apply;
-    }
+	/**
+	 * Gets the value of the apply property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Apply }
+	 *
+	 */
+	public Apply getApply() {
+		return apply;
+	}
 
-    /**
-     * Sets the value of the apply property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Apply }
-     *     
-     */
-    public void setApply(Apply value) {
-        this.apply = value;
-    }
+	/**
+	 * Sets the value of the apply property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Apply }
+	 *
+	 */
+	public void setApply(Apply value) {
+		this.apply = value;
+	}
 
-    /**
-     * Gets the value of the aggregate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Aggregate }
-     *     
-     */
-    public Aggregate getAggregate() {
-        return aggregate;
-    }
+	/**
+	 * Gets the value of the aggregate property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Aggregate }
+	 *
+	 */
+	public Aggregate getAggregate() {
+		return aggregate;
+	}
 
-    /**
-     * Sets the value of the aggregate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Aggregate }
-     *     
-     */
-    public void setAggregate(Aggregate value) {
-        this.aggregate = value;
-    }
+	/**
+	 * Sets the value of the aggregate property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Aggregate }
+	 *
+	 */
+	public void setAggregate(Aggregate value) {
+		this.aggregate = value;
+	}
 
-    /**
-     * Gets the value of the algorithm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAlgorithm() {
-        if (algorithm == null) {
-            return "exclusiveRecommendation";
-        } else {
-            return algorithm;
-        }
-    }
+	/**
+	 * Gets the value of the algorithm property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getAlgorithm() {
+		if (algorithm == null) {
+			return "exclusiveRecommendation";
+		} else {
+			return algorithm;
+		}
+	}
 
-    /**
-     * Sets the value of the algorithm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAlgorithm(String value) {
-        this.algorithm = value;
-    }
+	/**
+	 * Sets the value of the algorithm property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setAlgorithm(String value) {
+		this.algorithm = value;
+	}
 
-    /**
-     * Gets the value of the dataType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DATATYPE }
-     *     
-     */
-    public DATATYPE getDataType() {
-        return dataType;
-    }
+	/**
+	 * Gets the value of the dataType property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link DATATYPE }
+	 *
+	 */
+	public DATATYPE getDataType() {
+		return dataType;
+	}
 
-    /**
-     * Sets the value of the dataType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DATATYPE }
-     *     
-     */
-    public void setDataType(DATATYPE value) {
-        this.dataType = value;
-    }
+	/**
+	 * Sets the value of the dataType property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link DATATYPE }
+	 *
+	 */
+	public void setDataType(DATATYPE value) {
+		this.dataType = value;
+	}
 
-    /**
-     * Gets the value of the displayName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDisplayName() {
-        return displayName;
-    }
+	/**
+	 * Gets the value of the displayName property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getDisplayName() {
+		return displayName;
+	}
 
-    /**
-     * Sets the value of the displayName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDisplayName(String value) {
-        this.displayName = value;
-    }
+	/**
+	 * Sets the value of the displayName property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setDisplayName(String value) {
+		this.displayName = value;
+	}
 
-    /**
-     * Gets the value of the feature property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RESULTFEATURE }
-     *     
-     */
-    public RESULTFEATURE getFeature() {
-        return feature;
-    }
+	/**
+	 * Gets the value of the feature property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link RESULTFEATURE }
+	 *
+	 */
+	public RESULTFEATURE getFeature() {
+		return feature;
+	}
 
-    /**
-     * Sets the value of the feature property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RESULTFEATURE }
-     *     
-     */
-    public void setFeature(RESULTFEATURE value) {
-        this.feature = value;
-    }
+	/**
+	 * Sets the value of the feature property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link RESULTFEATURE }
+	 *
+	 */
+	public void setFeature(RESULTFEATURE value) {
+		this.feature = value;
+	}
 
-    /**
-     * Gets the value of the isMultiValued property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIsMultiValued() {
-        if (isMultiValued == null) {
-            return "0";
-        } else {
-            return isMultiValued;
-        }
-    }
+	/**
+	 * Gets the value of the isMultiValued property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getIsMultiValued() {
+		if (isMultiValued == null) {
+			return "0";
+		} else {
+			return isMultiValued;
+		}
+	}
 
-    /**
-     * Sets the value of the isMultiValued property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIsMultiValued(String value) {
-        this.isMultiValued = value;
-    }
+	/**
+	 * Sets the value of the isMultiValued property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setIsMultiValued(String value) {
+		this.isMultiValued = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the optype property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OPTYPE }
-     *     
-     */
-    public OPTYPE getOptype() {
-        return optype;
-    }
+	/**
+	 * Gets the value of the optype property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link OPTYPE }
+	 *
+	 */
+	public OPTYPE getOptype() {
+		return optype;
+	}
 
-    /**
-     * Sets the value of the optype property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OPTYPE }
-     *     
-     */
-    public void setOptype(OPTYPE value) {
-        this.optype = value;
-    }
+	/**
+	 * Sets the value of the optype property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link OPTYPE }
+	 *
+	 */
+	public void setOptype(OPTYPE value) {
+		this.optype = value;
+	}
 
-    /**
-     * Gets the value of the rank property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getRank() {
-        if (rank == null) {
-            return new BigInteger("1");
-        } else {
-            return rank;
-        }
-    }
+	/**
+	 * Gets the value of the rank property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getRank() {
+		if (rank == null) {
+			return new BigInteger("1");
+		} else {
+			return rank;
+		}
+	}
 
-    /**
-     * Sets the value of the rank property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setRank(BigInteger value) {
-        this.rank = value;
-    }
+	/**
+	 * Sets the value of the rank property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setRank(BigInteger value) {
+		this.rank = value;
+	}
 
-    /**
-     * Gets the value of the rankBasis property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRankBasis() {
-        if (rankBasis == null) {
-            return "confidence";
-        } else {
-            return rankBasis;
-        }
-    }
+	/**
+	 * Gets the value of the rankBasis property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getRankBasis() {
+		if (rankBasis == null) {
+			return "confidence";
+		} else {
+			return rankBasis;
+		}
+	}
 
-    /**
-     * Sets the value of the rankBasis property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRankBasis(String value) {
-        this.rankBasis = value;
-    }
+	/**
+	 * Sets the value of the rankBasis property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setRankBasis(String value) {
+		this.rankBasis = value;
+	}
 
-    /**
-     * Gets the value of the rankOrder property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRankOrder() {
-        if (rankOrder == null) {
-            return "descending";
-        } else {
-            return rankOrder;
-        }
-    }
+	/**
+	 * Gets the value of the rankOrder property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getRankOrder() {
+		if (rankOrder == null) {
+			return "descending";
+		} else {
+			return rankOrder;
+		}
+	}
 
-    /**
-     * Sets the value of the rankOrder property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRankOrder(String value) {
-        this.rankOrder = value;
-    }
+	/**
+	 * Sets the value of the rankOrder property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setRankOrder(String value) {
+		this.rankOrder = value;
+	}
 
-    /**
-     * Gets the value of the ruleFeature property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RULEFEATURE }
-     *     
-     */
-    public RULEFEATURE getRuleFeature() {
-        if (ruleFeature == null) {
-            return RULEFEATURE.CONSEQUENT;
-        } else {
-            return ruleFeature;
-        }
-    }
+	/**
+	 * Gets the value of the ruleFeature property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link RULEFEATURE }
+	 *
+	 */
+	public RULEFEATURE getRuleFeature() {
+		if (ruleFeature == null) {
+			return RULEFEATURE.CONSEQUENT;
+		} else {
+			return ruleFeature;
+		}
+	}
 
-    /**
-     * Sets the value of the ruleFeature property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RULEFEATURE }
-     *     
-     */
-    public void setRuleFeature(RULEFEATURE value) {
-        this.ruleFeature = value;
-    }
+	/**
+	 * Sets the value of the ruleFeature property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link RULEFEATURE }
+	 *
+	 */
+	public void setRuleFeature(RULEFEATURE value) {
+		this.ruleFeature = value;
+	}
 
-    /**
-     * Gets the value of the segmentId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSegmentId() {
-        return segmentId;
-    }
+	/**
+	 * Gets the value of the segmentId property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getSegmentId() {
+		return segmentId;
+	}
 
-    /**
-     * Sets the value of the segmentId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSegmentId(String value) {
-        this.segmentId = value;
-    }
+	/**
+	 * Sets the value of the segmentId property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setSegmentId(String value) {
+		this.segmentId = value;
+	}
 
-    /**
-     * Gets the value of the targetField property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTargetField() {
-        return targetField;
-    }
+	/**
+	 * Gets the value of the targetField property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getTargetField() {
+		return targetField;
+	}
 
-    /**
-     * Sets the value of the targetField property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTargetField(String value) {
-        this.targetField = value;
-    }
+	/**
+	 * Sets the value of the targetField property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setTargetField(String value) {
+		this.targetField = value;
+	}
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValue() {
-        return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
-
+	/**
+	 * Sets the value of the value property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 }

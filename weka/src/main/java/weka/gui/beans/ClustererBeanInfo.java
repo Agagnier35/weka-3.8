@@ -21,9 +21,7 @@
 
 package weka.gui.beans;
 
-import java.beans.BeanDescriptor;
-import java.beans.EventSetDescriptor;
-import java.beans.SimpleBeanInfo;
+import java.beans.*;
 
 /**
  * BeanInfo class for the Clusterer wrapper bean
@@ -32,42 +30,42 @@ import java.beans.SimpleBeanInfo;
  * @version $Revision$
  */
 public class ClustererBeanInfo extends SimpleBeanInfo {
- 
-  public EventSetDescriptor [] getEventSetDescriptors() {
-    try {
-      EventSetDescriptor [] esds = { 
-	new EventSetDescriptor(Clusterer.class, 
-			       "batchClusterer", 
-			       BatchClustererListener.class, 
-			       "acceptClusterer"),
-        new EventSetDescriptor(Clusterer.class,
-			       "graph",
-			       GraphListener.class,
-			       "acceptGraph"),                       
-	new EventSetDescriptor(Clusterer.class,
-			       "text",
-			       TextListener.class,
-			       "acceptText"),
-	new EventSetDescriptor(Clusterer.class,
-	                       "configuration",
-	                       ConfigurationListener.class,
-	                       "acceptConfiguration")
-	};
-      return esds;
-    } catch (Exception ex) {
-      ex.printStackTrace();
-    }
-    return null;
-  }
 
-  /**
-   * Get the bean descriptor for this bean
-   *
-   * @return a <code>BeanDescriptor</code> value
-   */
-  public BeanDescriptor getBeanDescriptor() {
-    return new BeanDescriptor(weka.gui.beans.Clusterer.class, 
-			      ClustererCustomizer.class);
-  }
+	public EventSetDescriptor[] getEventSetDescriptors() {
+		try {
+			EventSetDescriptor[] esds = {
+					new EventSetDescriptor(Clusterer.class,
+							"batchClusterer",
+							BatchClustererListener.class,
+							"acceptClusterer"),
+					new EventSetDescriptor(Clusterer.class,
+							"graph",
+							GraphListener.class,
+							"acceptGraph"),
+					new EventSetDescriptor(Clusterer.class,
+							"text",
+							TextListener.class,
+							"acceptText"),
+					new EventSetDescriptor(Clusterer.class,
+							"configuration",
+							ConfigurationListener.class,
+							"acceptConfiguration")
+			};
+			return esds;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Get the bean descriptor for this bean
+	 *
+	 * @return a <code>BeanDescriptor</code> value
+	 */
+	public BeanDescriptor getBeanDescriptor() {
+		return new BeanDescriptor(weka.gui.beans.Clusterer.class,
+				ClustererCustomizer.class);
+	}
 }
 

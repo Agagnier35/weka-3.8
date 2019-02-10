@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for COMPARE-FUNCTION.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -28,38 +26,38 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum COMPAREFUNCTION {
 
-    @XmlEnumValue("absDiff")
-    ABS_DIFF("absDiff"),
-    @XmlEnumValue("delta")
-    DELTA("delta"),
-    @XmlEnumValue("equal")
-    EQUAL("equal"),
-    @XmlEnumValue("gaussSim")
-    GAUSS_SIM("gaussSim"),
-    @XmlEnumValue("table")
-    TABLE("table");
-    private final String value;
+	@XmlEnumValue("absDiff")
+	ABS_DIFF("absDiff"),
+	@XmlEnumValue("delta")
+	DELTA("delta"),
+	@XmlEnumValue("equal")
+	EQUAL("equal"),
+	@XmlEnumValue("gaussSim")
+	GAUSS_SIM("gaussSim"),
+	@XmlEnumValue("table")
+	TABLE("table");
+	private final String value;
 
-    COMPAREFUNCTION(String v) {
-        value = v;
-    }
+	COMPAREFUNCTION(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static COMPAREFUNCTION fromValue(String v) {
-        for (COMPAREFUNCTION c: COMPAREFUNCTION.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static COMPAREFUNCTION fromValue(String v) {
+		for (COMPAREFUNCTION c : COMPAREFUNCTION.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

@@ -21,21 +21,13 @@
 
 package weka.gui;
 
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.beans.PropertyEditor;
+import java.beans.*;
 import java.text.SimpleDateFormat;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -46,269 +38,268 @@ import javax.swing.event.DocumentListener;
  * @version $Revision$
  * @see SimpleDateFormat
  */
-public class SimpleDateFormatEditor 
-  implements PropertyEditor {
+public class SimpleDateFormatEditor
+		implements PropertyEditor {
 
-  /** the default format */
-  public final static String DEFAULT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
-  
-  /** The date format being edited */
-  private SimpleDateFormat m_Format;
+	/** the default format */
+	public final static String DEFAULT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
-  /** A helper class for notifying listeners */
-  private PropertyChangeSupport m_propSupport;
+	/** The date format being edited */
+	private SimpleDateFormat m_Format;
 
-  /** An instance of the custom editor */
-  private CustomEditor m_customEditor;
+	/** A helper class for notifying listeners */
+	private PropertyChangeSupport m_propSupport;
 
-  /**
-   * This class presents a GUI for editing the cost matrix, and saving and 
-   * loading from files.
-   */
-  private class CustomEditor 
-    extends JPanel 
-    implements ActionListener, DocumentListener {
+	/** An instance of the custom editor */
+	private CustomEditor m_customEditor;
 
-    /** for serialization */
-    private static final long serialVersionUID = -4018834274636309987L;
-    
-    /** The text field for the format */
-    private JTextField m_FormatText;
-    
-    /** The button for setting a default date format */
-    private JButton m_DefaultButton;
+	/**
+	 * This class presents a GUI for editing the cost matrix, and saving and
+	 * loading from files.
+	 */
+	private class CustomEditor
+			extends JPanel
+			implements ActionListener, DocumentListener {
 
-    /** The button for applying the format */
-    private JButton m_ApplyButton;
+		/** for serialization */
+		private static final long serialVersionUID = -4018834274636309987L;
 
-    /**
-     * Constructs a new CustomEditor.
-     */
-    public CustomEditor() {
-      m_FormatText    = new JTextField(20);
-      m_DefaultButton = new JButton("Default");
-      m_ApplyButton   = new JButton("Apply");
+		/** The text field for the format */
+		private JTextField m_FormatText;
 
-      m_DefaultButton.setMnemonic('D');
-      m_ApplyButton.setMnemonic('A');
+		/** The button for setting a default date format */
+		private JButton m_DefaultButton;
 
-      m_FormatText.getDocument().addDocumentListener(this);
-      m_DefaultButton.addActionListener(this);
-      m_ApplyButton.addActionListener(this);
+		/** The button for applying the format */
+		private JButton m_ApplyButton;
 
-      setLayout(new FlowLayout());
-      add(new JLabel("ISO 8601 Date format"));
-      add(m_FormatText);
-      add(m_DefaultButton);
-      add(m_ApplyButton);
-    }
+		/**
+		 * Constructs a new CustomEditor.
+		 */
+		public CustomEditor() {
+			m_FormatText = new JTextField(20);
+			m_DefaultButton = new JButton("Default");
+			m_ApplyButton = new JButton("Apply");
 
-    /**
-     * Responds to the user perfoming an action.
-     *
-     * @param e the action event that occured
-     */
-    public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == m_DefaultButton)
-	defaultFormat();
-      else if (e.getSource() == m_ApplyButton)
-	applyFormat();
-    }
+			m_DefaultButton.setMnemonic('D');
+			m_ApplyButton.setMnemonic('A');
 
-    /**
-     * sets the format to default 
-     */
-    public void defaultFormat() {
-      m_FormatText.setText(DEFAULT_FORMAT);
-      formatChanged();
-    }
+			m_FormatText.getDocument().addDocumentListener(this);
+			m_DefaultButton.addActionListener(this);
+			m_ApplyButton.addActionListener(this);
 
-    /**
-     * returns true if the current format is a valid format
-     */
-    protected boolean isValidFormat() {
-      boolean 	result;
-      
-      result = false;
-      
-      try {
-	new SimpleDateFormat(m_FormatText.getText());
-	result = true;
-      }
-      catch (Exception e) {
-	// we can ignore this exception
-      }
-      
-      return result;
-    }
-    
-    /**
-     * sets the format, but only if it's a valid one
-     */
-    public void applyFormat() {
-      if (isValidFormat()) {
-	m_Format = new SimpleDateFormat(m_FormatText.getText());
-	m_propSupport.firePropertyChange(null, null, null);
-      }
-      else {
-	throw new IllegalArgumentException(
-	    "Date format '" 
-	    + m_FormatText.getText() 
-	    + "' is invalid! Cannot execute applyFormat!");
-      }
-    }
-    
-    /**
-     * Responds to a change of the text field.
-     */
-    public void formatChanged() {
-      m_FormatText.setText(m_Format.toPattern());
-      m_propSupport.firePropertyChange(null, null, null);
-    }
-    
-    /**
-     * Gives notification that an attribute or set of attributes changed.
-     */
-    public void changedUpdate(DocumentEvent e) {
-      m_ApplyButton.setEnabled(isValidFormat());
-    }
-    
-    /**
-     * Gives notification that there was an insert into the document.
-     */
-    public void insertUpdate(DocumentEvent e) {
-      m_ApplyButton.setEnabled(isValidFormat());
-    }
-    
-    /**
-     * Gives notification that a portion of the document has been removed.
-     */
-    public void removeUpdate(DocumentEvent e) {
-      m_ApplyButton.setEnabled(isValidFormat());
-    }
-  }
+			setLayout(new FlowLayout());
+			add(new JLabel("ISO 8601 Date format"));
+			add(m_FormatText);
+			add(m_DefaultButton);
+			add(m_ApplyButton);
+		}
 
-  /**
-   * Constructs a new SimpleDateFormatEditor.
-   *
-   */
-  public SimpleDateFormatEditor() {
-    m_propSupport = new PropertyChangeSupport(this);
-    m_customEditor = new CustomEditor();
-  }
+		/**
+		 * Responds to the user perfoming an action.
+		 *
+		 * @param e the action event that occured
+		 */
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == m_DefaultButton) {
+				defaultFormat();
+			} else if (e.getSource() == m_ApplyButton) {
+				applyFormat();
+			}
+		}
 
-  /**
-   * Sets the value of the date format to be edited.
-   *
-   * @param value a SimpleDateFormat object to be edited
-   */
-  public void setValue(Object value) {
-    m_Format = (SimpleDateFormat) value;
-    m_customEditor.formatChanged();
-  }
+		/**
+		 * sets the format to default
+		 */
+		public void defaultFormat() {
+			m_FormatText.setText(DEFAULT_FORMAT);
+			formatChanged();
+		}
 
-  /**
-   * Gets the date format that is being edited.
-   *
-   * @return the edited SimpleDateFormat object
-   */  
-  public Object getValue() {
-    return m_Format;
-  }
+		/**
+		 * returns true if the current format is a valid format
+		 */
+		protected boolean isValidFormat() {
+			boolean result;
 
-  /**
-   * Indicates whether the object can be represented graphically. In this case
-   * it can.
-   *
-   * @return true
-   */  
-  public boolean isPaintable() {
-    return true;
-  }
+			result = false;
 
-  /**
-   * Paints a graphical representation of the object. It just prints the 
-   * format.
-   *
-   * @param gfx the graphics context to draw the representation to
-   * @param box the bounds within which the representation should fit.
-   */    
-  public void paintValue(Graphics gfx,
-			 Rectangle box) {
-    gfx.drawString(m_Format.toPattern(), box.x, box.y + box.height);
-  }
+			try {
+				new SimpleDateFormat(m_FormatText.getText());
+				result = true;
+			} catch (Exception e) {
+				// we can ignore this exception
+			}
 
-  /**
-   * Returns the Java code that generates an object the same as the one being edited.
-   *
-   * @return the initialization string
-   */   
-  public String getJavaInitializationString() {
-    return ("new SimpleDateFormat(" + m_Format.toPattern() + ")");
-  }
+			return result;
+		}
 
-  /**
-   * Returns the date format string.
-   *
-   * @return the date format string
-   */   
-  public String getAsText() {
-    return m_Format.toPattern();
-  }
+		/**
+		 * sets the format, but only if it's a valid one
+		 */
+		public void applyFormat() {
+			if (isValidFormat()) {
+				m_Format = new SimpleDateFormat(m_FormatText.getText());
+				m_propSupport.firePropertyChange(null, null, null);
+			} else {
+				throw new IllegalArgumentException(
+						"Date format '"
+								+ m_FormatText.getText()
+								+ "' is invalid! Cannot execute applyFormat!");
+			}
+		}
 
-  /**
-   * Sets the date format string.
-   *
-   * @param text the date format string
-   */   
-  public void setAsText(String text) {
-    m_Format = new SimpleDateFormat(text);
-  }
+		/**
+		 * Responds to a change of the text field.
+		 */
+		public void formatChanged() {
+			m_FormatText.setText(m_Format.toPattern());
+			m_propSupport.firePropertyChange(null, null, null);
+		}
 
-  /**
-   * Some objects can return tags, but a date format cannot.
-   *
-   * @return null
-   */  
-  public String[] getTags() {
-    return null;
-  }
+		/**
+		 * Gives notification that an attribute or set of attributes changed.
+		 */
+		public void changedUpdate(DocumentEvent e) {
+			m_ApplyButton.setEnabled(isValidFormat());
+		}
 
-  /**
-   * Gets a GUI component with which the user can edit the date format.
-   *
-   * @return an editor GUI component
-   */    
-  public Component getCustomEditor() {
-    return m_customEditor;
-  }
+		/**
+		 * Gives notification that there was an insert into the document.
+		 */
+		public void insertUpdate(DocumentEvent e) {
+			m_ApplyButton.setEnabled(isValidFormat());
+		}
 
-  /**
-   * Indicates whether the date format can be edited in a GUI, which it can.
-   *
-   * @return true
-   */     
-  public boolean supportsCustomEditor() {
-    return true;
-  }
+		/**
+		 * Gives notification that a portion of the document has been removed.
+		 */
+		public void removeUpdate(DocumentEvent e) {
+			m_ApplyButton.setEnabled(isValidFormat());
+		}
+	}
 
-  /**
-   * Adds an object to the list of those that wish to be informed when the
-   * date format changes.
-   *
-   * @param listener a new listener to add to the list
-   */   
-  public void addPropertyChangeListener(PropertyChangeListener listener) {
-    m_propSupport.addPropertyChangeListener(listener);
-  }
+	/**
+	 * Constructs a new SimpleDateFormatEditor.
+	 *
+	 */
+	public SimpleDateFormatEditor() {
+		m_propSupport = new PropertyChangeSupport(this);
+		m_customEditor = new CustomEditor();
+	}
 
-  /**
-   * Removes an object from the list of those that wish to be informed when the
-   * date format changes.
-   *
-   * @param listener the listener to remove from the list
-   */  
-  public void removePropertyChangeListener(PropertyChangeListener listener) {
-    m_propSupport.removePropertyChangeListener(listener);
-  }
+	/**
+	 * Sets the value of the date format to be edited.
+	 *
+	 * @param value a SimpleDateFormat object to be edited
+	 */
+	public void setValue(Object value) {
+		m_Format = (SimpleDateFormat) value;
+		m_customEditor.formatChanged();
+	}
+
+	/**
+	 * Gets the date format that is being edited.
+	 *
+	 * @return the edited SimpleDateFormat object
+	 */
+	public Object getValue() {
+		return m_Format;
+	}
+
+	/**
+	 * Indicates whether the object can be represented graphically. In this case
+	 * it can.
+	 *
+	 * @return true
+	 */
+	public boolean isPaintable() {
+		return true;
+	}
+
+	/**
+	 * Paints a graphical representation of the object. It just prints the
+	 * format.
+	 *
+	 * @param gfx the graphics context to draw the representation to
+	 * @param box the bounds within which the representation should fit.
+	 */
+	public void paintValue(Graphics gfx,
+			Rectangle box) {
+		gfx.drawString(m_Format.toPattern(), box.x, box.y + box.height);
+	}
+
+	/**
+	 * Returns the Java code that generates an object the same as the one being edited.
+	 *
+	 * @return the initialization string
+	 */
+	public String getJavaInitializationString() {
+		return ("new SimpleDateFormat(" + m_Format.toPattern() + ")");
+	}
+
+	/**
+	 * Returns the date format string.
+	 *
+	 * @return the date format string
+	 */
+	public String getAsText() {
+		return m_Format.toPattern();
+	}
+
+	/**
+	 * Sets the date format string.
+	 *
+	 * @param text the date format string
+	 */
+	public void setAsText(String text) {
+		m_Format = new SimpleDateFormat(text);
+	}
+
+	/**
+	 * Some objects can return tags, but a date format cannot.
+	 *
+	 * @return null
+	 */
+	public String[] getTags() {
+		return null;
+	}
+
+	/**
+	 * Gets a GUI component with which the user can edit the date format.
+	 *
+	 * @return an editor GUI component
+	 */
+	public Component getCustomEditor() {
+		return m_customEditor;
+	}
+
+	/**
+	 * Indicates whether the date format can be edited in a GUI, which it can.
+	 *
+	 * @return true
+	 */
+	public boolean supportsCustomEditor() {
+		return true;
+	}
+
+	/**
+	 * Adds an object to the list of those that wish to be informed when the
+	 * date format changes.
+	 *
+	 * @param listener a new listener to add to the list
+	 */
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		m_propSupport.addPropertyChangeListener(listener);
+	}
+
+	/**
+	 * Removes an object from the list of those that wish to be informed when the
+	 * date format changes.
+	 *
+	 * @param listener the listener to remove from the list
+	 */
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		m_propSupport.removePropertyChangeListener(listener);
+	}
 }

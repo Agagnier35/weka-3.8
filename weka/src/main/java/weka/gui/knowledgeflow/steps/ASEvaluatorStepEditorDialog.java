@@ -21,12 +21,14 @@
 
 package weka.gui.knowledgeflow.steps;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+
 import weka.gui.knowledgeflow.GOEStepEditorDialog;
 import weka.knowledgeflow.steps.ASEvaluator;
 import weka.knowledgeflow.steps.Step;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * Step editor dialog for the ASEvaluator step
@@ -36,37 +38,37 @@ import java.awt.*;
  */
 public class ASEvaluatorStepEditorDialog extends GOEStepEditorDialog {
 
-  private static final long serialVersionUID = -166234654984288982L;
+	private static final long serialVersionUID = -166234654984288982L;
 
-  /** Check box for selecting whether to treat x-val folds separately or not */
-  protected JCheckBox m_treatXValFoldsSeparately = new JCheckBox(
-    "Treat x-val folds separately");
+	/** Check box for selecting whether to treat x-val folds separately or not */
+	protected JCheckBox m_treatXValFoldsSeparately = new JCheckBox(
+			"Treat x-val folds separately");
 
-  /**
-   * Set the step to edit in this dialog
-   *
-   * @param step the step to edit
-   */
-  @Override
-  public void setStepToEdit(Step step) {
-    copyOriginal(step);
-    addPrimaryEditorPanel(BorderLayout.NORTH);
+	/**
+	 * Set the step to edit in this dialog
+	 *
+	 * @param step the step to edit
+	 */
+	@Override
+	public void setStepToEdit(Step step) {
+		copyOriginal(step);
+		addPrimaryEditorPanel(BorderLayout.NORTH);
 
-    JPanel p = new JPanel(new BorderLayout());
-    p.add(m_treatXValFoldsSeparately, BorderLayout.NORTH);
-    m_primaryEditorHolder.add(p, BorderLayout.CENTER);
+		JPanel p = new JPanel(new BorderLayout());
+		p.add(m_treatXValFoldsSeparately, BorderLayout.NORTH);
+		m_primaryEditorHolder.add(p, BorderLayout.CENTER);
 
-    add(m_editorHolder, BorderLayout.CENTER);
-    m_treatXValFoldsSeparately.setSelected(((ASEvaluator) step)
-      .getTreatXValFoldsSeparately());
-  }
+		add(m_editorHolder, BorderLayout.CENTER);
+		m_treatXValFoldsSeparately.setSelected(((ASEvaluator) step)
+				.getTreatXValFoldsSeparately());
+	}
 
-  /**
-   * Called when the OK button is pressed
-   */
-  @Override
-  protected void okPressed() {
-    ((ASEvaluator) m_stepToEdit)
-      .setTreatXValFoldsSeparately(m_treatXValFoldsSeparately.isSelected());
-  }
+	/**
+	 * Called when the OK button is pressed
+	 */
+	@Override
+	protected void okPressed() {
+		((ASEvaluator) m_stepToEdit)
+				.setTreatXValFoldsSeparately(m_treatXValFoldsSeparately.isSelected());
+	}
 }

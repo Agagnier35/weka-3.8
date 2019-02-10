@@ -30,228 +30,235 @@ import weka.core.Utils;
 
 /**
  * Abstract superclass for all loggers.
- * 
+ *
  * @author fracpete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
 public abstract class Logger implements RevisionHandler {
 
-  /** the properties file. */
-  public final static String PROPERTIES_FILE =
-    "weka/core/logging/Logging.props";
-  /** the singleton instance of the logger. */
-  protected static Logger m_Singleton;
-  /** the properties file. */
-  protected static Properties m_Properties;
-  /** for formatting the dates. */
-  protected static SimpleDateFormat m_DateFormat;
-  static {
-    try {
-      m_Properties = Utils.readProperties(PROPERTIES_FILE);
-    } catch (Exception e) {
-      System.err.println("Error reading the logging properties '"
-        + PROPERTIES_FILE + "': " + e);
-      m_Properties = new Properties();
-    }
-  }
-  /** the minimum level of log events to have in order to end up in the log. */
-  protected Level m_MinLevel;
+	/** the properties file. */
+	public final static String PROPERTIES_FILE =
+			"weka/core/logging/Logging.props";
+	/** the singleton instance of the logger. */
+	protected static Logger m_Singleton;
+	/** the properties file. */
+	protected static Properties m_Properties;
+	/** for formatting the dates. */
+	protected static SimpleDateFormat m_DateFormat;
 
-  /**
-   * Initializes the logger.
-   */
-  public Logger() {
-    super();
+	static {
+		try {
+			m_Properties = Utils.readProperties(PROPERTIES_FILE);
+		} catch (Exception e) {
+			System.err.println("Error reading the logging properties '"
+					+ PROPERTIES_FILE + "': " + e);
+			m_Properties = new Properties();
+		}
+	}
 
-    initialize();
-  }
+	/** the minimum level of log events to have in order to end up in the log. */
+	protected Level m_MinLevel;
 
-  /**
-   * Returns the location the logging happened.
-   *
-   * @return the classname (= [0]), the method (= [1]) and the line number (=
-   *         [2]) that generated the logging event
-   */
-  protected static String[] getLocation() {
-    String[] result;
-    Throwable t;
-    StackTraceElement[] trace;
-    int i;
+	/**
+	 * Initializes the logger.
+	 */
+	public Logger() {
+		super();
 
-    result = new String[3];
+		initialize();
+	}
 
-    t = new Throwable();
-    t.fillInStackTrace();
-    trace = t.getStackTrace();
+	/**
+	 * Returns the location the logging happened.
+	 *
+	 * @return the classname (= [0]), the method (= [1]) and the line number (=
+	 *         [2]) that generated the logging event
+	 */
+	protected static String[] getLocation() {
+		String[] result;
+		Throwable t;
+		StackTraceElement[] trace;
+		int i;
 
-    for (i = 0; i < trace.length; i++) {
-      // skip the Logger class
-      if (trace[i].getClassName().equals(Logger.class.getName()))
-        continue;
+		result = new String[3];
 
-      if (trace[i].getClassName().equals(weka.gui.LogPanel.class.getName()))
-        continue;
+		t = new Throwable();
+		t.fillInStackTrace();
+		trace = t.getStackTrace();
 
-      // fill in result
-      result[0] = trace[i].getClassName();
-      result[1] = trace[i].getMethodName();
-      result[2] = "" + trace[i].getLineNumber();
-      break;
-    }
+		for (i = 0; i < trace.length; i++) {
+			// skip the Logger class
+			if (trace[i].getClassName().equals(Logger.class.getName())) {
+				continue;
+			}
 
-    return result;
-  }
+			if (trace[i].getClassName().equals(weka.gui.LogPanel.class.getName())) {
+				continue;
+			}
 
-  /**
-   * Returns the singleton instance of the logger.
-   *
-   * @return the logger instance
-   */
-  public static Logger getSingleton() {
-    String classname;
+			// fill in result
+			result[0] = trace[i].getClassName();
+			result[1] = trace[i].getMethodName();
+			result[2] = "" + trace[i].getLineNumber();
+			break;
+		}
 
-    if (m_Singleton == null) {
-      // logger
-      classname =
-        m_Properties.getProperty("weka.core.logging.Logger",
-          ConsoleLogger.class.getName());
-      try {
-        m_Singleton = (Logger) Class.forName(classname).newInstance();
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+		return result;
+	}
 
-      // date format
-      m_DateFormat =
-        new SimpleDateFormat(m_Properties.getProperty(
-          "weka.core.logging.DateFormat", "yyyy-MM-dd HH:mm:ss"));
-    }
+	/**
+	 * Returns the singleton instance of the logger.
+	 *
+	 * @return the logger instance
+	 */
+	public static Logger getSingleton() {
+		String classname;
 
-    return m_Singleton;
-  }
+		if (m_Singleton == null) {
+			// logger
+			classname =
+					m_Properties.getProperty("weka.core.logging.Logger",
+							ConsoleLogger.class.getName());
+			try {
+				m_Singleton = (Logger) Class.forName(classname).newInstance();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
-  /**
-   * Logs the given message under the given level.
-   *
-   * @param level the level of the message
-   * @param msg the message to log
-   */
-  public static void log(Level level, String msg) {
-    Logger logger;
-    boolean log;
-    String[] location;
+			// date format
+			m_DateFormat =
+					new SimpleDateFormat(m_Properties.getProperty(
+							"weka.core.logging.DateFormat", "yyyy-MM-dd HH:mm:ss"));
+		}
 
-    logger = getSingleton();
-    if (logger == null)
-      return;
+		return m_Singleton;
+	}
 
-    synchronized (logger) {
-      log = false;
-      if (logger.getMinLevel() == Level.ALL)
-        log = true;
-      else if (level.getOrder() >= logger.getMinLevel().getOrder())
-        log = true;
-      if (!log)
-        return;
-      location = getLocation();
-      logger.doLog(level, msg, location[0], location[1],
-        Integer.parseInt(location[2]));
-    }
-  }
+	/**
+	 * Logs the given message under the given level.
+	 *
+	 * @param level the level of the message
+	 * @param msg the message to log
+	 */
+	public static void log(Level level, String msg) {
+		Logger logger;
+		boolean log;
+		String[] location;
 
-  /**
-   * Logs the given message under the given level.
-   *
-   * @param level the level of the message
-   * @param t the throwable to log
-   */
-  public static void log(Level level, Throwable t) {
-    StringWriter swriter;
-    PrintWriter pwriter;
+		logger = getSingleton();
+		if (logger == null) {
+			return;
+		}
 
-    swriter = new StringWriter();
-    pwriter = new PrintWriter(swriter);
-    t.printStackTrace(pwriter);
-    pwriter.close();
+		synchronized (logger) {
+			log = false;
+			if (logger.getMinLevel() == Level.ALL) {
+				log = true;
+			} else if (level.getOrder() >= logger.getMinLevel().getOrder()) {
+				log = true;
+			}
+			if (!log) {
+				return;
+			}
+			location = getLocation();
+			logger.doLog(level, msg, location[0], location[1],
+					Integer.parseInt(location[2]));
+		}
+	}
 
-    log(level, swriter.toString());
-  }
+	/**
+	 * Logs the given message under the given level.
+	 *
+	 * @param level the level of the message
+	 * @param t the throwable to log
+	 */
+	public static void log(Level level, Throwable t) {
+		StringWriter swriter;
+		PrintWriter pwriter;
 
-  /**
-   * Initializes the logger.
-   */
-  protected void initialize() {
-    m_MinLevel =
-      Level.valueOf(m_Properties.getProperty("weka.core.logging.MinLevel",
-        "INFO"));
-  }
+		swriter = new StringWriter();
+		pwriter = new PrintWriter(swriter);
+		t.printStackTrace(pwriter);
+		pwriter.close();
 
-  /**
-   * Returns the minimum level log messages must have in order to appear in the
-   * log.
-   *
-   * @return the level
-   */
-  public Level getMinLevel() {
-    return m_MinLevel;
-  }
+		log(level, swriter.toString());
+	}
 
-  /**
-   * Performs the actual logging. Actual logger implementations must override
-   * this method.
-   *
-   * @param level the level of the message
-   * @param msg the message to log
-   * @param cls the classname originating the log event
-   * @param method the method originating the log event
-   * @param lineno the line number originating the log event
-   */
-  protected abstract void doLog(Level level, String msg, String cls,
-    String method, int lineno);
+	/**
+	 * Initializes the logger.
+	 */
+	protected void initialize() {
+		m_MinLevel =
+				Level.valueOf(m_Properties.getProperty("weka.core.logging.MinLevel",
+						"INFO"));
+	}
 
-  /**
-   * The logging level.
-   *
-   * @author fracpete (fracpete at waikato dot ac dot nz)
-   * @version $Revision$
-   */
-  public enum Level {
-    /** logs all messages. */
-    ALL(0),
-    /** FINEST level. */
-    FINEST(1),
-    /** FINEST level. */
-    FINER(2),
-    /** FINER level. */
-    FINE(3),
-    /** FINE level. */
-    INFO(4),
-    /** WARNING level. */
-    WARNING(5),
-    /** SEVERE level. */
-    SEVERE(6),
-    /** turns logging off. */
-    OFF(10);
+	/**
+	 * Returns the minimum level log messages must have in order to appear in the
+	 * log.
+	 *
+	 * @return the level
+	 */
+	public Level getMinLevel() {
+		return m_MinLevel;
+	}
 
-    /** the order of the level. */
-    private int m_Order;
+	/**
+	 * Performs the actual logging. Actual logger implementations must override
+	 * this method.
+	 *
+	 * @param level the level of the message
+	 * @param msg the message to log
+	 * @param cls the classname originating the log event
+	 * @param method the method originating the log event
+	 * @param lineno the line number originating the log event
+	 */
+	protected abstract void doLog(Level level, String msg, String cls,
+			String method, int lineno);
 
-    /**
-     * Initializes the level.
-     *
-     * @param order the order of the level
-     */
-    private Level(int order) {
-      m_Order = order;
-    }
+	/**
+	 * The logging level.
+	 *
+	 * @author fracpete (fracpete at waikato dot ac dot nz)
+	 * @version $Revision$
+	 */
+	public enum Level {
+		/** logs all messages. */
+		ALL(0),
+		/** FINEST level. */
+		FINEST(1),
+		/** FINEST level. */
+		FINER(2),
+		/** FINER level. */
+		FINE(3),
+		/** FINE level. */
+		INFO(4),
+		/** WARNING level. */
+		WARNING(5),
+		/** SEVERE level. */
+		SEVERE(6),
+		/** turns logging off. */
+		OFF(10);
 
-    /**
-     * Returns the order of this level.
-     *
-     * @return the order
-     */
-    public int getOrder() {
-      return m_Order;
-    }
-  }
+		/** the order of the level. */
+		private int m_Order;
+
+		/**
+		 * Initializes the level.
+		 *
+		 * @param order the order of the level
+		 */
+		private Level(int order) {
+			m_Order = order;
+		}
+
+		/**
+		 * Returns the order of this level.
+		 *
+		 * @return the order
+		 */
+		public int getOrder() {
+			return m_Order;
+		}
+	}
 }

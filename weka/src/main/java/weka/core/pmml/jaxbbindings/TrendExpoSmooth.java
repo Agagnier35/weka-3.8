@@ -5,24 +5,17 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * <p>Java class for Trend_ExpoSmooth element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="Trend_ExpoSmooth">
  *   &lt;complexType>
@@ -50,154 +43,153 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "array"
+		"array"
 })
 @XmlRootElement(name = "Trend_ExpoSmooth")
 public class TrendExpoSmooth {
 
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
-    protected ArrayType array;
-    @XmlAttribute
-    protected Double gamma;
-    @XmlAttribute
-    protected Double phi;
-    @XmlAttribute
-    protected Double smoothedValue;
-    @XmlAttribute
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String trend;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
+	protected ArrayType array;
+	@XmlAttribute
+	protected Double gamma;
+	@XmlAttribute
+	protected Double phi;
+	@XmlAttribute
+	protected Double smoothedValue;
+	@XmlAttribute
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String trend;
 
-    /**
-     * Gets the value of the array property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArray() {
-        return array;
-    }
+	/**
+	 * Gets the value of the array property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public ArrayType getArray() {
+		return array;
+	}
 
-    /**
-     * Sets the value of the array property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArray(ArrayType value) {
-        this.array = value;
-    }
+	/**
+	 * Sets the value of the array property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public void setArray(ArrayType value) {
+		this.array = value;
+	}
 
-    /**
-     * Gets the value of the gamma property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getGamma() {
-        return gamma;
-    }
+	/**
+	 * Gets the value of the gamma property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getGamma() {
+		return gamma;
+	}
 
-    /**
-     * Sets the value of the gamma property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setGamma(Double value) {
-        this.gamma = value;
-    }
+	/**
+	 * Sets the value of the gamma property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setGamma(Double value) {
+		this.gamma = value;
+	}
 
-    /**
-     * Gets the value of the phi property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public double getPhi() {
-        if (phi == null) {
-            return  1.0D;
-        } else {
-            return phi;
-        }
-    }
+	/**
+	 * Gets the value of the phi property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public double getPhi() {
+		if (phi == null) {
+			return 1.0D;
+		} else {
+			return phi;
+		}
+	}
 
-    /**
-     * Sets the value of the phi property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setPhi(Double value) {
-        this.phi = value;
-    }
+	/**
+	 * Sets the value of the phi property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setPhi(Double value) {
+		this.phi = value;
+	}
 
-    /**
-     * Gets the value of the smoothedValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getSmoothedValue() {
-        return smoothedValue;
-    }
+	/**
+	 * Gets the value of the smoothedValue property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getSmoothedValue() {
+		return smoothedValue;
+	}
 
-    /**
-     * Sets the value of the smoothedValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setSmoothedValue(Double value) {
-        this.smoothedValue = value;
-    }
+	/**
+	 * Sets the value of the smoothedValue property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setSmoothedValue(Double value) {
+		this.smoothedValue = value;
+	}
 
-    /**
-     * Gets the value of the trend property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTrend() {
-        if (trend == null) {
-            return "additive";
-        } else {
-            return trend;
-        }
-    }
+	/**
+	 * Gets the value of the trend property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getTrend() {
+		if (trend == null) {
+			return "additive";
+		} else {
+			return trend;
+		}
+	}
 
-    /**
-     * Sets the value of the trend property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTrend(String value) {
-        this.trend = value;
-    }
-
+	/**
+	 * Sets the value of the trend property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setTrend(String value) {
+		this.trend = value;
+	}
 }

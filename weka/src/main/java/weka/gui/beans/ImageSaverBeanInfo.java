@@ -21,36 +21,34 @@
 
 package weka.gui.beans;
 
-import java.beans.BeanDescriptor;
-import java.beans.EventSetDescriptor;
-import java.beans.SimpleBeanInfo;
+import java.beans.*;
 
 /**
  * BeanInfo class for the ImageSaver component.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  */
 public class ImageSaverBeanInfo extends SimpleBeanInfo {
-  
-  /**
-   * Get the event set descriptors for this bean
-   *
-   * @return an <code>EventSetDescriptor[]</code> value
-   */
-  public EventSetDescriptor [] getEventSetDescriptors() {
-    // hide all gui events
-    EventSetDescriptor [] esds = { };
-    return esds;
-  }
 
-  /**
-   * Get the bean descriptor for this bean
-   *
-   * @return a <code>BeanDescriptor</code> value
-   */
-  public BeanDescriptor getBeanDescriptor() {
-    return new BeanDescriptor(weka.gui.beans.ImageSaver.class,
-                              ImageSaverCustomizer.class);
-  }
+	/**
+	 * Get the event set descriptors for this bean
+	 *
+	 * @return an <code>EventSetDescriptor[]</code> value
+	 */
+	public EventSetDescriptor[] getEventSetDescriptors() {
+		// hide all gui events
+		EventSetDescriptor[] esds = {};
+		return esds;
+	}
+
+	/**
+	 * Get the bean descriptor for this bean
+	 *
+	 * @return a <code>BeanDescriptor</code> value
+	 */
+	public BeanDescriptor getBeanDescriptor() {
+		return new BeanDescriptor(weka.gui.beans.ImageSaver.class,
+				ImageSaverCustomizer.class);
+	}
 }

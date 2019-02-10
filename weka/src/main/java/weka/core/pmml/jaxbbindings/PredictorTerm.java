@@ -5,24 +5,18 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for PredictorTerm element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="PredictorTerm">
  *   &lt;complexType>
@@ -39,122 +33,121 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension",
-    "fieldRef"
+		"extension",
+		"fieldRef"
 })
 @XmlRootElement(name = "PredictorTerm")
 public class PredictorTerm {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlElement(name = "FieldRef", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<FieldRef> fieldRef;
-    @XmlAttribute(required = true)
-    protected double coefficient;
-    @XmlAttribute
-    protected String name;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlElement(name = "FieldRef", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<FieldRef> fieldRef;
+	@XmlAttribute(required = true)
+	protected double coefficient;
+	@XmlAttribute
+	protected String name;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the fieldRef property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fieldRef property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFieldRef().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FieldRef }
-     * 
-     * 
-     */
-    public List<FieldRef> getFieldRef() {
-        if (fieldRef == null) {
-            fieldRef = new ArrayList<FieldRef>();
-        }
-        return this.fieldRef;
-    }
+	/**
+	 * Gets the value of the fieldRef property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the fieldRef property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getFieldRef().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link FieldRef }
+	 *
+	 *
+	 */
+	public List<FieldRef> getFieldRef() {
+		if (fieldRef == null) {
+			fieldRef = new ArrayList<FieldRef>();
+		}
+		return this.fieldRef;
+	}
 
-    /**
-     * Gets the value of the coefficient property.
-     * 
-     */
-    public double getCoefficient() {
-        return coefficient;
-    }
+	/**
+	 * Gets the value of the coefficient property.
+	 *
+	 */
+	public double getCoefficient() {
+		return coefficient;
+	}
 
-    /**
-     * Sets the value of the coefficient property.
-     * 
-     */
-    public void setCoefficient(double value) {
-        this.coefficient = value;
-    }
+	/**
+	 * Sets the value of the coefficient property.
+	 *
+	 */
+	public void setCoefficient(double value) {
+		this.coefficient = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
-
+	/**
+	 * Sets the value of the name property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 }

@@ -21,8 +21,7 @@
 
 package weka.estimators;
 
-
-/** 
+/**
  * Interface for an incremental probability estimators.<p>
  *
  * @author Gabi Schmidberger (gabi@cs.waikato.ac.nz)
@@ -30,20 +29,11 @@ package weka.estimators;
  */
 public interface IncrementalEstimator {
 
-  /**
-   * Add one value to the current estimator.
-   *
-   * @param data the new data value 
-   * @param weight the weight assigned to the data value 
-   */
-  void addValue(double data, double weight);
-
+	/**
+	 * Add one value to the current estimator.
+	 *
+	 * @param data the new data value
+	 * @param weight the weight assigned to the data value
+	 */
+	void addValue(double data, double weight);
 }
-
-
-
-
-
-
-
-

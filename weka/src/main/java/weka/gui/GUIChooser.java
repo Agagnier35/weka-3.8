@@ -21,12 +21,13 @@
 
 package weka.gui;
 
-import weka.core.Copyright;
-import weka.core.Version;
-
-import javax.swing.JMenuBar;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.JMenuBar;
+
+import weka.core.Copyright;
+import weka.core.Version;
 
 /**
  * Launcher class for the Weka GUIChooser. Displays a splash window and
@@ -37,59 +38,62 @@ import java.util.List;
  */
 public class GUIChooser {
 
-  /**
-   * Interface for plugin components that can be accessed from either the
-   * Visualization or Tools menu.
-   *
-   * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
-   */
-  public static interface GUIChooserMenuPlugin {
+	/**
+	 * Interface for plugin components that can be accessed from either the
+	 * Visualization or Tools menu.
+	 *
+	 * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
+	 */
+	public static interface GUIChooserMenuPlugin {
 
-    /** Enum listing possible menus that plugins can appear in */
-    public static enum Menu {
-      TOOLS, VISUALIZATION
-    };
+		/** Enum listing possible menus that plugins can appear in */
+		public static enum Menu {
+			TOOLS,
+			VISUALIZATION
+		}
 
-    /**
-     * Get the name to display in title bar of the enclosing JFrame for the
-     * plugin
-     *
-     * @return the name to display in the title bar
-     */
-    String getApplicationName();
+		;
 
-    /**
-     * Get the menu that the plugin is to be listed in
-     *
-     * @return the menu that the plugin is to be listed in
-     */
-    Menu getMenuToDisplayIn();
+		/**
+		 * Get the name to display in title bar of the enclosing JFrame for the
+		 * plugin
+		 *
+		 * @return the name to display in the title bar
+		 */
+		String getApplicationName();
 
-    /**
-     * Get the text entry to appear in the menu
-     *
-     * @return the text entry to appear in the menu
-     */
-    String getMenuEntryText();
+		/**
+		 * Get the menu that the plugin is to be listed in
+		 *
+		 * @return the menu that the plugin is to be listed in
+		 */
+		Menu getMenuToDisplayIn();
 
-    /**
-     * Return the menu bar for this plugin
-     *
-     * @return the menu bar for this plugin or null if it does not use a menu
-     *         bar
-     */
-    JMenuBar getMenuBar();
-  }
+		/**
+		 * Get the text entry to appear in the menu
+		 *
+		 * @return the text entry to appear in the menu
+		 */
+		String getMenuEntryText();
 
-  public static void main(String[] args) {
-    List<String> message =
-      Arrays.asList("Waikato Environment for Knowledge Analysis",
-        "Version " + Version.VERSION,
-        "(c) " + Copyright.getFromYear() + " - " + Copyright.getToYear(),
-        "The University of Waikato", "Hamilton, New Zealand");
-    weka.gui.SplashWindow.splash(
-      ClassLoader.getSystemResource("weka/gui/weka_icon_new.png"), message);
-    weka.gui.SplashWindow.invokeMain("weka.gui.GUIChooserApp", args);
-    weka.gui.SplashWindow.disposeSplash();
-  }
+		/**
+		 * Return the menu bar for this plugin
+		 *
+		 * @return the menu bar for this plugin or null if it does not use a menu
+		 *         bar
+		 */
+		JMenuBar getMenuBar();
+	}
+
+	public static void main(String[] args) {
+		List<String> message =
+				Arrays.asList("Waikato Environment for Knowledge Analysis",
+						"Version " + Version.VERSION,
+						"(c) " + Copyright.getFromYear() + " - " + Copyright.getToYear(),
+						"The University of Waikato", "Hamilton, New Zealand");
+		weka.gui.SplashWindow.splash(
+				ClassLoader.getSystemResource("weka/gui/weka_icon_new.png"), message);
+		weka.gui.SplashWindow.invokeMain("weka.gui.GUIChooserApp", args);
+		weka.gui.SplashWindow.disposeSplash();
+	}
 }

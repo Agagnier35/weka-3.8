@@ -19,11 +19,10 @@
 
 package weka.datagenerators.clusterers;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests BIRCHCluster. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class BIRCHClusterTest 
-  extends AbstractDataGeneratorTest {
+public class BIRCHClusterTest
+		extends AbstractDataGeneratorTest {
 
-  public BIRCHClusterTest(String name) { 
-    super(name);  
-  }
+	public BIRCHClusterTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default BIRCHCluster */
-  public DataGenerator getGenerator() {
-    return new BIRCHCluster();
-  }
+	/** Creates a default BIRCHCluster */
+	public DataGenerator getGenerator() {
+		return new BIRCHCluster();
+	}
 
-  public static Test suite() {
-    return new TestSuite(BIRCHClusterTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(BIRCHClusterTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

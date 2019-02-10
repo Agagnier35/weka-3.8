@@ -14,17 +14,16 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.filters.unsupervised.instance;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests RemoveWithValues. Run from the command line with:<p>
@@ -34,108 +33,109 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class RemoveWithValuesTest extends AbstractFilterTest {
-  
-  public RemoveWithValuesTest(String name) { super(name);  }
 
-  /** Creates a default RemoveWithValues */
-  public Filter getFilter() {
-    RemoveWithValues f = new RemoveWithValues();
-    f.setAttributeIndex("3");
-    f.setInvertSelection(true);
-    return f;
-  }
+	public RemoveWithValuesTest(String name) {
+		super(name);
+	}
 
-  public void testString() {
-    Instances icopy = new Instances(m_Instances);
-    try {
-      ((RemoveWithValues)m_Filter).setAttributeIndex("1");
-      m_Filter.setInputFormat(icopy);
-      fail("Should have thrown an exception selecting on a STRING attribute!");
-    } catch (Exception ex) {
-      // OK
-    }
-  }
+	/** Creates a default RemoveWithValues */
+	public Filter getFilter() {
+		RemoveWithValues f = new RemoveWithValues();
+		f.setAttributeIndex("3");
+		f.setInvertSelection(true);
+		return f;
+	}
 
-  public void testNominal() {
-    ((RemoveWithValues)m_Filter).setAttributeIndex("2");
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals("Default nominal selection matches all values",
-                 m_Instances.numInstances(),  result.numInstances());
+	public void testString() {
+		Instances icopy = new Instances(m_Instances);
+		try {
+			((RemoveWithValues) m_Filter).setAttributeIndex("1");
+			m_Filter.setInputFormat(icopy);
+			fail("Should have thrown an exception selecting on a STRING attribute!");
+		} catch (Exception ex) {
+			// OK
+		}
+	}
 
-    try {
-      ((RemoveWithValues)m_Filter).setNominalIndices("1-2");
-    } catch (Exception ex) {
-      fail("Shouldn't ever get here unless Range chamges incompatibly");
-    }
-    result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertTrue(m_Instances.numInstances() > result.numInstances());
+	public void testNominal() {
+		((RemoveWithValues) m_Filter).setAttributeIndex("2");
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals("Default nominal selection matches all values",
+				m_Instances.numInstances(), result.numInstances());
 
-    try {
-      ((RemoveWithValues)m_Filter).setNominalIndices("3-last");
-    } catch (Exception ex) {
-      fail("Shouldn't ever get here unless Range chamges incompatibly");
-    }
-    Instances result2 = useFilter();
-    assertEquals(m_Instances.numAttributes(), result2.numAttributes());
-    assertTrue(m_Instances.numInstances() > result2.numInstances());
-    assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
+		try {
+			((RemoveWithValues) m_Filter).setNominalIndices("1-2");
+		} catch (Exception ex) {
+			fail("Shouldn't ever get here unless Range chamges incompatibly");
+		}
+		result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertTrue(m_Instances.numInstances() > result.numInstances());
 
-    ((RemoveWithValues)m_Filter).setInvertSelection(false);
-    result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
-  }
+		try {
+			((RemoveWithValues) m_Filter).setNominalIndices("3-last");
+		} catch (Exception ex) {
+			fail("Shouldn't ever get here unless Range chamges incompatibly");
+		}
+		Instances result2 = useFilter();
+		assertEquals(m_Instances.numAttributes(), result2.numAttributes());
+		assertTrue(m_Instances.numInstances() > result2.numInstances());
+		assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
 
-  public void testNumeric() {
-    ((RemoveWithValues)m_Filter).setAttributeIndex("3");
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals("Default split point matches values less than 0",
-                 0,  result.numInstances());
+		((RemoveWithValues) m_Filter).setInvertSelection(false);
+		result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
+	}
 
-    ((RemoveWithValues)m_Filter).setSplitPoint(3);
-    result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertTrue(m_Instances.numInstances() > result.numInstances());
+	public void testNumeric() {
+		((RemoveWithValues) m_Filter).setAttributeIndex("3");
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals("Default split point matches values less than 0",
+				0, result.numInstances());
 
-    // Test inversion is working.
-    ((RemoveWithValues)m_Filter).setInvertSelection(false);
-    Instances result2 = useFilter();
-    assertEquals(m_Instances.numAttributes(), result2.numAttributes());
-    assertTrue(m_Instances.numInstances() > result2.numInstances());
-    assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
-  }
+		((RemoveWithValues) m_Filter).setSplitPoint(3);
+		result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertTrue(m_Instances.numInstances() > result.numInstances());
 
-  public void testMatchMissingValues() {
-    ((RemoveWithValues)m_Filter).setAttributeIndex("5");
-    ((RemoveWithValues)m_Filter).setInvertSelection(false);
-    ((RemoveWithValues)m_Filter).setMatchMissingValues(false);
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertTrue(result.numInstances() > 0);
-    for (int i = 0; i < result.numInstances(); i++) {
-      assertTrue("Should select only instances with missing values",
-             result.instance(i).isMissing(4));
-    }
-  }
-  
-  /**
-   * filter cannot be used in conjunction with the FilteredClassifier, since
-   * an instance used in distributionForInstance/classifyInstance might get
-   * deleted.
-   */
-  public void testFilteredClassifier() {
-    // nothing
-  }
+		// Test inversion is working.
+		((RemoveWithValues) m_Filter).setInvertSelection(false);
+		Instances result2 = useFilter();
+		assertEquals(m_Instances.numAttributes(), result2.numAttributes());
+		assertTrue(m_Instances.numInstances() > result2.numInstances());
+		assertEquals(m_Instances.numInstances(), result.numInstances() + result2.numInstances());
+	}
 
-  public static Test suite() {
-    return new TestSuite(RemoveWithValuesTest.class);
-  }
+	public void testMatchMissingValues() {
+		((RemoveWithValues) m_Filter).setAttributeIndex("5");
+		((RemoveWithValues) m_Filter).setInvertSelection(false);
+		((RemoveWithValues) m_Filter).setMatchMissingValues(false);
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertTrue(result.numInstances() > 0);
+		for (int i = 0; i < result.numInstances(); i++) {
+			assertTrue("Should select only instances with missing values",
+					result.instance(i).isMissing(4));
+		}
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	/**
+	 * filter cannot be used in conjunction with the FilteredClassifier, since
+	 * an instance used in distributionForInstance/classifyInstance might get
+	 * deleted.
+	 */
+	public void testFilteredClassifier() {
+		// nothing
+	}
 
+	public static Test suite() {
+		return new TestSuite(RemoveWithValuesTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

@@ -14,17 +14,16 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.filters.unsupervised.instance;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests RemoveRange. Run from the command line with:<p>
@@ -34,33 +33,34 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class RemoveRangeTest extends AbstractFilterTest {
-  
-  public RemoveRangeTest(String name) { super(name);  }
 
-  /** Creates a default RemoveRange */
-  public Filter getFilter() {
-    RemoveRange f = new RemoveRange();
-    return f;
-  }
+	public RemoveRangeTest(String name) {
+		super(name);
+	}
 
-  public void testSpecifiedRange() {
-    
-    ((RemoveRange)m_Filter).setInstancesIndices("1-10");
-    ((RemoveRange)m_Filter).setInvertSelection(true);
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(10,  result.numInstances());
-    for (int i = 0; i < 10; i++) {
-      assertEquals(m_Instances.instance(i).toString(), result.instance(i).toString());
-    }
-  }
+	/** Creates a default RemoveRange */
+	public Filter getFilter() {
+		RemoveRange f = new RemoveRange();
+		return f;
+	}
 
-  public static Test suite() {
-    return new TestSuite(RemoveRangeTest.class);
-  }
+	public void testSpecifiedRange() {
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+		((RemoveRange) m_Filter).setInstancesIndices("1-10");
+		((RemoveRange) m_Filter).setInvertSelection(true);
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(10, result.numInstances());
+		for (int i = 0; i < 10; i++) {
+			assertEquals(m_Instances.instance(i).toString(), result.instance(i).toString());
+		}
+	}
 
+	public static Test suite() {
+		return new TestSuite(RemoveRangeTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

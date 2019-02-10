@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for SupportVectors element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="SupportVectors">
  *   &lt;complexType>
@@ -40,130 +34,129 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension",
-    "supportVector"
+		"extension",
+		"supportVector"
 })
 @XmlRootElement(name = "SupportVectors")
 public class SupportVectors {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlElement(name = "SupportVector", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<SupportVector> supportVector;
-    @XmlAttribute
-    protected BigInteger numberOfAttributes;
-    @XmlAttribute
-    protected BigInteger numberOfSupportVectors;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlElement(name = "SupportVector", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<SupportVector> supportVector;
+	@XmlAttribute
+	protected BigInteger numberOfAttributes;
+	@XmlAttribute
+	protected BigInteger numberOfSupportVectors;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the supportVector property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the supportVector property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSupportVector().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SupportVector }
-     * 
-     * 
-     */
-    public List<SupportVector> getSupportVector() {
-        if (supportVector == null) {
-            supportVector = new ArrayList<SupportVector>();
-        }
-        return this.supportVector;
-    }
+	/**
+	 * Gets the value of the supportVector property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the supportVector property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getSupportVector().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link SupportVector }
+	 *
+	 *
+	 */
+	public List<SupportVector> getSupportVector() {
+		if (supportVector == null) {
+			supportVector = new ArrayList<SupportVector>();
+		}
+		return this.supportVector;
+	}
 
-    /**
-     * Gets the value of the numberOfAttributes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getNumberOfAttributes() {
-        return numberOfAttributes;
-    }
+	/**
+	 * Gets the value of the numberOfAttributes property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getNumberOfAttributes() {
+		return numberOfAttributes;
+	}
 
-    /**
-     * Sets the value of the numberOfAttributes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setNumberOfAttributes(BigInteger value) {
-        this.numberOfAttributes = value;
-    }
+	/**
+	 * Sets the value of the numberOfAttributes property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setNumberOfAttributes(BigInteger value) {
+		this.numberOfAttributes = value;
+	}
 
-    /**
-     * Gets the value of the numberOfSupportVectors property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getNumberOfSupportVectors() {
-        return numberOfSupportVectors;
-    }
+	/**
+	 * Gets the value of the numberOfSupportVectors property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getNumberOfSupportVectors() {
+		return numberOfSupportVectors;
+	}
 
-    /**
-     * Sets the value of the numberOfSupportVectors property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setNumberOfSupportVectors(BigInteger value) {
-        this.numberOfSupportVectors = value;
-    }
-
+	/**
+	 * Sets the value of the numberOfSupportVectors property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setNumberOfSupportVectors(BigInteger value) {
+		this.numberOfSupportVectors = value;
+	}
 }

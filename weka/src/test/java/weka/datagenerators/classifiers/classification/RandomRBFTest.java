@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.classification;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests RandomRBF. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class RandomRBFTest 
-  extends AbstractDataGeneratorTest {
+public class RandomRBFTest
+		extends AbstractDataGeneratorTest {
 
-  public RandomRBFTest(String name) { 
-    super(name);  
-  }
+	public RandomRBFTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default RandomRBF */
-  public DataGenerator getGenerator() {
-    return new RandomRBF();
-  }
+	/** Creates a default RandomRBF */
+	public DataGenerator getGenerator() {
+		return new RandomRBF();
+	}
 
-  public static Test suite() {
-    return new TestSuite(RandomRBFTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(RandomRBFTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

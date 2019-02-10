@@ -19,7 +19,6 @@
  *
  */
 
-
 package weka.gui.visualize;
 
 /**
@@ -30,13 +29,11 @@ package weka.gui.visualize;
  */
 public interface VisualizePanelListener {
 
-  /**
-   * This method receives an object containing the shapes, instances
-   * inside and outside these shapes and the attributes these shapes were
-   * created in.
-   * @param e The Event containing the data.
-   */
-  void userDataEvent(VisualizePanelEvent e);
-
-
+	/**
+	 * This method receives an object containing the shapes, instances
+	 * inside and outside these shapes and the attributes these shapes were
+	 * created in.
+	 * @param e The Event containing the data.
+	 */
+	void userDataEvent(VisualizePanelEvent e);
 }

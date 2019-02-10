@@ -5,26 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for NeuralNetwork element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="NeuralNetwork">
  *   &lt;complexType>
@@ -59,354 +52,353 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "content"
+		"content"
 })
 @XmlRootElement(name = "NeuralNetwork")
 public class NeuralNetwork {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "ModelExplanation", namespace = "http://www.dmg.org/PMML-4_1", type = ModelExplanation.class),
-        @XmlElementRef(name = "ModelStats", namespace = "http://www.dmg.org/PMML-4_1", type = ModelStats.class),
-        @XmlElementRef(name = "Output", namespace = "http://www.dmg.org/PMML-4_1", type = Output.class),
-        @XmlElementRef(name = "LocalTransformations", namespace = "http://www.dmg.org/PMML-4_1", type = LocalTransformations.class),
-        @XmlElementRef(name = "NeuralLayer", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralLayer.class),
-        @XmlElementRef(name = "Targets", namespace = "http://www.dmg.org/PMML-4_1", type = Targets.class),
-        @XmlElementRef(name = "NeuralOutputs", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralOutputs.class),
-        @XmlElementRef(name = "MiningSchema", namespace = "http://www.dmg.org/PMML-4_1", type = MiningSchema.class),
-        @XmlElementRef(name = "NeuralInputs", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralInputs.class),
-        @XmlElementRef(name = "ModelVerification", namespace = "http://www.dmg.org/PMML-4_1", type = ModelVerification.class),
-        @XmlElementRef(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", type = Extension.class)
-    })
-    protected List<Object> content;
-    @XmlAttribute(required = true)
-    protected ACTIVATIONFUNCTION activationFunction;
-    @XmlAttribute
-    protected String algorithmName;
-    @XmlAttribute
-    protected Double altitude;
-    @XmlAttribute(required = true)
-    protected MININGFUNCTION functionName;
-    @XmlAttribute
-    protected Boolean isScorable;
-    @XmlAttribute
-    protected String modelName;
-    @XmlAttribute
-    protected NNNORMALIZATIONMETHOD normalizationMethod;
-    @XmlAttribute
-    protected BigInteger numberOfLayers;
-    @XmlAttribute
-    protected Double threshold;
-    @XmlAttribute
-    protected Double width;
+	@XmlElementRefs({
+			@XmlElementRef(name = "ModelExplanation", namespace = "http://www.dmg.org/PMML-4_1", type = ModelExplanation.class),
+			@XmlElementRef(name = "ModelStats", namespace = "http://www.dmg.org/PMML-4_1", type = ModelStats.class),
+			@XmlElementRef(name = "Output", namespace = "http://www.dmg.org/PMML-4_1", type = Output.class),
+			@XmlElementRef(name = "LocalTransformations", namespace = "http://www.dmg.org/PMML-4_1", type = LocalTransformations.class),
+			@XmlElementRef(name = "NeuralLayer", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralLayer.class),
+			@XmlElementRef(name = "Targets", namespace = "http://www.dmg.org/PMML-4_1", type = Targets.class),
+			@XmlElementRef(name = "NeuralOutputs", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralOutputs.class),
+			@XmlElementRef(name = "MiningSchema", namespace = "http://www.dmg.org/PMML-4_1", type = MiningSchema.class),
+			@XmlElementRef(name = "NeuralInputs", namespace = "http://www.dmg.org/PMML-4_1", type = NeuralInputs.class),
+			@XmlElementRef(name = "ModelVerification", namespace = "http://www.dmg.org/PMML-4_1", type = ModelVerification.class),
+			@XmlElementRef(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", type = Extension.class)
+	})
+	protected List<Object> content;
+	@XmlAttribute(required = true)
+	protected ACTIVATIONFUNCTION activationFunction;
+	@XmlAttribute
+	protected String algorithmName;
+	@XmlAttribute
+	protected Double altitude;
+	@XmlAttribute(required = true)
+	protected MININGFUNCTION functionName;
+	@XmlAttribute
+	protected Boolean isScorable;
+	@XmlAttribute
+	protected String modelName;
+	@XmlAttribute
+	protected NNNORMALIZATIONMETHOD normalizationMethod;
+	@XmlAttribute
+	protected BigInteger numberOfLayers;
+	@XmlAttribute
+	protected Double threshold;
+	@XmlAttribute
+	protected Double width;
 
-    /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Extension" is used by two different parts of a schema. See: 
-     * line 3183 of file:/home/david/workspace/weka/pmml-4-1.xsd
-     * line 3172 of file:/home/david/workspace/weka/pmml-4-1.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ModelExplanation }
-     * {@link ModelStats }
-     * {@link Output }
-     * {@link NeuralLayer }
-     * {@link LocalTransformations }
-     * {@link Targets }
-     * {@link NeuralOutputs }
-     * {@link MiningSchema }
-     * {@link ModelVerification }
-     * {@link NeuralInputs }
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the rest of the content model.
+	 *
+	 * <p>
+	 * You are getting this "catch-all" property because of the following reason:
+	 * The field name "Extension" is used by two different parts of a schema. See:
+	 * line 3183 of file:/home/david/workspace/weka/pmml-4-1.xsd
+	 * line 3172 of file:/home/david/workspace/weka/pmml-4-1.xsd
+	 * <p>
+	 * To get rid of this property, apply a property customization to one
+	 * of both of the following declarations to change their names:
+	 * Gets the value of the content property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the content property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getContent().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link ModelExplanation }
+	 * {@link ModelStats }
+	 * {@link Output }
+	 * {@link NeuralLayer }
+	 * {@link LocalTransformations }
+	 * {@link Targets }
+	 * {@link NeuralOutputs }
+	 * {@link MiningSchema }
+	 * {@link ModelVerification }
+	 * {@link NeuralInputs }
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the activationFunction property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ACTIVATIONFUNCTION }
-     *     
-     */
-    public ACTIVATIONFUNCTION getActivationFunction() {
-        return activationFunction;
-    }
+	/**
+	 * Gets the value of the activationFunction property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ACTIVATIONFUNCTION }
+	 *
+	 */
+	public ACTIVATIONFUNCTION getActivationFunction() {
+		return activationFunction;
+	}
 
-    /**
-     * Sets the value of the activationFunction property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ACTIVATIONFUNCTION }
-     *     
-     */
-    public void setActivationFunction(ACTIVATIONFUNCTION value) {
-        this.activationFunction = value;
-    }
+	/**
+	 * Sets the value of the activationFunction property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ACTIVATIONFUNCTION }
+	 *
+	 */
+	public void setActivationFunction(ACTIVATIONFUNCTION value) {
+		this.activationFunction = value;
+	}
 
-    /**
-     * Gets the value of the algorithmName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAlgorithmName() {
-        return algorithmName;
-    }
+	/**
+	 * Gets the value of the algorithmName property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getAlgorithmName() {
+		return algorithmName;
+	}
 
-    /**
-     * Sets the value of the algorithmName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAlgorithmName(String value) {
-        this.algorithmName = value;
-    }
+	/**
+	 * Sets the value of the algorithmName property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setAlgorithmName(String value) {
+		this.algorithmName = value;
+	}
 
-    /**
-     * Gets the value of the altitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public double getAltitude() {
-        if (altitude == null) {
-            return  1.0D;
-        } else {
-            return altitude;
-        }
-    }
+	/**
+	 * Gets the value of the altitude property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public double getAltitude() {
+		if (altitude == null) {
+			return 1.0D;
+		} else {
+			return altitude;
+		}
+	}
 
-    /**
-     * Sets the value of the altitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setAltitude(Double value) {
-        this.altitude = value;
-    }
+	/**
+	 * Sets the value of the altitude property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setAltitude(Double value) {
+		this.altitude = value;
+	}
 
-    /**
-     * Gets the value of the functionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MININGFUNCTION }
-     *     
-     */
-    public MININGFUNCTION getFunctionName() {
-        return functionName;
-    }
+	/**
+	 * Gets the value of the functionName property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link MININGFUNCTION }
+	 *
+	 */
+	public MININGFUNCTION getFunctionName() {
+		return functionName;
+	}
 
-    /**
-     * Sets the value of the functionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MININGFUNCTION }
-     *     
-     */
-    public void setFunctionName(MININGFUNCTION value) {
-        this.functionName = value;
-    }
+	/**
+	 * Sets the value of the functionName property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link MININGFUNCTION }
+	 *
+	 */
+	public void setFunctionName(MININGFUNCTION value) {
+		this.functionName = value;
+	}
 
-    /**
-     * Gets the value of the isScorable property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isIsScorable() {
-        if (isScorable == null) {
-            return true;
-        } else {
-            return isScorable;
-        }
-    }
+	/**
+	 * Gets the value of the isScorable property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Boolean }
+	 *
+	 */
+	public boolean isIsScorable() {
+		if (isScorable == null) {
+			return true;
+		} else {
+			return isScorable;
+		}
+	}
 
-    /**
-     * Sets the value of the isScorable property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setIsScorable(Boolean value) {
-        this.isScorable = value;
-    }
+	/**
+	 * Sets the value of the isScorable property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Boolean }
+	 *
+	 */
+	public void setIsScorable(Boolean value) {
+		this.isScorable = value;
+	}
 
-    /**
-     * Gets the value of the modelName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getModelName() {
-        return modelName;
-    }
+	/**
+	 * Gets the value of the modelName property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getModelName() {
+		return modelName;
+	}
 
-    /**
-     * Sets the value of the modelName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setModelName(String value) {
-        this.modelName = value;
-    }
+	/**
+	 * Sets the value of the modelName property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setModelName(String value) {
+		this.modelName = value;
+	}
 
-    /**
-     * Gets the value of the normalizationMethod property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link NNNORMALIZATIONMETHOD }
-     *     
-     */
-    public NNNORMALIZATIONMETHOD getNormalizationMethod() {
-        if (normalizationMethod == null) {
-            return NNNORMALIZATIONMETHOD.NONE;
-        } else {
-            return normalizationMethod;
-        }
-    }
+	/**
+	 * Gets the value of the normalizationMethod property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link NNNORMALIZATIONMETHOD }
+	 *
+	 */
+	public NNNORMALIZATIONMETHOD getNormalizationMethod() {
+		if (normalizationMethod == null) {
+			return NNNORMALIZATIONMETHOD.NONE;
+		} else {
+			return normalizationMethod;
+		}
+	}
 
-    /**
-     * Sets the value of the normalizationMethod property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link NNNORMALIZATIONMETHOD }
-     *     
-     */
-    public void setNormalizationMethod(NNNORMALIZATIONMETHOD value) {
-        this.normalizationMethod = value;
-    }
+	/**
+	 * Sets the value of the normalizationMethod property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link NNNORMALIZATIONMETHOD }
+	 *
+	 */
+	public void setNormalizationMethod(NNNORMALIZATIONMETHOD value) {
+		this.normalizationMethod = value;
+	}
 
-    /**
-     * Gets the value of the numberOfLayers property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getNumberOfLayers() {
-        return numberOfLayers;
-    }
+	/**
+	 * Gets the value of the numberOfLayers property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getNumberOfLayers() {
+		return numberOfLayers;
+	}
 
-    /**
-     * Sets the value of the numberOfLayers property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setNumberOfLayers(BigInteger value) {
-        this.numberOfLayers = value;
-    }
+	/**
+	 * Sets the value of the numberOfLayers property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setNumberOfLayers(BigInteger value) {
+		this.numberOfLayers = value;
+	}
 
-    /**
-     * Gets the value of the threshold property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public double getThreshold() {
-        if (threshold == null) {
-            return  0.0D;
-        } else {
-            return threshold;
-        }
-    }
+	/**
+	 * Gets the value of the threshold property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public double getThreshold() {
+		if (threshold == null) {
+			return 0.0D;
+		} else {
+			return threshold;
+		}
+	}
 
-    /**
-     * Sets the value of the threshold property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setThreshold(Double value) {
-        this.threshold = value;
-    }
+	/**
+	 * Sets the value of the threshold property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setThreshold(Double value) {
+		this.threshold = value;
+	}
 
-    /**
-     * Gets the value of the width property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getWidth() {
-        return width;
-    }
+	/**
+	 * Gets the value of the width property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getWidth() {
+		return width;
+	}
 
-    /**
-     * Sets the value of the width property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setWidth(Double value) {
-        this.width = value;
-    }
-
+	/**
+	 * Sets the value of the width property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setWidth(Double value) {
+		this.width = value;
+	}
 }

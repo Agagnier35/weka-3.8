@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for LINK-FUNCTION.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -33,48 +31,48 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum LINKFUNCTION {
 
-    @XmlEnumValue("cloglog")
-    CLOGLOG("cloglog"),
-    @XmlEnumValue("identity")
-    IDENTITY("identity"),
-    @XmlEnumValue("log")
-    LOG("log"),
-    @XmlEnumValue("logc")
-    LOGC("logc"),
-    @XmlEnumValue("logit")
-    LOGIT("logit"),
-    @XmlEnumValue("loglog")
-    LOGLOG("loglog"),
-    @XmlEnumValue("negbin")
-    NEGBIN("negbin"),
-    @XmlEnumValue("oddspower")
-    ODDSPOWER("oddspower"),
-    @XmlEnumValue("power")
-    POWER("power"),
-    @XmlEnumValue("probit")
-    PROBIT("probit");
-    private final String value;
+	@XmlEnumValue("cloglog")
+	CLOGLOG("cloglog"),
+	@XmlEnumValue("identity")
+	IDENTITY("identity"),
+	@XmlEnumValue("log")
+	LOG("log"),
+	@XmlEnumValue("logc")
+	LOGC("logc"),
+	@XmlEnumValue("logit")
+	LOGIT("logit"),
+	@XmlEnumValue("loglog")
+	LOGLOG("loglog"),
+	@XmlEnumValue("negbin")
+	NEGBIN("negbin"),
+	@XmlEnumValue("oddspower")
+	ODDSPOWER("oddspower"),
+	@XmlEnumValue("power")
+	POWER("power"),
+	@XmlEnumValue("probit")
+	PROBIT("probit");
+	private final String value;
 
-    LINKFUNCTION(String v) {
-        value = v;
-    }
+	LINKFUNCTION(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static LINKFUNCTION fromValue(String v) {
-        for (LINKFUNCTION c: LINKFUNCTION.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static LINKFUNCTION fromValue(String v) {
+		for (LINKFUNCTION c : LINKFUNCTION.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

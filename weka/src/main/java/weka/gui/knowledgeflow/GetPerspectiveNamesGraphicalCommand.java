@@ -21,12 +21,12 @@
 
 package weka.gui.knowledgeflow;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import weka.core.WekaException;
 import weka.gui.Perspective;
 import weka.knowledgeflow.KFDefaults;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class implementing a command for getting the names of all visible
@@ -36,74 +36,74 @@ import java.util.List;
  * @version $Revision: $
  */
 public class GetPerspectiveNamesGraphicalCommand extends
-  AbstractGraphicalCommand {
+		AbstractGraphicalCommand {
 
-  /** Command ID */
-  public static final String GET_PERSPECTIVE_NAMES_KEY = "getPerspectiveNames";
+	/** Command ID */
+	public static final String GET_PERSPECTIVE_NAMES_KEY = "getPerspectiveNames";
 
-  /** The main KF perspective */
-  protected MainKFPerspective m_mainPerspective;
+	/** The main KF perspective */
+	protected MainKFPerspective m_mainPerspective;
 
-  /**
-   * Set the graphical environment
-   *
-   * @param graphicalEnvironment the graphical environment
-   */
-  @Override
-  public void setGraphicalEnvironment(Object graphicalEnvironment) {
-    super.setGraphicalEnvironment(graphicalEnvironment);
+	/**
+	 * Set the graphical environment
+	 *
+	 * @param graphicalEnvironment the graphical environment
+	 */
+	@Override
+	public void setGraphicalEnvironment(Object graphicalEnvironment) {
+		super.setGraphicalEnvironment(graphicalEnvironment);
 
-    if (graphicalEnvironment instanceof MainKFPerspective) {
-      m_mainPerspective = (MainKFPerspective) graphicalEnvironment;
-    }
-  }
+		if (graphicalEnvironment instanceof MainKFPerspective) {
+			m_mainPerspective = (MainKFPerspective) graphicalEnvironment;
+		}
+	}
 
-  /**
-   * Get the name of the command
-   *
-   * @return the name of the command
-   */
-  @Override
-  public String getCommandName() {
-    return GET_PERSPECTIVE_NAMES_KEY;
-  }
+	/**
+	 * Get the name of the command
+	 *
+	 * @return the name of the command
+	 */
+	@Override
+	public String getCommandName() {
+		return GET_PERSPECTIVE_NAMES_KEY;
+	}
 
-  /**
-   * Get the description of this command
-   *
-   * @return the description of this command
-   */
-  @Override
-  public String getCommandDescription() {
-    return "Gets the names of of visible Knowledge Flow perspectives";
-  }
+	/**
+	 * Get the description of this command
+	 *
+	 * @return the description of this command
+	 */
+	@Override
+	public String getCommandDescription() {
+		return "Gets the names of of visible Knowledge Flow perspectives";
+	}
 
-  /**
-   * Execute the command
-   *
-   * @param commandArgs arguments to the command
-   * @return null (no return value for this command)
-   * @throws WekaException if a problem occurs
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<String> performCommand(Object... commandArgs)
-    throws WekaException {
-    if (m_mainPerspective == null) {
-      throw new WekaException("This command cannot be applied in the "
-        + "current graphical environment");
-    }
-    List<Perspective> perspectives =
-      m_mainPerspective.getMainApplication().getPerspectiveManager()
-        .getVisiblePerspectives();
-    List<String> result = new ArrayList<>();
-    for (Perspective p : perspectives) {
-      if (!p.getPerspectiveID()
-        .equalsIgnoreCase(KFDefaults.MAIN_PERSPECTIVE_ID)) {
-        result.add(p.getPerspectiveTitle());
-      }
-    }
+	/**
+	 * Execute the command
+	 *
+	 * @param commandArgs arguments to the command
+	 * @return null (no return value for this command)
+	 * @throws WekaException if a problem occurs
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> performCommand(Object... commandArgs)
+			throws WekaException {
+		if (m_mainPerspective == null) {
+			throw new WekaException("This command cannot be applied in the "
+					+ "current graphical environment");
+		}
+		List<Perspective> perspectives =
+				m_mainPerspective.getMainApplication().getPerspectiveManager()
+						.getVisiblePerspectives();
+		List<String> result = new ArrayList<>();
+		for (Perspective p : perspectives) {
+			if (!p.getPerspectiveID()
+					.equalsIgnoreCase(KFDefaults.MAIN_PERSPECTIVE_ID)) {
+				result.add(p.getPerspectiveTitle());
+			}
+		}
 
-    return result;
-  }
+		return result;
+	}
 }

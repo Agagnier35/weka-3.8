@@ -21,11 +21,7 @@
 
 package weka.gui.beans;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Optional annotation for plugin beans in the Knowledge Flow. The main
@@ -35,7 +31,7 @@ import java.lang.annotation.Target;
  * as long as they are in the classpath or are provided in packages. This
  * annotation mechanism is useful for plugin components that are not
  * standard Weka classifiers, clusterers, associators, loaders etc.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  */
@@ -44,20 +40,20 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface KFStep {
 
-  /**
-   * The top-level folder in the JTree that this plugin bean
-   * should appear in
-   * 
-   * @return the name of the top-level folder that this plugin
-   * bean should appear in
-   */
-  String category();
-  
-  /**
-   * Mouse-over tool tip for this plugin component (appears when the
-   * mouse hovers over the entry in the JTree)
-   * 
-   * @return the tool tip text for this plugin bean
-   */
-  String toolTipText();
+	/**
+	 * The top-level folder in the JTree that this plugin bean
+	 * should appear in
+	 *
+	 * @return the name of the top-level folder that this plugin
+	 * bean should appear in
+	 */
+	String category();
+
+	/**
+	 * Mouse-over tool tip for this plugin component (appears when the
+	 * mouse hovers over the entry in the JTree)
+	 *
+	 * @return the tool tip text for this plugin bean
+	 */
+	String toolTipText();
 }

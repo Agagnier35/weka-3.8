@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.classification;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests BayesNet. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class BayesNetTest 
-  extends AbstractDataGeneratorTest {
+public class BayesNetTest
+		extends AbstractDataGeneratorTest {
 
-  public BayesNetTest(String name) { 
-    super(name);  
-  }
+	public BayesNetTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default BayesNet */
-  public DataGenerator getGenerator() {
-    return new BayesNet();
-  }
+	/** Creates a default BayesNet */
+	public DataGenerator getGenerator() {
+		return new BayesNet();
+	}
 
-  public static Test suite() {
-    return new TestSuite(BayesNetTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(BayesNetTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

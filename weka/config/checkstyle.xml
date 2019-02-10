@@ -10,45 +10,22 @@
 
 	<module name="SuppressionFilter">
 		<property name="optional" value="true"/>
-		<property name="file" value="checkstyle-suppressions.xml" />
+		<property name="file" value="checkstyle-suppressions.xml"/>
 	</module>
 
 	<module name="TreeWalker">
 		<property name="tabWidth" value="4"/>
 
-		<module name="RegexpSinglelineJava">
-			<property name="format" value="^\t* "/>
-			<property name="message" value="Indent must use tab characters"/>
-			<property name="ignoreComments" value="true"/>
-		</module>
-
-		<module name="EqualsHashCode"/>
-		<module name="ExplicitInitialization"/>
 		<module name="GenericWhitespace"/>
 		<module name="MethodParamPad"/>
 		<module name="MissingOverride"/>
-		<module name="ModifiedControlVariable"/>
-		<module name="ParameterAssignment"/>
 		<module name="ParenPad"/>
-		<module name="SimplifyBooleanExpression"/>
-		<module name="SimplifyBooleanReturn"/>
-		<module name="StringLiteralEquality"/>
-		<module name="UnnecessaryParentheses"/>
-		<module name="Indentation">
-			<property name="basicOffset" value="4" />
-			<property name="throwsIndent" value="8"/>
-			<property name="arrayInitIndent" value="8"/>
-			<property name="lineWrappingIndentation" value="8"/>
-		</module>
 		<module name="LineLength">
 			<property name="max" value="160"/>
 			<property name="ignorePattern" value="^(import( static)?|package) [^ ]+$"/>
 		</module>
-		<module name="InterfaceIsType"/>
 		<module name="RedundantImport"/>
-		<module name="UnusedImports">
-			<property name="processJavadoc" value="true"/>
-		</module>
+		<module name="UnusedImports"/>
 		<module name="IllegalImport"/>
 		<!--<module name="AvoidStarImport"/>-->
 		<module name="ImportOrder">
@@ -57,27 +34,8 @@
 			<property name="separated" value="true"/>
 			<property name="groups" value="java,javax,org,com"/>
 		</module>
-		<module name="JavadocStyle">
-			<property name="checkHtml" value="false"/>
-			<property name="tokens" value="CLASS_DEF,CTOR_DEF,INTERFACE_DEF,METHOD_DEF,VARIABLE_DEF"/>
-			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Well formed java docs"/>
-		</module>
-		<module name="ParameterName"/>
-		<module name="LocalFinalVariableName">
-			<property name="format" value="^(\$|\$?[a-z][a-zA-Z0-9]*)$"/>
-		</module>
-		<module name="LocalVariableName">
-			<property name="tokens" value="VARIABLE_DEF"/>
-			<property name="format" value="^(\$|\$?[a-z][a-zA-Z0-9]*)$"/>
-		</module>
-		<module name="LeftCurly"/>
-		<module name="RightCurly"/>
 		<module name="NeedBraces">
 			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="make sure if has braces"/>
-		</module>
-		<module name="CovariantEquals"/>
-		<module name="IllegalInstantiation">
-			<property name="classes" value="java.lang.Boolean"/>
 		</module>
 		<module name="UpperEll">
 			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="checking for 4l rather than 4L"/>
@@ -86,41 +44,15 @@
 		<module name="MultipleStringLiterals">
 			<property name="ignoreStringsRegexp" value=".{0,3}"/>
 		</module>
-		<module name="IllegalInstantiation">
-			<property name="classes" value="Boolean"/>
-		</module>
 		<module name="Regexp">
 			<property name="format" value="[\r]?[\n][ \t]*[\r]?[\n][ \t]*[\r]?[\n][ \t]*"/>
 			<property name="message" value="more than one blank line"/>
 			<property name="illegalPattern" value="true"/>
 			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="more than one blank line"/>
 		</module>
-		<module name="Regexp">
-			<property name="format" value="[\r]?[\n][ \t]*[\r]?[\n][ \t]+[}][ ]*[\n]"/>
-			<property name="message" value="newline before }"/>
-			<property name="illegalPattern" value="true"/>
-			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="newline before }"/>
-		</module>
-		<module name="Regexp">
-			<property name="format" value="[^*][ \t]+[\r]?[\n]"/>
-			<property name="message" value="trailing whitespace"/>
-			<property name="illegalPattern" value="true"/>
-			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="trailing whitespace"/>
-		</module>
-		<module name="RedundantModifier"/>
-		<module name="ModifierOrder"/>
-		<module name="EmptyStatement"/>
-		<module name="MethodName"/>
-		<module name="MemberName">
-			<property name="format" value="[a-z]|[a-z][a-z_0-9][A-Za-z0-9_]*|[a-z](?&lt;!f)[A-Z0-9]*"/>
-		</module>
 		<module name="NoWhitespaceBefore">
 			<property name="allowLineBreaks" value="true"/>
 			<property name="tokens" value="DOT"/>
-		</module>
-		<module name="NoWhitespaceAfter">
-			<property name="allowLineBreaks" value="false"/>
-			<property name="tokens" value="BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
 		</module>
 		<module name="WhitespaceAround">
 			<property name="tokens"
@@ -144,15 +76,11 @@
 			<property name="messageFormat" value=".*name.*"/>
 			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Avoid name checking"/>
 		</module>
-		<module name="CommentsIndentation"/>
-		<module name="AbbreviationAsWordInName">
-			<property name="allowedAbbreviationLength" value="5"></property>
-		</module>
 
-		<module name="SuppressWarningsHolder" />
+		<module name="SuppressWarningsHolder"/>
 	</module>
 
-	<module name="SuppressWarningsFilter" />
+	<module name="SuppressWarningsFilter"/>
 	<module name="Translation"/>
 	<module name="NewlineAtEndOfFile">
 		<property name="lineSeparator" value="lf"/>

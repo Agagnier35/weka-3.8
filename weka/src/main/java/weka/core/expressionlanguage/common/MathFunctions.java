@@ -21,18 +21,15 @@
 
 package weka.core.expressionlanguage.common;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-import weka.core.expressionlanguage.core.Node;
-import weka.core.expressionlanguage.core.Macro;
-import weka.core.expressionlanguage.core.MacroDeclarations;
-import weka.core.expressionlanguage.core.SemanticException;
 import weka.core.expressionlanguage.common.Primitives.DoubleExpression;
+import weka.core.expressionlanguage.core.*;
 
 /**
  * Macro declarations for common mathematical functions.</p>
- * 
+ *
  * The following functions are being exposed through macros:</br>
  * <ul>
  * <li>{@link java.lang.Math.abs(double)} as abs</li>
@@ -47,255 +44,246 @@ import weka.core.expressionlanguage.common.Primitives.DoubleExpression;
  * <li>{@link java.lang.Math.ceil(double)} as ceil</li>
  * <li>{@link java.lang.Math.pow(double)} as pow</li>
  * </ul>
- * 
+ *
  * @author Benjamin Weber ( benweber at student dot ethz dot ch )
  * @version $Revision: 1000 $
  */
 public class MathFunctions implements MacroDeclarations {
-  
-  /** the macros to be exposed */
-  private static Map<String, Macro> macros = new HashMap<String, Macro>();
-  
-  static {
-    macros.put("abs", new DoubleUnaryMacro(AbsFunction.class));
-    macros.put("sqrt", new DoubleUnaryMacro(SqrtFunction.class));
-    macros.put("log", new DoubleUnaryMacro(LogFunction.class));
-    macros.put("exp", new DoubleUnaryMacro(ExpFunction.class));
-    macros.put("sin", new DoubleUnaryMacro(SinFunction.class));
-    macros.put("cos", new DoubleUnaryMacro(CosFunction.class));
-    macros.put("tan", new DoubleUnaryMacro(TanFunction.class));
-    macros.put("rint", new DoubleUnaryMacro(RintFunction.class));
-    macros.put("floor", new DoubleUnaryMacro(FloorFunction.class));
-    macros.put("ceil", new DoubleUnaryMacro(CeilFunction.class));
-    macros.put("pow", new PowMacro());
-  }
 
-  /**
-   * Whether the macro is declared
-   * 
-   * @param name of the macro
-   * @return whether the macro is declared
-   */
-  @Override
-  public boolean hasMacro(String name) {
-    return macros.containsKey(name);
-  }
+	/** the macros to be exposed */
+	private static Map<String, Macro> macros = new HashMap<String, Macro>();
 
-  /**
-   * Tries to fetch the macro</p>
-   * 
-   * The same invariant of {@link MacroDeclarations} applies here too.
-   * 
-   * @param name name of the macro
-   * @return a macro
-   */
-  @Override
-  public Macro getMacro(String name) {
-    if (macros.containsKey(name))
-      return macros.get(name);
-    throw new RuntimeException("Macro '" + name + "' undefined!");
-  } 
-  
-  private static class DoubleUnaryMacro implements Macro {
-    
-    private final Class<? extends DoubleUnaryFunction> func;
-    
-    public DoubleUnaryMacro(Class<? extends DoubleUnaryFunction> func) {
-      this.func = func;
-    }
-    
-    private String name() {
-      return func.getSimpleName();
-    }
+	static {
+		macros.put("abs", new DoubleUnaryMacro(AbsFunction.class));
+		macros.put("sqrt", new DoubleUnaryMacro(SqrtFunction.class));
+		macros.put("log", new DoubleUnaryMacro(LogFunction.class));
+		macros.put("exp", new DoubleUnaryMacro(ExpFunction.class));
+		macros.put("sin", new DoubleUnaryMacro(SinFunction.class));
+		macros.put("cos", new DoubleUnaryMacro(CosFunction.class));
+		macros.put("tan", new DoubleUnaryMacro(TanFunction.class));
+		macros.put("rint", new DoubleUnaryMacro(RintFunction.class));
+		macros.put("floor", new DoubleUnaryMacro(FloorFunction.class));
+		macros.put("ceil", new DoubleUnaryMacro(CeilFunction.class));
+		macros.put("pow", new PowMacro());
+	}
 
-    @Override
-    public Node evaluate(Node... params) throws SemanticException {
-      if (params.length != 1)
-        throw new SemanticException("'" + name() + "' takes exactly one argument!");
-      if (!(params[0] instanceof DoubleExpression))
-        throw new SemanticException("'" + name() + "'s first argument must be double!");
+	/**
+	 * Whether the macro is declared
+	 *
+	 * @param name of the macro
+	 * @return whether the macro is declared
+	 */
+	@Override
+	public boolean hasMacro(String name) {
+		return macros.containsKey(name);
+	}
 
-      try {
-        Node node =(Node) func.getConstructor(DoubleExpression.class).newInstance(params[0]);
-        return node;
-      } catch (Exception e) {
-        throw new RuntimeException("Failed to instantiate '" + name() + "'!", e);
-      }
-    }
-    
-  }
+	/**
+	 * Tries to fetch the macro</p>
+	 *
+	 * The same invariant of {@link MacroDeclarations} applies here too.
+	 *
+	 * @param name name of the macro
+	 * @return a macro
+	 */
+	@Override
+	public Macro getMacro(String name) {
+		if (macros.containsKey(name)) {
+			return macros.get(name);
+		}
+		throw new RuntimeException("Macro '" + name + "' undefined!");
+	}
 
-  private static abstract class DoubleUnaryFunction implements DoubleExpression {
+	private static class DoubleUnaryMacro implements Macro {
 
-    final DoubleExpression expr;
-    
-    DoubleUnaryFunction(DoubleExpression expr) {
-      this.expr = expr;
-    }
+		private final Class<? extends DoubleUnaryFunction> func;
 
-  }
- 
-  private static class AbsFunction extends DoubleUnaryFunction {
+		public DoubleUnaryMacro(Class<? extends DoubleUnaryFunction> func) {
+			this.func = func;
+		}
 
-    public AbsFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		private String name() {
+			return func.getSimpleName();
+		}
 
-    @Override
-    public double evaluate() {
-      return Math.abs(expr.evaluate());
-    }
-    
-  }
-  
-  private static class SqrtFunction extends DoubleUnaryFunction {
+		@Override
+		public Node evaluate(Node... params) throws SemanticException {
+			if (params.length != 1) {
+				throw new SemanticException("'" + name() + "' takes exactly one argument!");
+			}
+			if (!(params[0] instanceof DoubleExpression)) {
+				throw new SemanticException("'" + name() + "'s first argument must be double!");
+			}
 
-    public SqrtFunction(DoubleExpression expr) {
-      super(expr);
-    }
+			try {
+				Node node = (Node) func.getConstructor(DoubleExpression.class).newInstance(params[0]);
+				return node;
+			} catch (Exception e) {
+				throw new RuntimeException("Failed to instantiate '" + name() + "'!", e);
+			}
+		}
+	}
 
-    @Override
-    public double evaluate() {
-      return Math.sqrt(expr.evaluate());
-    }
+	private static abstract class DoubleUnaryFunction implements DoubleExpression {
 
-  }
-  
-  private static class LogFunction extends DoubleUnaryFunction {
+		final DoubleExpression expr;
 
-    public LogFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		DoubleUnaryFunction(DoubleExpression expr) {
+			this.expr = expr;
+		}
+	}
 
-    @Override
-    public double evaluate() {
-      return Math.log(expr.evaluate());
-    }
-    
-  }
-  
-  private static class ExpFunction extends DoubleUnaryFunction {
+	private static class AbsFunction extends DoubleUnaryFunction {
 
-    public ExpFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		public AbsFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-    @Override
-    public double evaluate() {
-      return Math.exp(expr.evaluate());
-    }
-    
-  }
-  
-  private static class SinFunction extends DoubleUnaryFunction {
+		@Override
+		public double evaluate() {
+			return Math.abs(expr.evaluate());
+		}
+	}
 
-    public SinFunction(DoubleExpression expr) {
-      super(expr);
-    }
+	private static class SqrtFunction extends DoubleUnaryFunction {
 
-    @Override
-    public double evaluate() {
-      return Math.sin(expr.evaluate());
-    }
-    
-  }
+		public SqrtFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-  
-  private static class CosFunction extends DoubleUnaryFunction {
+		@Override
+		public double evaluate() {
+			return Math.sqrt(expr.evaluate());
+		}
+	}
 
-    public CosFunction(DoubleExpression expr) {
-      super(expr);
-    }
+	private static class LogFunction extends DoubleUnaryFunction {
 
-    @Override
-    public double evaluate() {
-      return Math.cos(expr.evaluate());
-    }
-    
-  }
-  
-  private static class TanFunction extends DoubleUnaryFunction {
+		public LogFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-    public TanFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		@Override
+		public double evaluate() {
+			return Math.log(expr.evaluate());
+		}
+	}
 
-    @Override
-    public double evaluate() {
-      return Math.tan(expr.evaluate());
-    }
-    
-  }
-  
-  private static class RintFunction extends DoubleUnaryFunction {
+	private static class ExpFunction extends DoubleUnaryFunction {
 
-    public RintFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		public ExpFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-    @Override
-    public double evaluate() {
-      return Math.rint(expr.evaluate());
-    }
-    
-  }
-  
-  private static class FloorFunction extends DoubleUnaryFunction {
+		@Override
+		public double evaluate() {
+			return Math.exp(expr.evaluate());
+		}
+	}
 
-    public FloorFunction(DoubleExpression expr) {
-      super(expr);
-    }
+	private static class SinFunction extends DoubleUnaryFunction {
 
-    @Override
-    public double evaluate() {
-      return Math.floor(expr.evaluate());
-    }
-    
-  }
-  
-  private static class CeilFunction extends DoubleUnaryFunction {
+		public SinFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-    public CeilFunction(DoubleExpression expr) {
-      super(expr);
-    }
+		@Override
+		public double evaluate() {
+			return Math.sin(expr.evaluate());
+		}
+	}
 
-    @Override
-    public double evaluate() {
-      return Math.ceil(expr.evaluate());
-    }
-    
-  }
-  
-  private static class PowMacro implements Macro {
+	private static class CosFunction extends DoubleUnaryFunction {
 
-    @Override
-    public Node evaluate(Node... params) throws SemanticException {
-      if (params.length != 2)
-        throw new SemanticException("pow takes exactly two arguments!");
-      if (!(params[0] instanceof DoubleExpression))
-        throw new SemanticException("pow's first argument must be double!");
-      if (!(params[1] instanceof DoubleExpression))
-        throw new SemanticException("pow's second argument must be double!");
-      return new
-          PowFunction((DoubleExpression) params[0], (DoubleExpression) params[1]);
-    }
-  }
-  
-  private static class PowFunction implements DoubleExpression {
-    
-    private final DoubleExpression base;
-    private final DoubleExpression exponent;
+		public CosFunction(DoubleExpression expr) {
+			super(expr);
+		}
 
-    public PowFunction(DoubleExpression base, DoubleExpression exponent) {
-      this.base = base;
-      this.exponent = exponent;
-    }
+		@Override
+		public double evaluate() {
+			return Math.cos(expr.evaluate());
+		}
+	}
 
-    @Override
-    public double evaluate() {
-      return Math.pow(base.evaluate(), exponent.evaluate());
-    }
-    
-  }
+	private static class TanFunction extends DoubleUnaryFunction {
 
+		public TanFunction(DoubleExpression expr) {
+			super(expr);
+		}
+
+		@Override
+		public double evaluate() {
+			return Math.tan(expr.evaluate());
+		}
+	}
+
+	private static class RintFunction extends DoubleUnaryFunction {
+
+		public RintFunction(DoubleExpression expr) {
+			super(expr);
+		}
+
+		@Override
+		public double evaluate() {
+			return Math.rint(expr.evaluate());
+		}
+	}
+
+	private static class FloorFunction extends DoubleUnaryFunction {
+
+		public FloorFunction(DoubleExpression expr) {
+			super(expr);
+		}
+
+		@Override
+		public double evaluate() {
+			return Math.floor(expr.evaluate());
+		}
+	}
+
+	private static class CeilFunction extends DoubleUnaryFunction {
+
+		public CeilFunction(DoubleExpression expr) {
+			super(expr);
+		}
+
+		@Override
+		public double evaluate() {
+			return Math.ceil(expr.evaluate());
+		}
+	}
+
+	private static class PowMacro implements Macro {
+
+		@Override
+		public Node evaluate(Node... params) throws SemanticException {
+			if (params.length != 2) {
+				throw new SemanticException("pow takes exactly two arguments!");
+			}
+			if (!(params[0] instanceof DoubleExpression)) {
+				throw new SemanticException("pow's first argument must be double!");
+			}
+			if (!(params[1] instanceof DoubleExpression)) {
+				throw new SemanticException("pow's second argument must be double!");
+			}
+			return new
+					PowFunction((DoubleExpression) params[0], (DoubleExpression) params[1]);
+		}
+	}
+
+	private static class PowFunction implements DoubleExpression {
+
+		private final DoubleExpression base;
+		private final DoubleExpression exponent;
+
+		public PowFunction(DoubleExpression base, DoubleExpression exponent) {
+			this.base = base;
+			this.exponent = exponent;
+		}
+
+		@Override
+		public double evaluate() {
+			return Math.pow(base.evaluate(), exponent.evaluate());
+		}
+	}
 }

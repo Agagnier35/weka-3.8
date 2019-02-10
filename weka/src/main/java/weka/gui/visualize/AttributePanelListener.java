@@ -19,7 +19,6 @@
  *
  */
 
-
 package weka.gui.visualize;
 
 /**
@@ -31,10 +30,9 @@ package weka.gui.visualize;
  */
 public interface AttributePanelListener {
 
-  /**
-   * Called when the user clicks on an attribute bar
-   * @param e the event encapsulating what happened
-   */
-  void attributeSelectionChange(AttributePanelEvent e);
-
+	/**
+	 * Called when the user clicks on an attribute bar
+	 * @param e the event encapsulating what happened
+	 */
+	void attributeSelectionChange(AttributePanelEvent e);
 }

@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests RandomizableFilteredClassifier. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class RandomizableFilteredClassifierTest extends AbstractClassifierTest {
 
-  public RandomizableFilteredClassifierTest(String name) { super(name);  }
+	public RandomizableFilteredClassifierTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default RandomizableFilteredClassifier */
-  public Classifier getClassifier() {
-    return new RandomizableFilteredClassifier();
-  }
+	/** Creates a default RandomizableFilteredClassifier */
+	public Classifier getClassifier() {
+		return new RandomizableFilteredClassifier();
+	}
 
-  public static Test suite() {
-    return new TestSuite(RandomizableFilteredClassifierTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(RandomizableFilteredClassifierTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

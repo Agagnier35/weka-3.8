@@ -32,11 +32,11 @@ import java.util.EventListener;
  * @see EventListener
  */
 public interface IncrementalClassifierListener extends EventListener {
-  
-  /**
-   * Accept the event
-   *
-   * @param e a <code>ClassifierEvent</code> value
-   */
-  void acceptClassifier(IncrementalClassifierEvent e);
+
+	/**
+	 * Accept the event
+	 *
+	 * @param e a <code>ClassifierEvent</code> value
+	 */
+	void acceptClassifier(IncrementalClassifierEvent e);
 }

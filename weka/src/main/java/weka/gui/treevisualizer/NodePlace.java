@@ -29,12 +29,11 @@ package weka.gui.treevisualizer;
  * @version $Revision$
  */
 public interface NodePlace {
- 
-  /**
-   * The function to call to postion the tree that starts at Node r
-   *
-   * @param r The top of the tree.
-   */
-   void place(Node r);
-  
-} 
+
+	/**
+	 * The function to call to postion the tree that starts at Node r
+	 *
+	 * @param r The top of the tree.
+	 */
+	void place(Node r);
+}

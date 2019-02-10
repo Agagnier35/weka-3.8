@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for Cluster element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="Cluster">
  *   &lt;complexType>
@@ -44,232 +38,231 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension",
-    "kohonenMap",
-    "array",
-    "partition",
-    "covariances"
+		"extension",
+		"kohonenMap",
+		"array",
+		"partition",
+		"covariances"
 })
 @XmlRootElement(name = "Cluster")
 public class Cluster {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlElement(name = "KohonenMap", namespace = "http://www.dmg.org/PMML-4_1")
-    protected KohonenMap kohonenMap;
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
-    protected ArrayType array;
-    @XmlElement(name = "Partition", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Partition partition;
-    @XmlElement(name = "Covariances", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Covariances covariances;
-    @XmlAttribute
-    protected String id;
-    @XmlAttribute
-    protected String name;
-    @XmlAttribute
-    protected BigInteger size;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlElement(name = "KohonenMap", namespace = "http://www.dmg.org/PMML-4_1")
+	protected KohonenMap kohonenMap;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
+	protected ArrayType array;
+	@XmlElement(name = "Partition", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Partition partition;
+	@XmlElement(name = "Covariances", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Covariances covariances;
+	@XmlAttribute
+	protected String id;
+	@XmlAttribute
+	protected String name;
+	@XmlAttribute
+	protected BigInteger size;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the kohonenMap property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link KohonenMap }
-     *     
-     */
-    public KohonenMap getKohonenMap() {
-        return kohonenMap;
-    }
+	/**
+	 * Gets the value of the kohonenMap property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link KohonenMap }
+	 *
+	 */
+	public KohonenMap getKohonenMap() {
+		return kohonenMap;
+	}
 
-    /**
-     * Sets the value of the kohonenMap property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link KohonenMap }
-     *     
-     */
-    public void setKohonenMap(KohonenMap value) {
-        this.kohonenMap = value;
-    }
+	/**
+	 * Sets the value of the kohonenMap property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link KohonenMap }
+	 *
+	 */
+	public void setKohonenMap(KohonenMap value) {
+		this.kohonenMap = value;
+	}
 
-    /**
-     * Gets the value of the array property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArray() {
-        return array;
-    }
+	/**
+	 * Gets the value of the array property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public ArrayType getArray() {
+		return array;
+	}
 
-    /**
-     * Sets the value of the array property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArray(ArrayType value) {
-        this.array = value;
-    }
+	/**
+	 * Sets the value of the array property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public void setArray(ArrayType value) {
+		this.array = value;
+	}
 
-    /**
-     * Gets the value of the partition property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Partition }
-     *     
-     */
-    public Partition getPartition() {
-        return partition;
-    }
+	/**
+	 * Gets the value of the partition property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Partition }
+	 *
+	 */
+	public Partition getPartition() {
+		return partition;
+	}
 
-    /**
-     * Sets the value of the partition property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Partition }
-     *     
-     */
-    public void setPartition(Partition value) {
-        this.partition = value;
-    }
+	/**
+	 * Sets the value of the partition property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Partition }
+	 *
+	 */
+	public void setPartition(Partition value) {
+		this.partition = value;
+	}
 
-    /**
-     * Gets the value of the covariances property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Covariances }
-     *     
-     */
-    public Covariances getCovariances() {
-        return covariances;
-    }
+	/**
+	 * Gets the value of the covariances property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Covariances }
+	 *
+	 */
+	public Covariances getCovariances() {
+		return covariances;
+	}
 
-    /**
-     * Sets the value of the covariances property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Covariances }
-     *     
-     */
-    public void setCovariances(Covariances value) {
-        this.covariances = value;
-    }
+	/**
+	 * Sets the value of the covariances property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Covariances }
+	 *
+	 */
+	public void setCovariances(Covariances value) {
+		this.covariances = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getSize() {
-        return size;
-    }
+	/**
+	 * Gets the value of the size property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getSize() {
+		return size;
+	}
 
-    /**
-     * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setSize(BigInteger value) {
-        this.size = value;
-    }
-
+	/**
+	 * Sets the value of the size property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setSize(BigInteger value) {
+		this.size = value;
+	}
 }

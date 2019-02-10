@@ -21,12 +21,10 @@
 
 package weka.gui.knowledgeflow;
 
+import java.util.*;
+
 import weka.core.PluginManager;
 import weka.core.WekaException;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Default Knowledge Flow graphical command handler
@@ -35,67 +33,67 @@ import java.util.Set;
  * @version $Revision: $
  */
 public class KFGraphicalEnvironmentCommandHandler implements
-  GraphicalEnvironmentCommandHandler {
+		GraphicalEnvironmentCommandHandler {
 
-  /** The main perspective */
-  protected MainKFPerspective m_mainPerspective;
+	/** The main perspective */
+	protected MainKFPerspective m_mainPerspective;
 
-  /** All availabel commands */
-  protected Map<String, AbstractGraphicalCommand> m_commands = new HashMap<>();
+	/** All availabel commands */
+	protected Map<String, AbstractGraphicalCommand> m_commands = new HashMap<>();
 
-  static {
-    // register built-in commands
-    PluginManager.addPlugin("weka.gui.knowledgeflow.AbstractGraphicalCommand",
-      "weka.gui.knowledgeflow.GetPerspectiveNamesGraphicalCommand",
-      "weka.gui.knowledgeflow.GetPerspectiveNamesGraphicalCommand", true);
-    PluginManager.addPlugin("weka.gui.knowledgeflow.AbstractGraphicalCommand",
-      "weka.gui.knowledgeflow.SendToPerspectiveGraphicalCommand",
-      "weka.gui.knowledgeflow.SendToPerspectiveGraphicalCommand", true);
-  }
+	static {
+		// register built-in commands
+		PluginManager.addPlugin("weka.gui.knowledgeflow.AbstractGraphicalCommand",
+				"weka.gui.knowledgeflow.GetPerspectiveNamesGraphicalCommand",
+				"weka.gui.knowledgeflow.GetPerspectiveNamesGraphicalCommand", true);
+		PluginManager.addPlugin("weka.gui.knowledgeflow.AbstractGraphicalCommand",
+				"weka.gui.knowledgeflow.SendToPerspectiveGraphicalCommand",
+				"weka.gui.knowledgeflow.SendToPerspectiveGraphicalCommand", true);
+	}
 
-  /**
-   * Constructor
-   *
-   * @param mainPerspective the main perspective of the GUI
-   */
-  public KFGraphicalEnvironmentCommandHandler(MainKFPerspective mainPerspective) {
-    m_mainPerspective = mainPerspective;
+	/**
+	 * Constructor
+	 *
+	 * @param mainPerspective the main perspective of the GUI
+	 */
+	public KFGraphicalEnvironmentCommandHandler(MainKFPerspective mainPerspective) {
+		m_mainPerspective = mainPerspective;
 
-    // plugin commands
-    Set<String> commands =
-      PluginManager
-        .getPluginNamesOfType("weka.gui.knowledgeflow.AbstractGraphicalCommand");
-    try {
-      for (String commandClass : commands) {
-        AbstractGraphicalCommand impl =
-          (AbstractGraphicalCommand) PluginManager.getPluginInstance(
-            "weka.gui.knowledgeflow.AbstractGraphicalCommand", commandClass);
-        m_commands.put(impl.getCommandName(), impl);
-      }
-    } catch (Exception ex) {
-      ex.printStackTrace();
-    }
-  }
+		// plugin commands
+		Set<String> commands =
+				PluginManager
+						.getPluginNamesOfType("weka.gui.knowledgeflow.AbstractGraphicalCommand");
+		try {
+			for (String commandClass : commands) {
+				AbstractGraphicalCommand impl =
+						(AbstractGraphicalCommand) PluginManager.getPluginInstance(
+								"weka.gui.knowledgeflow.AbstractGraphicalCommand", commandClass);
+				m_commands.put(impl.getCommandName(), impl);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 
-  /**
-   * Perform a command
-   *
-   * @param commandName the name of the command to execute
-   * @param commandArgs the optional arguments
-   * @param <T> the type of the return value
-   * @return a result, or null if the command does not return a result
-   * @throws WekaException if a problem occurs
-   */
-  @Override
-  public <T> T performCommand(String commandName, Object... commandArgs)
-    throws WekaException {
+	/**
+	 * Perform a command
+	 *
+	 * @param commandName the name of the command to execute
+	 * @param commandArgs the optional arguments
+	 * @param <T> the type of the return value
+	 * @return a result, or null if the command does not return a result
+	 * @throws WekaException if a problem occurs
+	 */
+	@Override
+	public <T> T performCommand(String commandName, Object... commandArgs)
+			throws WekaException {
 
-    AbstractGraphicalCommand command = m_commands.get(commandName);
-    if (command != null) {
-      command.setGraphicalEnvironment(m_mainPerspective);
-      return command.performCommand(commandArgs);
-    } else {
-      throw new WekaException("Unknown graphical command '" + commandName + "'");
-    }
-  }
+		AbstractGraphicalCommand command = m_commands.get(commandName);
+		if (command != null) {
+			command.setGraphicalEnvironment(m_mainPerspective);
+			return command.performCommand(commandArgs);
+		} else {
+			throw new WekaException("Unknown graphical command '" + commandName + "'");
+		}
+	}
 }

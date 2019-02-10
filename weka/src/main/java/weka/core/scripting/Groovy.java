@@ -25,9 +25,7 @@ import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-import weka.core.RevisionHandler;
-import weka.core.RevisionUtils;
-import weka.core.WekaPackageClassLoaderManager;
+import weka.core.*;
 
 /**
  * A helper class for <a href="http://groovy.codehaus.org/"
@@ -38,199 +36,200 @@ import weka.core.WekaPackageClassLoaderManager;
  * sub-directory of the Groovy installation.
  * <p/>
  * Tested with Groovy 1.5.7.
- * 
+ *
  * @author fracpete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
 public class Groovy implements Serializable, RevisionHandler {
 
-  /** for serialization. */
-  private static final long serialVersionUID = -2628766602043134673L;
+	/** for serialization. */
+	private static final long serialVersionUID = -2628766602043134673L;
 
-  /** the classname of the Groovy classloader. */
-  public final static String CLASS_GROOVYCLASSLOADER = "groovy.lang.GroovyClassLoader";
+	/** the classname of the Groovy classloader. */
+	public final static String CLASS_GROOVYCLASSLOADER = "groovy.lang.GroovyClassLoader";
 
-  /** whether the Groovy classes are in the Classpath. */
-  protected static boolean m_Present = false;
-  static {
-    try {
-      // Class.forName(CLASS_GROOVYCLASSLOADER);
-      WekaPackageClassLoaderManager.forName(CLASS_GROOVYCLASSLOADER);
-      m_Present = true;
-    } catch (Exception e) {
-      m_Present = false;
-    }
-  }
+	/** whether the Groovy classes are in the Classpath. */
+	protected static boolean m_Present = false;
 
-  /** the classloader. */
-  protected Object m_ClassLoader;
+	static {
+		try {
+			// Class.forName(CLASS_GROOVYCLASSLOADER);
+			WekaPackageClassLoaderManager.forName(CLASS_GROOVYCLASSLOADER);
+			m_Present = true;
+		} catch (Exception e) {
+			m_Present = false;
+		}
+	}
 
-  /**
-   * default constructor, tries to instantiate a Groovy classloader.
-   */
-  public Groovy() {
-    m_ClassLoader = newClassLoader();
-  }
+	/** the classloader. */
+	protected Object m_ClassLoader;
 
-  /**
-   * returns the currently used Groovy classloader.
-   * 
-   * @return the classloader, can be null
-   */
-  public Object getClassLoader() {
-    return m_ClassLoader;
-  }
+	/**
+	 * default constructor, tries to instantiate a Groovy classloader.
+	 */
+	public Groovy() {
+		m_ClassLoader = newClassLoader();
+	}
 
-  /**
-   * executes the specified method on the current interpreter and returns the
-   * result, if any.
-   * 
-   * @param methodName the name of the method
-   * @param paramClasses the classes of the parameters
-   * @param paramValues the values of the parameters
-   * @return the return value of the method, if any (in that case null)
-   */
-  public Object invoke(String methodName, Class<?>[] paramClasses,
-    Object[] paramValues) {
-    Object result;
+	/**
+	 * returns the currently used Groovy classloader.
+	 *
+	 * @return the classloader, can be null
+	 */
+	public Object getClassLoader() {
+		return m_ClassLoader;
+	}
 
-    result = null;
-    if (getClassLoader() != null) {
-      result = invoke(getClassLoader(), methodName, paramClasses, paramValues);
-    }
+	/**
+	 * executes the specified method on the current interpreter and returns the
+	 * result, if any.
+	 *
+	 * @param methodName the name of the method
+	 * @param paramClasses the classes of the parameters
+	 * @param paramValues the values of the parameters
+	 * @return the return value of the method, if any (in that case null)
+	 */
+	public Object invoke(String methodName, Class<?>[] paramClasses,
+			Object[] paramValues) {
+		Object result;
 
-    return result;
-  }
+		result = null;
+		if (getClassLoader() != null) {
+			result = invoke(getClassLoader(), methodName, paramClasses, paramValues);
+		}
 
-  /**
-   * returns whether the Groovy classes are present or not, i.e. whether the
-   * classes are in the classpath or not
-   * 
-   * @return whether the Groovy classes are available
-   */
-  public static boolean isPresent() {
-    return m_Present;
-  }
+		return result;
+	}
 
-  /**
-   * initializes and returns a Groovy Interpreter.
-   * 
-   * @return the interpreter or null if Groovy classes not present
-   */
-  public static Object newClassLoader() {
-    Object result;
-    Class<?> cls;
-    Constructor<?> constr;
+	/**
+	 * returns whether the Groovy classes are present or not, i.e. whether the
+	 * classes are in the classpath or not
+	 *
+	 * @return whether the Groovy classes are available
+	 */
+	public static boolean isPresent() {
+		return m_Present;
+	}
 
-    result = null;
+	/**
+	 * initializes and returns a Groovy Interpreter.
+	 *
+	 * @return the interpreter or null if Groovy classes not present
+	 */
+	public static Object newClassLoader() {
+		Object result;
+		Class<?> cls;
+		Constructor<?> constr;
 
-    if (isPresent()) {
-      try {
-        // cls = Class.forName(CLASS_GROOVYCLASSLOADER);
-        cls = WekaPackageClassLoaderManager.forName(CLASS_GROOVYCLASSLOADER);
-        constr = cls.getConstructor(new Class[] { ClassLoader.class });
-        //result = constr.newInstance(Groovy.class.getClassLoader());
-        result = constr.newInstance(cls.getClassLoader());
-      } catch (Exception e) {
-        e.printStackTrace();
-        result = null;
-      }
-    }
+		result = null;
 
-    return result;
-  }
+		if (isPresent()) {
+			try {
+				// cls = Class.forName(CLASS_GROOVYCLASSLOADER);
+				cls = WekaPackageClassLoaderManager.forName(CLASS_GROOVYCLASSLOADER);
+				constr = cls.getConstructor(new Class[]{ClassLoader.class});
+				//result = constr.newInstance(Groovy.class.getClassLoader());
+				result = constr.newInstance(cls.getClassLoader());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result = null;
+			}
+		}
 
-  /**
-   * loads the module and returns a new instance of it as instance of the
-   * provided Java class template.
-   * 
-   * @param file the Groovy module file
-   * @param template the template for the returned Java object
-   * @return the Groovy object
-   */
-  public static Object newInstance(File file, Class<?> template) {
-    Object result;
-    Object interpreter;
-    Class<?> cls;
+		return result;
+	}
 
-    result = null;
+	/**
+	 * loads the module and returns a new instance of it as instance of the
+	 * provided Java class template.
+	 *
+	 * @param file the Groovy module file
+	 * @param template the template for the returned Java object
+	 * @return the Groovy object
+	 */
+	public static Object newInstance(File file, Class<?> template) {
+		Object result;
+		Object interpreter;
+		Class<?> cls;
 
-    if (!isPresent()) {
-      return result;
-    }
+		result = null;
 
-    interpreter = newClassLoader();
-    if (interpreter == null) {
-      return result;
-    }
+		if (!isPresent()) {
+			return result;
+		}
 
-    try {
-      cls = (Class<?>) invoke(interpreter, "parseClass",
-        new Class[] { File.class }, new Object[] { file });
-      result = cls.newInstance();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+		interpreter = newClassLoader();
+		if (interpreter == null) {
+			return result;
+		}
 
-    return result;
-  }
+		try {
+			cls = (Class<?>) invoke(interpreter, "parseClass",
+					new Class[]{File.class}, new Object[]{file});
+			result = cls.newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-  /**
-   * executes the specified method and returns the result, if any.
-   * 
-   * @param o the object the method should be called from, e.g., a Groovy
-   *          Interpreter
-   * @param methodName the name of the method
-   * @param paramClasses the classes of the parameters
-   * @param paramValues the values of the parameters
-   * @return the return value of the method, if any (in that case null)
-   */
-  public static Object invoke(Object o, String methodName,
-    Class<?>[] paramClasses, Object[] paramValues) {
-    Method m;
-    Object result;
+		return result;
+	}
 
-    result = null;
+	/**
+	 * executes the specified method and returns the result, if any.
+	 *
+	 * @param o the object the method should be called from, e.g., a Groovy
+	 *          Interpreter
+	 * @param methodName the name of the method
+	 * @param paramClasses the classes of the parameters
+	 * @param paramValues the values of the parameters
+	 * @return the return value of the method, if any (in that case null)
+	 */
+	public static Object invoke(Object o, String methodName,
+			Class<?>[] paramClasses, Object[] paramValues) {
+		Method m;
+		Object result;
 
-    try {
-      m = o.getClass().getMethod(methodName, paramClasses);
-      result = m.invoke(o, paramValues);
-    } catch (Exception e) {
-      e.printStackTrace();
-      result = null;
-    }
+		result = null;
 
-    return result;
-  }
+		try {
+			m = o.getClass().getMethod(methodName, paramClasses);
+			result = m.invoke(o, paramValues);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = null;
+		}
 
-  /**
-   * Returns the revision string.
-   * 
-   * @return the revision
-   */
-  @Override
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+		return result;
+	}
 
-  /**
-   * If no arguments are given, it just prints the presence of the Groovy
-   * classes, otherwise it expects a Groovy filename to execute.
-   * 
-   * @param args commandline arguments
-   */
-  public static void main(String[] args) {
-    if (args.length == 0) {
-      System.out.println("Groovy present: " + isPresent());
-    } else {
-      Groovy groovy = new Groovy();
-      if (groovy.getClassLoader() == null) {
-        System.err.println("Cannot instantiate Groovy ClassLoader!");
-      } else {
-        Object groovyObject = Groovy.newInstance(new File(args[0]),
-          Object.class);
-        Groovy.invoke(groovyObject, "run", new Class[] {}, new Object[] {});
-      }
-    }
-  }
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	@Override
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
+
+	/**
+	 * If no arguments are given, it just prints the presence of the Groovy
+	 * classes, otherwise it expects a Groovy filename to execute.
+	 *
+	 * @param args commandline arguments
+	 */
+	public static void main(String[] args) {
+		if (args.length == 0) {
+			System.out.println("Groovy present: " + isPresent());
+		} else {
+			Groovy groovy = new Groovy();
+			if (groovy.getClassLoader() == null) {
+				System.err.println("Cannot instantiate Groovy ClassLoader!");
+			} else {
+				Object groovyObject = Groovy.newInstance(new File(args[0]),
+						Object.class);
+				Groovy.invoke(groovyObject, "run", new Class[]{}, new Object[]{});
+			}
+		}
+	}
 }

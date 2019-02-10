@@ -19,11 +19,10 @@
 
 package weka.classifiers.functions;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests GaussianProcesses. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class GaussianProcessesTest 
-  extends AbstractClassifierTest {
+public class GaussianProcessesTest
+		extends AbstractClassifierTest {
 
-  public GaussianProcessesTest(String name) { 
-    super(name);  
-  }
+	public GaussianProcessesTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default GaussianProcesses */
-  public Classifier getClassifier() {
-    return new GaussianProcesses();
-  }
+	/** Creates a default GaussianProcesses */
+	public Classifier getClassifier() {
+		return new GaussianProcesses();
+	}
 
-  public static Test suite() {
-    return new TestSuite(GaussianProcessesTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(GaussianProcessesTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

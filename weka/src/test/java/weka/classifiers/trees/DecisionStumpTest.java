@@ -19,11 +19,10 @@
 
 package weka.classifiers.trees;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests DecisionStump. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class DecisionStumpTest extends AbstractClassifierTest {
 
-  public DecisionStumpTest(String name) { super(name);  }
+	public DecisionStumpTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default DecisionStump */
-  public Classifier getClassifier() {
-    return new DecisionStump();
-  }
+	/** Creates a default DecisionStump */
+	public Classifier getClassifier() {
+		return new DecisionStump();
+	}
 
-  public static Test suite() {
-    return new TestSuite(DecisionStumpTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(DecisionStumpTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

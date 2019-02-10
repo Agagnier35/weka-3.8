@@ -5,21 +5,15 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for ParameterField element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="ParameterField">
  *   &lt;complexType>
@@ -33,91 +27,90 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "ParameterField")
 public class ParameterField {
 
-    @XmlAttribute
-    protected DATATYPE dataType;
-    @XmlAttribute(required = true)
-    protected String name;
-    @XmlAttribute
-    protected OPTYPE optype;
+	@XmlAttribute
+	protected DATATYPE dataType;
+	@XmlAttribute(required = true)
+	protected String name;
+	@XmlAttribute
+	protected OPTYPE optype;
 
-    /**
-     * Gets the value of the dataType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DATATYPE }
-     *     
-     */
-    public DATATYPE getDataType() {
-        return dataType;
-    }
+	/**
+	 * Gets the value of the dataType property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link DATATYPE }
+	 *
+	 */
+	public DATATYPE getDataType() {
+		return dataType;
+	}
 
-    /**
-     * Sets the value of the dataType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DATATYPE }
-     *     
-     */
-    public void setDataType(DATATYPE value) {
-        this.dataType = value;
-    }
+	/**
+	 * Sets the value of the dataType property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link DATATYPE }
+	 *
+	 */
+	public void setDataType(DATATYPE value) {
+		this.dataType = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the optype property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OPTYPE }
-     *     
-     */
-    public OPTYPE getOptype() {
-        return optype;
-    }
+	/**
+	 * Gets the value of the optype property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link OPTYPE }
+	 *
+	 */
+	public OPTYPE getOptype() {
+		return optype;
+	}
 
-    /**
-     * Sets the value of the optype property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OPTYPE }
-     *     
-     */
-    public void setOptype(OPTYPE value) {
-        this.optype = value;
-    }
-
+	/**
+	 * Sets the value of the optype property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link OPTYPE }
+	 *
+	 */
+	public void setOptype(OPTYPE value) {
+		this.optype = value;
+	}
 }

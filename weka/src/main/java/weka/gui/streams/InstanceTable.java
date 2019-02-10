@@ -23,9 +23,7 @@ package weka.gui.streams;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
@@ -34,119 +32,119 @@ import weka.core.Instances;
 
 /**
  * A bean that takes a stream of instances and displays in a table.
- * 
+ *
  * @author Len Trigg (trigg@cs.waikato.ac.nz)
  * @version $Revision$
  */
 public class InstanceTable extends JPanel implements InstanceListener {
 
-  /** for serialization */
-  private static final long serialVersionUID = -2462533698100834803L;
+	/** for serialization */
+	private static final long serialVersionUID = -2462533698100834803L;
 
-  private final JTable m_InstanceTable;
-  private boolean m_Debug;
-  // private boolean m_Clear; NOT USED
-  // private String m_UpdateString; NOT USED
-  private Instances m_Instances;
+	private final JTable m_InstanceTable;
+	private boolean m_Debug;
+	// private boolean m_Clear; NOT USED
+	// private String m_UpdateString; NOT USED
+	private Instances m_Instances;
 
-  public void inputFormat(Instances instanceInfo) {
+	public void inputFormat(Instances instanceInfo) {
 
-    if (m_Debug) {
-      System.err.println("InstanceTable::inputFormat()\n"
-        + instanceInfo.toString());
-    }
-    m_Instances = instanceInfo;
-  }
+		if (m_Debug) {
+			System.err.println("InstanceTable::inputFormat()\n"
+					+ instanceInfo.toString());
+		}
+		m_Instances = instanceInfo;
+	}
 
-  public void input(Instance instance) throws Exception {
+	public void input(Instance instance) throws Exception {
 
-    if (m_Debug) {
-      System.err.println("InstanceTable::input(" + instance + ")");
-    }
-    m_Instances.add(instance);
-  }
+		if (m_Debug) {
+			System.err.println("InstanceTable::input(" + instance + ")");
+		}
+		m_Instances.add(instance);
+	}
 
-  public void batchFinished() {
+	public void batchFinished() {
 
-    TableModel newModel = new AbstractTableModel() {
-      private static final long serialVersionUID = 5447106383000555291L;
+		TableModel newModel = new AbstractTableModel() {
+			private static final long serialVersionUID = 5447106383000555291L;
 
-      @Override
-      public String getColumnName(int col) {
-        return m_Instances.attribute(col).name();
-      }
+			@Override
+			public String getColumnName(int col) {
+				return m_Instances.attribute(col).name();
+			}
 
-      @Override
-      public Class<?> getColumnClass(int col) {
-        return "".getClass();
-      }
+			@Override
+			public Class<?> getColumnClass(int col) {
+				return "".getClass();
+			}
 
-      @Override
-      public int getColumnCount() {
-        return m_Instances.numAttributes();
-      }
+			@Override
+			public int getColumnCount() {
+				return m_Instances.numAttributes();
+			}
 
-      @Override
-      public int getRowCount() {
-        return m_Instances.numInstances();
-      }
+			@Override
+			public int getRowCount() {
+				return m_Instances.numInstances();
+			}
 
-      @Override
-      public Object getValueAt(int row, int col) {
-        return new String(m_Instances.instance(row).toString(col));
-      }
-    };
-    m_InstanceTable.setModel(newModel);
-    if (m_Debug) {
-      System.err.println("InstanceTable::batchFinished()");
-    }
-  }
+			@Override
+			public Object getValueAt(int row, int col) {
+				return new String(m_Instances.instance(row).toString(col));
+			}
+		};
+		m_InstanceTable.setModel(newModel);
+		if (m_Debug) {
+			System.err.println("InstanceTable::batchFinished()");
+		}
+	}
 
-  public InstanceTable() {
+	public InstanceTable() {
 
-    setLayout(new BorderLayout());
-    m_InstanceTable = new JTable();
-    add("Center", new JScrollPane(m_InstanceTable));
-  }
+		setLayout(new BorderLayout());
+		m_InstanceTable = new JTable();
+		add("Center", new JScrollPane(m_InstanceTable));
+	}
 
-  public void setDebug(boolean debug) {
+	public void setDebug(boolean debug) {
 
-    m_Debug = debug;
-  }
+		m_Debug = debug;
+	}
 
-  public boolean getDebug() {
+	public boolean getDebug() {
 
-    return m_Debug;
-  }
+		return m_Debug;
+	}
 
-  @Override
-  public void instanceProduced(InstanceEvent e) {
+	@Override
+	public void instanceProduced(InstanceEvent e) {
 
-    Object source = e.getSource();
-    if (source instanceof InstanceProducer) {
-      try {
-        InstanceProducer a = (InstanceProducer) source;
-        switch (e.getID()) {
-        case InstanceEvent.FORMAT_AVAILABLE:
-          inputFormat(a.outputFormat());
-          break;
-        case InstanceEvent.INSTANCE_AVAILABLE:
-          input(a.outputPeek());
-          break;
-        case InstanceEvent.BATCH_FINISHED:
-          batchFinished();
-          break;
-        default:
-          System.err.println("InstanceTable::instanceProduced()"
-            + " - unknown event type");
-          break;
-        }
-      } catch (Exception ex) {
-        System.err.println(ex.getMessage());
-      }
-    } else {
-      System.err.println("InstanceTable::instanceProduced()"
-        + " - Unknown source object type");
-    }
-  }
+		Object source = e.getSource();
+		if (source instanceof InstanceProducer) {
+			try {
+				InstanceProducer a = (InstanceProducer) source;
+				switch (e.getID()) {
+					case InstanceEvent.FORMAT_AVAILABLE:
+						inputFormat(a.outputFormat());
+						break;
+					case InstanceEvent.INSTANCE_AVAILABLE:
+						input(a.outputPeek());
+						break;
+					case InstanceEvent.BATCH_FINISHED:
+						batchFinished();
+						break;
+					default:
+						System.err.println("InstanceTable::instanceProduced()"
+								+ " - unknown event type");
+						break;
+				}
+			} catch (Exception ex) {
+				System.err.println(ex.getMessage());
+			}
+		} else {
+			System.err.println("InstanceTable::instanceProduced()"
+					+ " - Unknown source object type");
+		}
+	}
 }

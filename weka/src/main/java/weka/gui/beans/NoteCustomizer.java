@@ -26,91 +26,88 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 /**
  * Customizer for the note component.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  *
  */
 public class NoteCustomizer extends JPanel implements BeanCustomizer,
-    CustomizerCloseRequester, CustomizerClosingListener {
-  
-  /**
-   * for serialization
-   */
-  private static final long serialVersionUID = 995648616684953391L;
-  
-  /** the parent window */
-  protected Window m_parentWindow;
-  
-  /** the note to be edited */
-  protected Note m_note;
-  
-  /** text area for displaying the note's text */
-  protected JTextArea m_textArea = new JTextArea(5, 20);
-  
-  /**
-   *  Listener that wants to know the the modified status of the object that
-   * we're customizing
-   */
-  private ModifyListener m_modifyListener;
-  
-  /**
-   * Constructs a new note customizer
-   */
-  public NoteCustomizer() {
-    setLayout(new BorderLayout());
-    m_textArea.setLineWrap(true);
-    
-    JScrollPane sc = new JScrollPane(m_textArea);
-    
-    add(sc, BorderLayout.CENTER);
-    
-    JButton okBut = new JButton("OK");
-    add(okBut, BorderLayout.SOUTH);
-    okBut.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        customizerClosing();
-        if (m_parentWindow != null) {
-          m_parentWindow.dispose();
-        }
-      }
-    });
-  }
+		CustomizerCloseRequester, CustomizerClosingListener {
 
-  @Override
-  public void setParentWindow(Window parent) {
-    // TODO Auto-generated method stub
-    m_parentWindow = parent;
-  }
+	/**
+	 * for serialization
+	 */
+	private static final long serialVersionUID = 995648616684953391L;
 
-  @Override
-  public void setObject(Object ob) {
-    // TODO Auto-generated method stub
-    m_note = (Note)ob;
-    m_textArea.setText(m_note.getNoteText());
-    m_textArea.selectAll();
-  }
+	/** the parent window */
+	protected Window m_parentWindow;
 
-  @Override
-  public void customizerClosing() {
-    if (m_note != null) {
-      m_note.setNoteText(m_textArea.getText());
-      
-      if (m_modifyListener != null) {
-        m_modifyListener.setModifiedStatus(NoteCustomizer.this, true);
-      }
-    }    
-  }
+	/** the note to be edited */
+	protected Note m_note;
 
-  @Override
-  public void setModifiedListener(ModifyListener l) {
-    m_modifyListener = l;
-  }
+	/** text area for displaying the note's text */
+	protected JTextArea m_textArea = new JTextArea(5, 20);
+
+	/**
+	 *  Listener that wants to know the the modified status of the object that
+	 * we're customizing
+	 */
+	private ModifyListener m_modifyListener;
+
+	/**
+	 * Constructs a new note customizer
+	 */
+	public NoteCustomizer() {
+		setLayout(new BorderLayout());
+		m_textArea.setLineWrap(true);
+
+		JScrollPane sc = new JScrollPane(m_textArea);
+
+		add(sc, BorderLayout.CENTER);
+
+		JButton okBut = new JButton("OK");
+		add(okBut, BorderLayout.SOUTH);
+		okBut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				customizerClosing();
+				if (m_parentWindow != null) {
+					m_parentWindow.dispose();
+				}
+			}
+		});
+	}
+
+	@Override
+	public void setParentWindow(Window parent) {
+		// TODO Auto-generated method stub
+		m_parentWindow = parent;
+	}
+
+	@Override
+	public void setObject(Object ob) {
+		// TODO Auto-generated method stub
+		m_note = (Note) ob;
+		m_textArea.setText(m_note.getNoteText());
+		m_textArea.selectAll();
+	}
+
+	@Override
+	public void customizerClosing() {
+		if (m_note != null) {
+			m_note.setNoteText(m_textArea.getText());
+
+			if (m_modifyListener != null) {
+				m_modifyListener.setModifiedStatus(NoteCustomizer.this, true);
+			}
+		}
+	}
+
+	@Override
+	public void setModifiedListener(ModifyListener l) {
+		m_modifyListener = l;
+	}
 }

@@ -19,11 +19,10 @@
 
 package weka.classifiers.rules;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests M5Rules. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class M5RulesTest extends AbstractClassifierTest {
 
-  public M5RulesTest(String name) { super(name);  }
+	public M5RulesTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default M5Rules */
-  public Classifier getClassifier() {
-    return new M5Rules();
-  }
+	/** Creates a default M5Rules */
+	public Classifier getClassifier() {
+		return new M5Rules();
+	}
 
-  public static Test suite() {
-    return new TestSuite(M5RulesTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(M5RulesTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.regression;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests MexicanHat. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class MexicanHatTest 
-  extends AbstractDataGeneratorTest {
+public class MexicanHatTest
+		extends AbstractDataGeneratorTest {
 
-  public MexicanHatTest(String name) { 
-    super(name);  
-  }
+	public MexicanHatTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default MexicanHat */
-  public DataGenerator getGenerator() {
-    return new MexicanHat();
-  }
+	/** Creates a default MexicanHat */
+	public DataGenerator getGenerator() {
+		return new MexicanHat();
+	}
 
-  public static Test suite() {
-    return new TestSuite(MexicanHatTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(MexicanHatTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

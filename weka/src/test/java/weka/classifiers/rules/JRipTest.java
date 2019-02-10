@@ -19,11 +19,10 @@
 
 package weka.classifiers.rules;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests JRip. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class JRipTest extends AbstractClassifierTest {
 
-  public JRipTest(String name) { super(name);  }
+	public JRipTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default JRip */
-  public Classifier getClassifier() {
-    return new JRip();
-  }
+	/** Creates a default JRip */
+	public Classifier getClassifier() {
+		return new JRip();
+	}
 
-  public static Test suite() {
-    return new TestSuite(JRipTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(JRipTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

@@ -32,7 +32,8 @@ import weka.core.TechnicalInformation;
  * <br/>
  * For more information on Naive Bayes classifiers, see<br/>
  * <br/>
- * George H. John, Pat Langley: Estimating Continuous Distributions in Bayesian Classifiers. In: Eleventh Conference on Uncertainty in Artificial Intelligence, San Mateo, 338-345, 1995.
+ * George H. John, Pat Langley: Estimating Continuous Distributions in Bayesian Classifiers. In: Eleventh Conference on Uncertainty in Artificial
+ * Intelligence, San Mateo, 338-345, 1995.
  * <p/>
  <!-- globalinfo-end -->
  *
@@ -54,86 +55,86 @@ import weka.core.TechnicalInformation;
  *
  <!-- options-start -->
  * Valid options are: <p/>
- * 
+ *
  * <pre> -K
  *  Use kernel density estimator rather than normal
  *  distribution for numeric attributes</pre>
- * 
+ *
  * <pre> -D
  *  Use supervised discretization to process numeric attributes
  * </pre>
- * 
+ *
  * <pre> -O
  *  Display model in old format (good when there are many classes)
  * </pre>
- * 
+ *
  <!-- options-end -->
  *
  * @author Len Trigg (trigg@cs.waikato.ac.nz)
  * @author Eibe Frank (eibe@cs.waikato.ac.nz)
  * @version $Revision$
  */
-public class NaiveBayesUpdateable extends NaiveBayes 
-  implements UpdateableClassifier {
-  
-  /** for serialization */
-  static final long serialVersionUID = -5354015843807192221L;
- 
-  /**
-   * Returns a string describing this classifier
-   * @return a description of the classifier suitable for
-   * displaying in the explorer/experimenter gui
-   */
-  public String globalInfo() {
-    return "Class for a Naive Bayes classifier using estimator classes. This is the "
-      +"updateable version of NaiveBayes.\n"
-      +"This classifier will use a default precision of 0.1 for numeric attributes "
-      +"when buildClassifier is called with zero training instances.\n\n"
-      +"For more information on Naive Bayes classifiers, see\n\n"
-      + getTechnicalInformation().toString();
-  }
+public class NaiveBayesUpdateable extends NaiveBayes
+		implements UpdateableClassifier {
 
-  /**
-   * Returns an instance of a TechnicalInformation object, containing 
-   * detailed information about the technical background of this class,
-   * e.g., paper reference or book this class is based on.
-   * 
-   * @return the technical information about this class
-   */
-  public TechnicalInformation getTechnicalInformation() {
-    return super.getTechnicalInformation();
-  }
+	/** for serialization */
+	static final long serialVersionUID = -5354015843807192221L;
 
-  /**
-   * Set whether supervised discretization is to be used.
-   *
-   * @param newblah true if supervised discretization is to be used.
-   */
-  public void setUseSupervisedDiscretization(boolean newblah) {
+	/**
+	 * Returns a string describing this classifier
+	 * @return a description of the classifier suitable for
+	 * displaying in the explorer/experimenter gui
+	 */
+	public String globalInfo() {
+		return "Class for a Naive Bayes classifier using estimator classes. This is the "
+				+ "updateable version of NaiveBayes.\n"
+				+ "This classifier will use a default precision of 0.1 for numeric attributes "
+				+ "when buildClassifier is called with zero training instances.\n\n"
+				+ "For more information on Naive Bayes classifiers, see\n\n"
+				+ getTechnicalInformation().toString();
+	}
 
-    if (newblah) {
-      throw new IllegalArgumentException("Can't use discretization " + 
-					 "in NaiveBayesUpdateable!");
-    }
-    m_UseDiscretization = false;
-  }
-  
-  /**
-   * Returns the revision string.
-   * 
-   * @return		the revision
-   */
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+	/**
+	 * Returns an instance of a TechnicalInformation object, containing
+	 * detailed information about the technical background of this class,
+	 * e.g., paper reference or book this class is based on.
+	 *
+	 * @return the technical information about this class
+	 */
+	public TechnicalInformation getTechnicalInformation() {
+		return super.getTechnicalInformation();
+	}
 
-  /**
-   * Main method for testing this class.
-   *
-   * @param argv the options
-   */
-  public static void main(String [] argv) {
-    runClassifier(new NaiveBayesUpdateable(), argv);
-  }
+	/**
+	 * Set whether supervised discretization is to be used.
+	 *
+	 * @param newblah true if supervised discretization is to be used.
+	 */
+	public void setUseSupervisedDiscretization(boolean newblah) {
+
+		if (newblah) {
+			throw new IllegalArgumentException("Can't use discretization " +
+					"in NaiveBayesUpdateable!");
+		}
+		m_UseDiscretization = false;
+	}
+
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
+
+	/**
+	 * Main method for testing this class.
+	 *
+	 * @param argv the options
+	 */
+	public static void main(String[] argv) {
+		runClassifier(new NaiveBayesUpdateable(), argv);
+	}
 }
 

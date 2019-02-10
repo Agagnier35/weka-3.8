@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests AdaBoostM1. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class AdaBoostM1Test extends AbstractClassifierTest {
 
-  public AdaBoostM1Test(String name) { super(name);  }
+	public AdaBoostM1Test(String name) {
+		super(name);
+	}
 
-  /** Creates a default AdaBoostM1 */
-  public Classifier getClassifier() {
-    return new AdaBoostM1();
-  }
+	/** Creates a default AdaBoostM1 */
+	public Classifier getClassifier() {
+		return new AdaBoostM1();
+	}
 
-  public static Test suite() {
-    return new TestSuite(AdaBoostM1Test.class);
-  }
+	public static Test suite() {
+		return new TestSuite(AdaBoostM1Test.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

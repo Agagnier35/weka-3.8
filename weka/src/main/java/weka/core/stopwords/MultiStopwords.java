@@ -20,11 +20,7 @@
 
 package weka.core.stopwords;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 import weka.core.Option;
 import weka.core.Utils;
@@ -38,155 +34,156 @@ import weka.core.Utils;
  *
  <!-- options-start -->
  * Valid options are: <p/>
- * 
+ *
  * <pre> -D
  *  If set, stopword scheme is run in debug mode and
  *  may output additional info to the console</pre>
- * 
+ *
  * <pre> -stopwords &lt;classname + options&gt;
  *  The stopwords algorithms to apply sequentially.
  *  (default: none)</pre>
- * 
+ *
  <!-- options-end -->
  *
- * @author  fracpete (fracpete at waikato dot ac dot nz)
+ * @author fracpete (fracpete at waikato dot ac dot nz)
  * @version $Revision: 10978 $
  */
 public class MultiStopwords
-  extends AbstractStopwords {
+		extends AbstractStopwords {
 
-  /** for serialization. */
-  private static final long serialVersionUID = -8568762652879773063L;
+	/** for serialization. */
+	private static final long serialVersionUID = -8568762652879773063L;
 
-  /** the stopwords algorithms to use. */
-  protected StopwordsHandler[] m_Stopwords = new StopwordsHandler[0];
+	/** the stopwords algorithms to use. */
+	protected StopwordsHandler[] m_Stopwords = new StopwordsHandler[0];
 
-  /* (non-Javadoc)
-   * @see weka.core.stopwords.AbstractStopwords#globalInfo()
-   */
-  @Override
-  public String globalInfo() {
-    return 
-	"Applies the specified stopwords algorithms one after other.\n"
-	+ "As soon as a word has been identified as stopword, the loop is "
-	+ "exited.";
-  }
-  
-  /**
-   * Returns an enumeration describing the available options.
-   *
-   * @return an enumeration of all the available options.
-   */
-  @Override
-  public Enumeration<Option> listOptions() {
-    Vector<Option> result = new Vector<Option>();
+	/* (non-Javadoc)
+	 * @see weka.core.stopwords.AbstractStopwords#globalInfo()
+	 */
+	@Override
+	public String globalInfo() {
+		return
+				"Applies the specified stopwords algorithms one after other.\n"
+						+ "As soon as a word has been identified as stopword, the loop is "
+						+ "exited.";
+	}
 
-    Enumeration<Option> enm = super.listOptions();
-    while (enm.hasMoreElements())
-      result.add(enm.nextElement());
+	/**
+	 * Returns an enumeration describing the available options.
+	 *
+	 * @return an enumeration of all the available options.
+	 */
+	@Override
+	public Enumeration<Option> listOptions() {
+		Vector<Option> result = new Vector<Option>();
 
-    result.addElement(new Option(
-      "\t" + stopwordsTipText() + "\n"
-      + "\t(default: none)",
-      "stopwords", 1, "-stopwords <classname + options>"));
+		Enumeration<Option> enm = super.listOptions();
+		while (enm.hasMoreElements()) {
+			result.add(enm.nextElement());
+		}
 
-    return result.elements();
-  }
+		result.addElement(new Option(
+				"\t" + stopwordsTipText() + "\n"
+						+ "\t(default: none)",
+				"stopwords", 1, "-stopwords <classname + options>"));
 
-  /**
-   * Parses a given list of options.
-   *
-   * @param options the list of options as an array of strings
-   * @throws Exception if an option is not supported
-   */
-  @Override
-  public void setOptions(String[] options) throws Exception {
-    String			tmpStr;
-    String[]			tmpOptions;
-    List<StopwordsHandler>	handlers;
+		return result.elements();
+	}
 
-    handlers = new ArrayList<StopwordsHandler>();
-    do {
-      tmpStr = Utils.getOption("stopwords", options);
-      if (!tmpStr.isEmpty()) {
-	tmpOptions    = Utils.splitOptions(tmpStr);
-	tmpStr        = tmpOptions[0];
-	tmpOptions[0] = "";
-	handlers.add((StopwordsHandler) Utils.forName(StopwordsHandler.class, tmpStr, tmpOptions));
-      }
-    }
-    while (!tmpStr.isEmpty());
-    
-    setStopwords(handlers.toArray(new StopwordsHandler[handlers.size()]));
+	/**
+	 * Parses a given list of options.
+	 *
+	 * @param options the list of options as an array of strings
+	 * @throws Exception if an option is not supported
+	 */
+	@Override
+	public void setOptions(String[] options) throws Exception {
+		String tmpStr;
+		String[] tmpOptions;
+		List<StopwordsHandler> handlers;
 
-    super.setOptions(options);
-  }
+		handlers = new ArrayList<StopwordsHandler>();
+		do {
+			tmpStr = Utils.getOption("stopwords", options);
+			if (!tmpStr.isEmpty()) {
+				tmpOptions = Utils.splitOptions(tmpStr);
+				tmpStr = tmpOptions[0];
+				tmpOptions[0] = "";
+				handlers.add((StopwordsHandler) Utils.forName(StopwordsHandler.class, tmpStr, tmpOptions));
+			}
+		}
+		while (!tmpStr.isEmpty());
 
-  /**
-   * Gets the current settings of the Classifier.
-   *
-   * @return an array of strings suitable for passing to setOptions
-   */
-  @Override
-  public String[] getOptions() {
-    List<String> options = new ArrayList<String>(Arrays.asList(super.getOptions()));
+		setStopwords(handlers.toArray(new StopwordsHandler[handlers.size()]));
 
-    for (StopwordsHandler handler: m_Stopwords) {
-      options.add("-stopwords");
-      options.add(Utils.toCommandLine(handler));
-    }
+		super.setOptions(options);
+	}
 
-    return options.toArray(new String[options.size()]);
-  }
+	/**
+	 * Gets the current settings of the Classifier.
+	 *
+	 * @return an array of strings suitable for passing to setOptions
+	 */
+	@Override
+	public String[] getOptions() {
+		List<String> options = new ArrayList<String>(Arrays.asList(super.getOptions()));
 
-  /**
-   * Sets the stopwords algorithms.
-   *
-   * @param value 	the algorithms
-   */
-  public void setStopwords(StopwordsHandler[] value) {
-    m_Stopwords = value;
-    reset();
-  }
+		for (StopwordsHandler handler : m_Stopwords) {
+			options.add("-stopwords");
+			options.add(Utils.toCommandLine(handler));
+		}
 
-  /**
-   * Returns the stopwords algorithms.
-   *
-   * @return 		the algorithms
-   */
-  public StopwordsHandler[] getStopwords() {
-    return m_Stopwords;
-  }
+		return options.toArray(new String[options.size()]);
+	}
 
-  /**
-   * Returns the tip text for this property.
-   *
-   * @return tip text for this property suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  public String stopwordsTipText() {
-    return "The stopwords algorithms to apply sequentially.";
-  }
-  
-  /**
-   * Returns true if the given string is a stop word.
-   *
-   * @param word the word to test
-   * @return true if the word is a stopword
-   */
-  @Override
-  protected boolean is(String word) {
-    boolean	result;
-    
-    result = false;
-    
-    for (StopwordsHandler handler: m_Stopwords) {
-      if (handler.isStopword(word)) {
-	result = true;
-	break;
-      }
-    }
-    
-    return result;
-  }
+	/**
+	 * Sets the stopwords algorithms.
+	 *
+	 * @param value    the algorithms
+	 */
+	public void setStopwords(StopwordsHandler[] value) {
+		m_Stopwords = value;
+		reset();
+	}
+
+	/**
+	 * Returns the stopwords algorithms.
+	 *
+	 * @return the algorithms
+	 */
+	public StopwordsHandler[] getStopwords() {
+		return m_Stopwords;
+	}
+
+	/**
+	 * Returns the tip text for this property.
+	 *
+	 * @return tip text for this property suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	public String stopwordsTipText() {
+		return "The stopwords algorithms to apply sequentially.";
+	}
+
+	/**
+	 * Returns true if the given string is a stop word.
+	 *
+	 * @param word the word to test
+	 * @return true if the word is a stopword
+	 */
+	@Override
+	protected boolean is(String word) {
+		boolean result;
+
+		result = false;
+
+		for (StopwordsHandler handler : m_Stopwords) {
+			if (handler.isStopword(word)) {
+				result = true;
+				break;
+			}
+		}
+
+		return result;
+	}
 }

@@ -33,20 +33,10 @@ import java.util.EventListener;
  */
 public interface TextListener extends EventListener {
 
-  /**
-   * Accept and process a text event
-   *
-   * @param e a <code>TextEvent</code> value
-   */
-  void acceptText(TextEvent e);
+	/**
+	 * Accept and process a text event
+	 *
+	 * @param e a <code>TextEvent</code> value
+	 */
+	void acceptText(TextEvent e);
 }
-
-
-
-
-
-
-
-
-
-

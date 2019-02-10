@@ -14,14 +14,13 @@
  */
 
 /*
- * Copyright (C) 2006 University of Waikato 
+ * Copyright (C) 2006 University of Waikato
  */
 
 package weka.associations;
 
-import weka.test.WekaTestSuite;
-
 import junit.framework.Test;
+import weka.test.WekaTestSuite;
 
 /**
  * Test class for all associators. Run from the command line with: <p/>
@@ -30,14 +29,14 @@ import junit.framework.Test;
  * @author FracPete (frapcete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class AllTests 
-  extends WekaTestSuite {
+public class AllTests
+		extends WekaTestSuite {
 
-  public static Test suite() {
-    return suite("weka.associations.Associator");
-  }
+	public static Test suite() {
+		return suite("weka.associations.Associator");
+	}
 
-  public static void main(String []args) {
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

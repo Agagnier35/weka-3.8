@@ -24,132 +24,129 @@ package weka.datagenerators;
 import java.io.Serializable;
 import java.util.Enumeration;
 
-import weka.core.Option;
-import weka.core.OptionHandler;
-import weka.core.RevisionHandler;
-import weka.core.Utils;
+import weka.core.*;
 
 /**
  * Ancestor to all ClusterDefinitions, i.e., subclasses that handle their own
  * parameters that the cluster generator only passes on.
- * 
- * 
+ *
+ *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
 
 public abstract class ClusterDefinition implements Serializable, OptionHandler,
-  RevisionHandler {
+		RevisionHandler {
 
-  /** for serialization */
-  private static final long serialVersionUID = -5950001207047429961L;
+	/** for serialization */
+	private static final long serialVersionUID = -5950001207047429961L;
 
-  /** the parent of the cluster */
-  protected ClusterGenerator m_Parent;
+	/** the parent of the cluster */
+	protected ClusterGenerator m_Parent;
 
-  /**
-   * initializes the cluster, without a parent cluster (necessary for GOE)
-   */
-  public ClusterDefinition() {
-    this(null);
-  }
+	/**
+	 * initializes the cluster, without a parent cluster (necessary for GOE)
+	 */
+	public ClusterDefinition() {
+		this(null);
+	}
 
-  /**
-   * initializes the cluster
-   * 
-   * @param parent the datagenerator this cluster belongs to
-   */
-  public ClusterDefinition(ClusterGenerator parent) {
-    m_Parent = parent;
+	/**
+	 * initializes the cluster
+	 *
+	 * @param parent the datagenerator this cluster belongs to
+	 */
+	public ClusterDefinition(ClusterGenerator parent) {
+		m_Parent = parent;
 
-    try {
-      setDefaults();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+		try {
+			setDefaults();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-  /**
-   * sets the default values
-   * 
-   * @throws Exception if setting of defaults fails
-   */
-  protected abstract void setDefaults() throws Exception;
+	/**
+	 * sets the default values
+	 *
+	 * @throws Exception if setting of defaults fails
+	 */
+	protected abstract void setDefaults() throws Exception;
 
-  /**
-   * Returns a string describing this data generator.
-   * 
-   * @return a description of the data generator suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  public String globalInfo() {
-    return "Contains informations about a certain cluster of a cluster generator.";
-  }
+	/**
+	 * Returns a string describing this data generator.
+	 *
+	 * @return a description of the data generator suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	public String globalInfo() {
+		return "Contains informations about a certain cluster of a cluster generator.";
+	}
 
-  /**
-   * Returns an enumeration describing the available options.
-   * 
-   * @return an enumeration of all the available options
-   */
-  @Override
-  public abstract Enumeration<Option> listOptions();
+	/**
+	 * Returns an enumeration describing the available options.
+	 *
+	 * @return an enumeration of all the available options
+	 */
+	@Override
+	public abstract Enumeration<Option> listOptions();
 
-  /**
-   * Parses a list of options for this object.
-   * <p/>
-   * 
-   * For list of valid options see class description.
-   * <p/>
-   * 
-   * @param options the list of options as an array of strings
-   * @throws Exception if an option is not supported
-   */
-  @Override
-  public abstract void setOptions(String[] options) throws Exception;
+	/**
+	 * Parses a list of options for this object.
+	 * <p/>
+	 *
+	 * For list of valid options see class description.
+	 * <p/>
+	 *
+	 * @param options the list of options as an array of strings
+	 * @throws Exception if an option is not supported
+	 */
+	@Override
+	public abstract void setOptions(String[] options) throws Exception;
 
-  /**
-   * Gets the current settings of the datagenerator BIRCHCluster.
-   * 
-   * @return an array of strings suitable for passing to setOptions
-   */
-  @Override
-  public abstract String[] getOptions();
+	/**
+	 * Gets the current settings of the datagenerator BIRCHCluster.
+	 *
+	 * @return an array of strings suitable for passing to setOptions
+	 */
+	@Override
+	public abstract String[] getOptions();
 
-  /**
-   * returns the parent datagenerator this cluster belongs to
-   * 
-   * @return the parent this cluster belongs to
-   */
-  public ClusterGenerator getParent() {
-    return m_Parent;
-  }
+	/**
+	 * returns the parent datagenerator this cluster belongs to
+	 *
+	 * @return the parent this cluster belongs to
+	 */
+	public ClusterGenerator getParent() {
+		return m_Parent;
+	}
 
-  /**
-   * sets the parent datagenerator this cluster belongs to
-   * 
-   * @param parent the parent datagenerator
-   */
-  public void setParent(ClusterGenerator parent) {
-    m_Parent = parent;
-  }
+	/**
+	 * sets the parent datagenerator this cluster belongs to
+	 *
+	 * @param parent the parent datagenerator
+	 */
+	public void setParent(ClusterGenerator parent) {
+		m_Parent = parent;
+	}
 
-  /**
-   * Returns the tip text for this property
-   * 
-   * @return tip text for this property suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  public String parentTipText() {
-    return "The cluster generator this object belongs to.";
-  }
+	/**
+	 * Returns the tip text for this property
+	 *
+	 * @return tip text for this property suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	public String parentTipText() {
+		return "The cluster generator this object belongs to.";
+	}
 
-  /**
-   * returns a string representation of the cluster
-   * 
-   * @return the cluster definition as string
-   */
-  @Override
-  public String toString() {
-    return this.getClass().getName() + ": " + Utils.joinOptions(getOptions());
-  }
+	/**
+	 * returns a string representation of the cluster
+	 *
+	 * @return the cluster definition as string
+	 */
+	@Override
+	public String toString() {
+		return this.getClass().getName() + ": " + Utils.joinOptions(getOptions());
+	}
 }

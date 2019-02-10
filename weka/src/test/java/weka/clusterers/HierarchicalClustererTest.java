@@ -19,9 +19,6 @@
 
 package weka.clusterers;
 
-import weka.clusterers.AbstractClustererTest;
-import weka.clusterers.Clusterer;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -33,22 +30,22 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class HierarchicalClustererTest
-  extends AbstractClustererTest {
+		extends AbstractClustererTest {
 
-  public HierarchicalClustererTest(String name) { 
-    super(name);  
-  }
+	public HierarchicalClustererTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default HierarchicalClusterer */
-  public Clusterer getClusterer() {
-    return new HierarchicalClusterer();
-  }
+	/** Creates a default HierarchicalClusterer */
+	public Clusterer getClusterer() {
+		return new HierarchicalClusterer();
+	}
 
-  public static Test suite() {
-    return new TestSuite(HierarchicalClustererTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(HierarchicalClustererTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

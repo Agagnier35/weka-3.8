@@ -14,19 +14,16 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.filters.unsupervised.attribute;
 
-import weka.core.Attribute;
-import weka.core.Instances;
-import weka.core.SelectedTag;
-import weka.filters.AbstractFilterTest;
-import weka.filters.Filter;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.core.*;
+import weka.filters.AbstractFilterTest;
+import weka.filters.Filter;
 
 /**
  * Tests RemoveType. Run from the command line with:<p>
@@ -36,66 +33,67 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class RemoveTypeTest extends AbstractFilterTest {
-  
-  public RemoveTypeTest(String name) { super(name);  }
 
-  /** Creates a default RemoveType */
-  public Filter getFilter() {
-    return new RemoveType();
-  }
+	public RemoveTypeTest(String name) {
+		super(name);
+	}
 
-  /** Creates a specialized RemoveType */
-  public Filter getFilter(int attType) {
-    
-    RemoveType af = new RemoveType();
-    try {
-      af.setAttributeType(new SelectedTag(attType,
-                                          RemoveType.TAGS_ATTRIBUTETYPE));
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Couldn't set up filter with attribute type: " + attType);
-    }
-    return af;
-  }
+	/** Creates a default RemoveType */
+	public Filter getFilter() {
+		return new RemoveType();
+	}
 
-  public void testNominalFiltering() {
-    m_Filter = getFilter(Attribute.NOMINAL);
-    Instances result = useFilter();
-    for (int i = 0; i < result.numAttributes(); i++) {
-      assertTrue(result.attribute(i).type() != Attribute.NOMINAL);
-    }
-  }
+	/** Creates a specialized RemoveType */
+	public Filter getFilter(int attType) {
 
-  public void testStringFiltering() {
-    m_Filter = getFilter(Attribute.STRING);
-    Instances result = useFilter();
-    for (int i = 0; i < result.numAttributes(); i++) {
-      assertTrue(result.attribute(i).type() != Attribute.STRING);
-    }
-  }
+		RemoveType af = new RemoveType();
+		try {
+			af.setAttributeType(new SelectedTag(attType,
+					RemoveType.TAGS_ATTRIBUTETYPE));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Couldn't set up filter with attribute type: " + attType);
+		}
+		return af;
+	}
 
-  public void testNumericFiltering() {
-    m_Filter = getFilter(Attribute.NUMERIC);
-    Instances result = useFilter();
-    for (int i = 0; i < result.numAttributes(); i++) {
-      assertTrue(result.attribute(i).type() != Attribute.NUMERIC);
-    }
-  }
+	public void testNominalFiltering() {
+		m_Filter = getFilter(Attribute.NOMINAL);
+		Instances result = useFilter();
+		for (int i = 0; i < result.numAttributes(); i++) {
+			assertTrue(result.attribute(i).type() != Attribute.NOMINAL);
+		}
+	}
 
-  public void testDateFiltering() {
-    m_Filter = getFilter(Attribute.DATE);
-    Instances result = useFilter();
-    for (int i = 0; i < result.numAttributes(); i++) {
-      assertTrue(result.attribute(i).type() != Attribute.DATE);
-    }
-  }
+	public void testStringFiltering() {
+		m_Filter = getFilter(Attribute.STRING);
+		Instances result = useFilter();
+		for (int i = 0; i < result.numAttributes(); i++) {
+			assertTrue(result.attribute(i).type() != Attribute.STRING);
+		}
+	}
 
-  public static Test suite() {
-    return new TestSuite(RemoveTypeTest.class);
-  }
+	public void testNumericFiltering() {
+		m_Filter = getFilter(Attribute.NUMERIC);
+		Instances result = useFilter();
+		for (int i = 0; i < result.numAttributes(); i++) {
+			assertTrue(result.attribute(i).type() != Attribute.NUMERIC);
+		}
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public void testDateFiltering() {
+		m_Filter = getFilter(Attribute.DATE);
+		Instances result = useFilter();
+		for (int i = 0; i < result.numAttributes(); i++) {
+			assertTrue(result.attribute(i).type() != Attribute.DATE);
+		}
+	}
 
+	public static Test suite() {
+		return new TestSuite(RemoveTypeTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

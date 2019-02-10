@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for RULE-FEATURE.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -32,46 +30,46 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum RULEFEATURE {
 
-    @XmlEnumValue("affinity")
-    AFFINITY("affinity"),
-    @XmlEnumValue("antecedent")
-    ANTECEDENT("antecedent"),
-    @XmlEnumValue("confidence")
-    CONFIDENCE("confidence"),
-    @XmlEnumValue("consequent")
-    CONSEQUENT("consequent"),
-    @XmlEnumValue("leverage")
-    LEVERAGE("leverage"),
-    @XmlEnumValue("lift")
-    LIFT("lift"),
-    @XmlEnumValue("rule")
-    RULE("rule"),
-    @XmlEnumValue("ruleId")
-    RULE_ID("ruleId"),
-    @XmlEnumValue("support")
-    SUPPORT("support");
-    private final String value;
+	@XmlEnumValue("affinity")
+	AFFINITY("affinity"),
+	@XmlEnumValue("antecedent")
+	ANTECEDENT("antecedent"),
+	@XmlEnumValue("confidence")
+	CONFIDENCE("confidence"),
+	@XmlEnumValue("consequent")
+	CONSEQUENT("consequent"),
+	@XmlEnumValue("leverage")
+	LEVERAGE("leverage"),
+	@XmlEnumValue("lift")
+	LIFT("lift"),
+	@XmlEnumValue("rule")
+	RULE("rule"),
+	@XmlEnumValue("ruleId")
+	RULE_ID("ruleId"),
+	@XmlEnumValue("support")
+	SUPPORT("support");
+	private final String value;
 
-    RULEFEATURE(String v) {
-        value = v;
-    }
+	RULEFEATURE(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static RULEFEATURE fromValue(String v) {
-        for (RULEFEATURE c: RULEFEATURE.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static RULEFEATURE fromValue(String v) {
+		for (RULEFEATURE c : RULEFEATURE.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

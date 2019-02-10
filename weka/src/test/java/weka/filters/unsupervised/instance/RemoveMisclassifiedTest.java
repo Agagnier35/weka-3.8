@@ -19,12 +19,11 @@
 
 package weka.filters.unsupervised.instance;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests RemoveMisclassified. Run from the command line with: <p/>
@@ -33,92 +32,95 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class RemoveMisclassifiedTest 
-  extends AbstractFilterTest {
-  
-  public RemoveMisclassifiedTest(String name) { 
-    super(name);  
-  }
+public class RemoveMisclassifiedTest
+		extends AbstractFilterTest {
 
-  /** Need to remove non-nominal attributes, set class index */
-  protected void setUp() throws Exception {
-    super.setUp();
+	public RemoveMisclassifiedTest(String name) {
+		super(name);
+	}
 
-    // class index
-    m_Instances.setClassIndex(1);
-    
-    // remove attributes that are not nominal/numeric
-    int i = 0;
-    while (i < m_Instances.numAttributes()) {
-      if (    !m_Instances.attribute(i).isNominal()
-           && !m_Instances.attribute(i).isNumeric() )
-        m_Instances.deleteAttributeAt(i);
-      else
-        i++;
-    }
-  }
-  
-  /** Creates a default RemoveMisclassified, suited for nominal class */
-  public Filter getFilter() {
-    return getFilter(true);
-  }
+	/** Need to remove non-nominal attributes, set class index */
+	protected void setUp() throws Exception {
+		super.setUp();
 
-  /**
-   * Creates a RemoveMisclassified, with either J48 (true) or M5P (false)
-   * as classifier
-   */
-  protected Filter getFilter(boolean nominal) {
-    RemoveMisclassified f = new RemoveMisclassified();
-    
-    // classifier
-    if (nominal)
-      f.setClassifier(new weka.classifiers.trees.J48());
-    else
-      f.setClassifier(new weka.classifiers.trees.M5P());
-    
-    // threshold
-    if (!nominal)
-      f.setThreshold(2.0);
-    
-    return f;
-  }
+		// class index
+		m_Instances.setClassIndex(1);
 
-  public void testNominal() {
-    m_Filter = getFilter(true);
-    m_Instances.setClassIndex(0);
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-  }
+		// remove attributes that are not nominal/numeric
+		int i = 0;
+		while (i < m_Instances.numAttributes()) {
+			if (!m_Instances.attribute(i).isNominal()
+					&& !m_Instances.attribute(i).isNumeric()) {
+				m_Instances.deleteAttributeAt(i);
+			} else {
+				i++;
+			}
+		}
+	}
 
-  public void testNumeric() {
-    m_Filter = getFilter(false);
-    m_Instances.setClassIndex(1);
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-  }
+	/** Creates a default RemoveMisclassified, suited for nominal class */
+	public Filter getFilter() {
+		return getFilter(true);
+	}
 
-  public void testInverting() {
-    // not inverted
-    m_Filter = getFilter();
-    m_Instances.setClassIndex(0);
-    Instances result = useFilter();
-    
-    // inverted
-    m_Filter = getFilter();
-    ((RemoveMisclassified) m_Filter).setInvert(true);
-    m_Instances.setClassIndex(0);
-    Instances resultInv = useFilter();
+	/**
+	 * Creates a RemoveMisclassified, with either J48 (true) or M5P (false)
+	 * as classifier
+	 */
+	protected Filter getFilter(boolean nominal) {
+		RemoveMisclassified f = new RemoveMisclassified();
 
-    assertEquals(
-        m_Instances.numInstances(), 
-        result.numInstances() + resultInv.numInstances());
-  }
+		// classifier
+		if (nominal) {
+			f.setClassifier(new weka.classifiers.trees.J48());
+		} else {
+			f.setClassifier(new weka.classifiers.trees.M5P());
+		}
 
-  public static Test suite() {
-    return new TestSuite(RemoveMisclassifiedTest.class);
-  }
+		// threshold
+		if (!nominal) {
+			f.setThreshold(2.0);
+		}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+		return f;
+	}
+
+	public void testNominal() {
+		m_Filter = getFilter(true);
+		m_Instances.setClassIndex(0);
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+	}
+
+	public void testNumeric() {
+		m_Filter = getFilter(false);
+		m_Instances.setClassIndex(1);
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+	}
+
+	public void testInverting() {
+		// not inverted
+		m_Filter = getFilter();
+		m_Instances.setClassIndex(0);
+		Instances result = useFilter();
+
+		// inverted
+		m_Filter = getFilter();
+		((RemoveMisclassified) m_Filter).setInvert(true);
+		m_Instances.setClassIndex(0);
+		Instances resultInv = useFilter();
+
+		assertEquals(
+				m_Instances.numInstances(),
+				result.numInstances() + resultInv.numInstances());
+	}
+
+	public static Test suite() {
+		return new TestSuite(RemoveMisclassifiedTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

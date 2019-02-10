@@ -21,12 +21,10 @@
 
 package weka.knowledgeflow;
 
+import java.io.*;
+
 import weka.core.WekaException;
 import weka.gui.Logger;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.Reader;
 
 /**
  * Interface to something that can load a Knowledge Flow
@@ -36,51 +34,51 @@ import java.io.Reader;
  */
 public interface FlowLoader {
 
-  /**
-   * Set a log to use
-   *
-   * @param log log to use
-   */
-  void setLog(Logger log);
+	/**
+	 * Set a log to use
+	 *
+	 * @param log log to use
+	 */
+	void setLog(Logger log);
 
-  /**
-   * Get the extension of the Knowledge Flow file format handled by this loader
-   *
-   * @return the flow file extension
-   */
-  String getFlowFileExtension();
+	/**
+	 * Get the extension of the Knowledge Flow file format handled by this loader
+	 *
+	 * @return the flow file extension
+	 */
+	String getFlowFileExtension();
 
-  /**
-   * Get a description of the flow file format handled by this loader
-   *
-   * @return a description of the file format handles
-   */
-  String getFlowFileExtensionDescription();
+	/**
+	 * Get a description of the flow file format handled by this loader
+	 *
+	 * @return a description of the file format handles
+	 */
+	String getFlowFileExtensionDescription();
 
-  /**
-   * Load a flow from the supplied file
-   *
-   * @param flowFile the file to load from
-   * @return the loaded Flow
-   * @throws WekaException if a problem occurs
-   */
-  Flow readFlow(File flowFile) throws WekaException;
+	/**
+	 * Load a flow from the supplied file
+	 *
+	 * @param flowFile the file to load from
+	 * @return the loaded Flow
+	 * @throws WekaException if a problem occurs
+	 */
+	Flow readFlow(File flowFile) throws WekaException;
 
-  /**
-   * Load a flow from the supplied input stream
-   *
-   * @param is the input stream to load from
-   * @return the loaded Flow
-   * @throws WekaException if a problem occurs
-   */
-  Flow readFlow(InputStream is) throws WekaException;
+	/**
+	 * Load a flow from the supplied input stream
+	 *
+	 * @param is the input stream to load from
+	 * @return the loaded Flow
+	 * @throws WekaException if a problem occurs
+	 */
+	Flow readFlow(InputStream is) throws WekaException;
 
-  /**
-   * Load a flow from the supplied reader
-   *
-   * @param r the reader to load from
-   * @return the loaded Flow
-   * @throws WekaException if a problem occurs
-   */
-  Flow readFlow(Reader r) throws WekaException;
+	/**
+	 * Load a flow from the supplied reader
+	 *
+	 * @param r the reader to load from
+	 * @return the loaded Flow
+	 * @throws WekaException if a problem occurs
+	 */
+	Flow readFlow(Reader r) throws WekaException;
 }

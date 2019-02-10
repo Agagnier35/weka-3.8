@@ -5,23 +5,17 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for TimeException element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="TimeException">
  *   &lt;complexType>
@@ -37,93 +31,92 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "array"
+		"array"
 })
 @XmlRootElement(name = "TimeException")
 public class TimeException {
 
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
-    protected ArrayType array;
-    @XmlAttribute
-    protected BigInteger count;
-    @XmlAttribute
-    protected TIMEEXCEPTIONTYPE type;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
+	protected ArrayType array;
+	@XmlAttribute
+	protected BigInteger count;
+	@XmlAttribute
+	protected TIMEEXCEPTIONTYPE type;
 
-    /**
-     * Gets the value of the array property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArray() {
-        return array;
-    }
+	/**
+	 * Gets the value of the array property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public ArrayType getArray() {
+		return array;
+	}
 
-    /**
-     * Sets the value of the array property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArray(ArrayType value) {
-        this.array = value;
-    }
+	/**
+	 * Sets the value of the array property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public void setArray(ArrayType value) {
+		this.array = value;
+	}
 
-    /**
-     * Gets the value of the count property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getCount() {
-        return count;
-    }
+	/**
+	 * Gets the value of the count property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getCount() {
+		return count;
+	}
 
-    /**
-     * Sets the value of the count property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCount(BigInteger value) {
-        this.count = value;
-    }
+	/**
+	 * Sets the value of the count property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setCount(BigInteger value) {
+		this.count = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TIMEEXCEPTIONTYPE }
-     *     
-     */
-    public TIMEEXCEPTIONTYPE getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link TIMEEXCEPTIONTYPE }
+	 *
+	 */
+	public TIMEEXCEPTIONTYPE getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TIMEEXCEPTIONTYPE }
-     *     
-     */
-    public void setType(TIMEEXCEPTIONTYPE value) {
-        this.type = value;
-    }
-
+	/**
+	 * Sets the value of the type property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link TIMEEXCEPTIONTYPE }
+	 *
+	 */
+	public void setType(TIMEEXCEPTIONTYPE value) {
+		this.type = value;
+	}
 }

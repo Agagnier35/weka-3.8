@@ -10,9 +10,7 @@
 	<!-- Suppress method naming under test -->
 	<suppress checks="MethodName" files=".*[/\\]test[/\\].*"/>
 
-	<!-- Temporary (expires 31/06/2018): disable checks for un-formatted projects -->
-	<suppress checks="Translation" files=".*messages_es.properties"/>
-    <suppress checks=".*" files=".*[/\\]gitconfig[/\\].*"/>
-
 	<suppress checks="MethodName" files=".*Test.java"/>
+	<suppress checks="CommentsIndentation" files="."/>
+	<suppress checks="." files="weka[/\\]core[/\\]pmml[/\\]jaxbbindings[/\\]"/>
 </suppressions>

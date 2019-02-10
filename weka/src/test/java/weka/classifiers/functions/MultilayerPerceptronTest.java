@@ -14,16 +14,15 @@
  */
 
 /*
- * Copyright 2001 Malcolm Ware. 
+ * Copyright 2001 Malcolm Ware.
  */
 
 package weka.classifiers.functions;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests NeuralNetwork. Run from the command line with:<p>
@@ -34,20 +33,20 @@ import junit.framework.TestSuite;
  */
 public class MultilayerPerceptronTest extends AbstractClassifierTest {
 
+	public MultilayerPerceptronTest(String name) {
+		super(name);
+	}
 
-  public MultilayerPerceptronTest(String name) { super(name);  }
+	/** Creates a default ThresholdSelector */
+	public Classifier getClassifier() {
+		return new MultilayerPerceptron();
+	}
 
-  /** Creates a default ThresholdSelector */
-  public Classifier getClassifier() {
-    return new MultilayerPerceptron();
-  }
+	public static Test suite() {
+		return new TestSuite(MultilayerPerceptronTest.class);
+	}
 
-  public static Test suite() {
-    return new TestSuite(MultilayerPerceptronTest.class);
-  }
-
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

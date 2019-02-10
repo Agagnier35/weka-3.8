@@ -21,13 +21,9 @@
 
 package weka.classifiers;
 
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.*;
 
-import weka.core.Option;
-import weka.core.Randomizable;
-import weka.core.Utils;
+import weka.core.*;
 
 /**
  * Abstract utility class for handling settings common to randomizable
@@ -37,105 +33,105 @@ import weka.core.Utils;
  * @version $Revision$
  */
 public abstract class RandomizableClassifier
-  extends AbstractClassifier implements Randomizable {
+		extends AbstractClassifier implements Randomizable {
 
-  /** for serialization */
-  private static final long serialVersionUID = -8816375798262351903L;
+	/** for serialization */
+	private static final long serialVersionUID = -8816375798262351903L;
 
-  /** The random number seed. */
-  protected int m_Seed = 1;
+	/** The random number seed. */
+	protected int m_Seed = 1;
 
-  /**
-   * Returns an enumeration describing the available options.
-   *
-   * @return an enumeration of all the available options.
-   */
-  public Enumeration<Option> listOptions() {
+	/**
+	 * Returns an enumeration describing the available options.
+	 *
+	 * @return an enumeration of all the available options.
+	 */
+	public Enumeration<Option> listOptions() {
 
-    Vector<Option> newVector = new Vector<Option>(2);
+		Vector<Option> newVector = new Vector<Option>(2);
 
-    newVector.addElement(new Option(
-          "\tRandom number seed.\n"
-          + "\t(default 1)",
-          "S", 1, "-S <num>"));
+		newVector.addElement(new Option(
+				"\tRandom number seed.\n"
+						+ "\t(default 1)",
+				"S", 1, "-S <num>"));
 
-    newVector.addAll(Collections.list(super.listOptions()));
-    
-    return newVector.elements();
-  }
+		newVector.addAll(Collections.list(super.listOptions()));
 
-  /**
-   * Parses a given list of options. Valid options are:<p>
-   *
-   * -W classname <br>
-   * Specify the full class name of the base learner.<p>
-   *
-   * -I num <br>
-   * Set the number of iterations (default 10). <p>
-   *
-   * -S num <br>
-   * Set the random number seed (default 1). <p>
-   *
-   * Options after -- are passed to the designated classifier.<p>
-   *
-   * @param options the list of options as an array of strings
-   * @exception Exception if an option is not supported
-   */
-  public void setOptions(String[] options) throws Exception {
+		return newVector.elements();
+	}
 
-    String seed = Utils.getOption('S', options);
-    if (seed.length() != 0) {
-      setSeed(Integer.parseInt(seed));
-    } else {
-      setSeed(1);
-    }
+	/**
+	 * Parses a given list of options. Valid options are:<p>
+	 *
+	 * -W classname <br>
+	 * Specify the full class name of the base learner.<p>
+	 *
+	 * -I num <br>
+	 * Set the number of iterations (default 10). <p>
+	 *
+	 * -S num <br>
+	 * Set the random number seed (default 1). <p>
+	 *
+	 * Options after -- are passed to the designated classifier.<p>
+	 *
+	 * @param options the list of options as an array of strings
+	 * @exception Exception if an option is not supported
+	 */
+	public void setOptions(String[] options) throws Exception {
 
-    super.setOptions(options);
-  }
+		String seed = Utils.getOption('S', options);
+		if (seed.length() != 0) {
+			setSeed(Integer.parseInt(seed));
+		} else {
+			setSeed(1);
+		}
 
-  /**
-   * Gets the current settings of the classifier.
-   *
-   * @return an array of strings suitable for passing to setOptions
-   */
-  public String [] getOptions() {
+		super.setOptions(options);
+	}
 
-    Vector<String> options = new Vector<String>();
+	/**
+	 * Gets the current settings of the classifier.
+	 *
+	 * @return an array of strings suitable for passing to setOptions
+	 */
+	public String[] getOptions() {
 
-    options.add("-S");
-    options.add("" + getSeed());
+		Vector<String> options = new Vector<String>();
 
-    Collections.addAll(options, super.getOptions());
+		options.add("-S");
+		options.add("" + getSeed());
 
-    return options.toArray(new String[0]);
-  }
+		Collections.addAll(options, super.getOptions());
 
-  /**
-   * Returns the tip text for this property
-   * @return tip text for this property suitable for
-   * displaying in the explorer/experimenter gui
-   */
-  public String seedTipText() {
-    return "The random number seed to be used.";
-  }
+		return options.toArray(new String[0]);
+	}
 
-  /**
-   * Set the seed for random number generation.
-   *
-   * @param seed the seed
-   */
-  public void setSeed(int seed) {
+	/**
+	 * Returns the tip text for this property
+	 * @return tip text for this property suitable for
+	 * displaying in the explorer/experimenter gui
+	 */
+	public String seedTipText() {
+		return "The random number seed to be used.";
+	}
 
-    m_Seed = seed;
-  }
+	/**
+	 * Set the seed for random number generation.
+	 *
+	 * @param seed the seed
+	 */
+	public void setSeed(int seed) {
 
-  /**
-   * Gets the seed for the random number generations
-   *
-   * @return the seed for the random number generation
-   */
-  public int getSeed() {
+		m_Seed = seed;
+	}
 
-    return m_Seed;
-  }
+	/**
+	 * Gets the seed for the random number generations
+	 *
+	 * @return the seed for the random number generation
+	 */
+	public int getSeed() {
+
+		return m_Seed;
+	}
 }

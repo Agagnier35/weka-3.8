@@ -32,11 +32,11 @@ import java.util.EventListener;
  * @see EventListener
  */
 public interface BatchClassifierListener extends EventListener {
-  
-  /**
-   * Accept a BatchClassifierEvent
-   *
-   * @param e a <code>BatchClassifierEvent</code> value
-   */
-  void acceptClassifier(BatchClassifierEvent e);
+
+	/**
+	 * Accept a BatchClassifierEvent
+	 *
+	 * @param e a <code>BatchClassifierEvent</code> value
+	 */
+	void acceptClassifier(BatchClassifierEvent e);
 }

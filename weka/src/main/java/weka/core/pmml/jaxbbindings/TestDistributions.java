@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for TestDistributions element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="TestDistributions">
  *   &lt;complexType>
@@ -45,264 +39,263 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "baseline",
-    "alternate",
-    "extension"
+		"baseline",
+		"alternate",
+		"extension"
 })
 @XmlRootElement(name = "TestDistributions")
 public class TestDistributions {
 
-    @XmlElement(name = "Baseline", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected Baseline baseline;
-    @XmlElement(name = "Alternate", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Alternate alternate;
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlAttribute(required = true)
-    protected String field;
-    @XmlAttribute
-    protected String normalizationScheme;
-    @XmlAttribute
-    protected Double resetValue;
-    @XmlAttribute(required = true)
-    protected BASELINETESTSTATISTIC testStatistic;
-    @XmlAttribute
-    protected String weightField;
-    @XmlAttribute
-    protected BigInteger windowSize;
+	@XmlElement(name = "Baseline", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected Baseline baseline;
+	@XmlElement(name = "Alternate", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Alternate alternate;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlAttribute(required = true)
+	protected String field;
+	@XmlAttribute
+	protected String normalizationScheme;
+	@XmlAttribute
+	protected Double resetValue;
+	@XmlAttribute(required = true)
+	protected BASELINETESTSTATISTIC testStatistic;
+	@XmlAttribute
+	protected String weightField;
+	@XmlAttribute
+	protected BigInteger windowSize;
 
-    /**
-     * Gets the value of the baseline property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Baseline }
-     *     
-     */
-    public Baseline getBaseline() {
-        return baseline;
-    }
+	/**
+	 * Gets the value of the baseline property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Baseline }
+	 *
+	 */
+	public Baseline getBaseline() {
+		return baseline;
+	}
 
-    /**
-     * Sets the value of the baseline property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Baseline }
-     *     
-     */
-    public void setBaseline(Baseline value) {
-        this.baseline = value;
-    }
+	/**
+	 * Sets the value of the baseline property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Baseline }
+	 *
+	 */
+	public void setBaseline(Baseline value) {
+		this.baseline = value;
+	}
 
-    /**
-     * Gets the value of the alternate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Alternate }
-     *     
-     */
-    public Alternate getAlternate() {
-        return alternate;
-    }
+	/**
+	 * Gets the value of the alternate property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Alternate }
+	 *
+	 */
+	public Alternate getAlternate() {
+		return alternate;
+	}
 
-    /**
-     * Sets the value of the alternate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Alternate }
-     *     
-     */
-    public void setAlternate(Alternate value) {
-        this.alternate = value;
-    }
+	/**
+	 * Sets the value of the alternate property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Alternate }
+	 *
+	 */
+	public void setAlternate(Alternate value) {
+		this.alternate = value;
+	}
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the field property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getField() {
-        return field;
-    }
+	/**
+	 * Gets the value of the field property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getField() {
+		return field;
+	}
 
-    /**
-     * Sets the value of the field property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setField(String value) {
-        this.field = value;
-    }
+	/**
+	 * Sets the value of the field property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setField(String value) {
+		this.field = value;
+	}
 
-    /**
-     * Gets the value of the normalizationScheme property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNormalizationScheme() {
-        return normalizationScheme;
-    }
+	/**
+	 * Gets the value of the normalizationScheme property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getNormalizationScheme() {
+		return normalizationScheme;
+	}
 
-    /**
-     * Sets the value of the normalizationScheme property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNormalizationScheme(String value) {
-        this.normalizationScheme = value;
-    }
+	/**
+	 * Sets the value of the normalizationScheme property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setNormalizationScheme(String value) {
+		this.normalizationScheme = value;
+	}
 
-    /**
-     * Gets the value of the resetValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public double getResetValue() {
-        if (resetValue == null) {
-            return  0.0D;
-        } else {
-            return resetValue;
-        }
-    }
+	/**
+	 * Gets the value of the resetValue property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public double getResetValue() {
+		if (resetValue == null) {
+			return 0.0D;
+		} else {
+			return resetValue;
+		}
+	}
 
-    /**
-     * Sets the value of the resetValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setResetValue(Double value) {
-        this.resetValue = value;
-    }
+	/**
+	 * Sets the value of the resetValue property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setResetValue(Double value) {
+		this.resetValue = value;
+	}
 
-    /**
-     * Gets the value of the testStatistic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BASELINETESTSTATISTIC }
-     *     
-     */
-    public BASELINETESTSTATISTIC getTestStatistic() {
-        return testStatistic;
-    }
+	/**
+	 * Gets the value of the testStatistic property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BASELINETESTSTATISTIC }
+	 *
+	 */
+	public BASELINETESTSTATISTIC getTestStatistic() {
+		return testStatistic;
+	}
 
-    /**
-     * Sets the value of the testStatistic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BASELINETESTSTATISTIC }
-     *     
-     */
-    public void setTestStatistic(BASELINETESTSTATISTIC value) {
-        this.testStatistic = value;
-    }
+	/**
+	 * Sets the value of the testStatistic property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BASELINETESTSTATISTIC }
+	 *
+	 */
+	public void setTestStatistic(BASELINETESTSTATISTIC value) {
+		this.testStatistic = value;
+	}
 
-    /**
-     * Gets the value of the weightField property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWeightField() {
-        return weightField;
-    }
+	/**
+	 * Gets the value of the weightField property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getWeightField() {
+		return weightField;
+	}
 
-    /**
-     * Sets the value of the weightField property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWeightField(String value) {
-        this.weightField = value;
-    }
+	/**
+	 * Sets the value of the weightField property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setWeightField(String value) {
+		this.weightField = value;
+	}
 
-    /**
-     * Gets the value of the windowSize property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getWindowSize() {
-        if (windowSize == null) {
-            return new BigInteger("0");
-        } else {
-            return windowSize;
-        }
-    }
+	/**
+	 * Gets the value of the windowSize property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getWindowSize() {
+		if (windowSize == null) {
+			return new BigInteger("0");
+		} else {
+			return windowSize;
+		}
+	}
 
-    /**
-     * Sets the value of the windowSize property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setWindowSize(BigInteger value) {
-        this.windowSize = value;
-    }
-
+	/**
+	 * Sets the value of the windowSize property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setWindowSize(BigInteger value) {
+		this.windowSize = value;
+	}
 }

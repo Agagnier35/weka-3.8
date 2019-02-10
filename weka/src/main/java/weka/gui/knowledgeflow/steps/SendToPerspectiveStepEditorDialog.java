@@ -21,17 +21,16 @@
 
 package weka.gui.knowledgeflow.steps;
 
+import java.awt.BorderLayout;
+import java.util.List;
+
+import javax.swing.*;
+
 import weka.core.WekaException;
 import weka.gui.knowledgeflow.GOEStepEditorDialog;
 import weka.gui.knowledgeflow.GetPerspectiveNamesGraphicalCommand;
 import weka.knowledgeflow.steps.SendToPerspective;
 import weka.knowledgeflow.steps.Step;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.util.List;
 
 /**
  * Dialog for the SendToPerspective step
@@ -41,52 +40,51 @@ import java.util.List;
  */
 public class SendToPerspectiveStepEditorDialog extends GOEStepEditorDialog {
 
-  private static final long serialVersionUID = -8282588308511754826L;
+	private static final long serialVersionUID = -8282588308511754826L;
 
-  /** Combo box for selecting the perspective to send to */
-  protected JComboBox<String> m_perspectivesCombo = new JComboBox<>();
+	/** Combo box for selecting the perspective to send to */
+	protected JComboBox<String> m_perspectivesCombo = new JComboBox<>();
 
-  /**
-   * Sets the step to edit and configures the dialog
-   *
-   * @param step the step to edit
-   */
-  @Override
-  public void setStepToEdit(Step step) {
-    copyOriginal(step);
+	/**
+	 * Sets the step to edit and configures the dialog
+	 *
+	 * @param step the step to edit
+	 */
+	@Override
+	public void setStepToEdit(Step step) {
+		copyOriginal(step);
 
-    try {
-      List<String> visiblePerspectives =
-        getGraphicalEnvironmentCommandHandler().performCommand(
-          GetPerspectiveNamesGraphicalCommand.GET_PERSPECTIVE_NAMES_KEY);
-      for (String s : visiblePerspectives) {
-        m_perspectivesCombo.addItem(s);
-      }
+		try {
+			List<String> visiblePerspectives =
+					getGraphicalEnvironmentCommandHandler().performCommand(
+							GetPerspectiveNamesGraphicalCommand.GET_PERSPECTIVE_NAMES_KEY);
+			for (String s : visiblePerspectives) {
+				m_perspectivesCombo.addItem(s);
+			}
+		} catch (WekaException ex) {
+			showErrorDialog(ex);
+		}
 
-    } catch (WekaException ex) {
-      showErrorDialog(ex);
-    }
+		String current = ((SendToPerspective) getStepToEdit()).getPerspectiveName();
+		m_perspectivesCombo.setSelectedItem(current);
 
-    String current = ((SendToPerspective) getStepToEdit()).getPerspectiveName();
-    m_perspectivesCombo.setSelectedItem(current);
+		JPanel p = new JPanel(new BorderLayout());
+		p.setBorder(BorderFactory
+				.createTitledBorder("Choose perspective to send to"));
+		p.add(m_perspectivesCombo, BorderLayout.NORTH);
 
-    JPanel p = new JPanel(new BorderLayout());
-    p.setBorder(BorderFactory
-      .createTitledBorder("Choose perspective to send to"));
-    p.add(m_perspectivesCombo, BorderLayout.NORTH);
+		createAboutPanel(step);
+		add(p, BorderLayout.CENTER);
+	}
 
-    createAboutPanel(step);
-    add(p, BorderLayout.CENTER);
-  }
-
-  /**
-   * Handle the OK button
-   */
-  @Override
-  public void okPressed() {
-    String selectedPerspective =
-      m_perspectivesCombo.getSelectedItem().toString();
-    ((SendToPerspective) getStepToEdit())
-      .setPerspectiveName(selectedPerspective);
-  }
+	/**
+	 * Handle the OK button
+	 */
+	@Override
+	public void okPressed() {
+		String selectedPerspective =
+				m_perspectivesCombo.getSelectedItem().toString();
+		((SendToPerspective) getStepToEdit())
+				.setPerspectiveName(selectedPerspective);
+	}
 }

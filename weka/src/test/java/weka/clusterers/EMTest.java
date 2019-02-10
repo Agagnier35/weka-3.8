@@ -19,9 +19,6 @@
 
 package weka.clusterers;
 
-import weka.clusterers.AbstractClustererTest;
-import weka.clusterers.Clusterer;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -32,23 +29,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class EMTest 
-  extends AbstractClustererTest {
+public class EMTest
+		extends AbstractClustererTest {
 
-  public EMTest(String name) { 
-    super(name);  
-  }
+	public EMTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default EM */
-  public Clusterer getClusterer() {
-    return new EM();
-  }
+	/** Creates a default EM */
+	public Clusterer getClusterer() {
+		return new EM();
+	}
 
-  public static Test suite() {
-    return new TestSuite(EMTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(EMTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

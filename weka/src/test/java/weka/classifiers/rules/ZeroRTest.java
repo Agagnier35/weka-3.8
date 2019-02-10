@@ -14,16 +14,15 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.classifiers.rules;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests ZeroR. Run from the command line with:<p>
@@ -33,20 +32,21 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class ZeroRTest extends AbstractClassifierTest {
-  
-  public ZeroRTest(String name) { super(name);  }
 
-  /** Creates a default ZeroR */
-  public Classifier getClassifier() {
-    return new ZeroR();
-  }
+	public ZeroRTest(String name) {
+		super(name);
+	}
 
-  public static Test suite() {
-    return new TestSuite(ZeroRTest.class);
-  }
+	/** Creates a default ZeroR */
+	public Classifier getClassifier() {
+		return new ZeroR();
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static Test suite() {
+		return new TestSuite(ZeroRTest.class);
+	}
 
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

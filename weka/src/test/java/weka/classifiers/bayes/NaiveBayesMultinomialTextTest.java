@@ -19,12 +19,11 @@
 
 package weka.classifiers.bayes;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.classifiers.AbstractClassifierTest;
 import weka.classifiers.Classifier;
 import weka.core.CheckScheme.PostProcessor;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests NaiveBayesMultinomialText. Run from the command line with: <p/>
@@ -33,33 +32,33 @@ import junit.framework.TestSuite;
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  */
-public class NaiveBayesMultinomialTextTest 
-  extends AbstractClassifierTest {
+public class NaiveBayesMultinomialTextTest
+		extends AbstractClassifierTest {
 
-  public NaiveBayesMultinomialTextTest(String name) { 
-    super(name);  
-  }
+	public NaiveBayesMultinomialTextTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default NaiveBayesMultinomialText */
-  public Classifier getClassifier() {
-    return new NaiveBayesMultinomialText();
-  }
+	/** Creates a default NaiveBayesMultinomialText */
+	public Classifier getClassifier() {
+		return new NaiveBayesMultinomialText();
+	}
 
-  /**
-   * returns a custom PostProcessor for the CheckClassifier datasets..
-   * 
-   * @return		a custom PostProcessor
-   * @see AbsPostProcessor
-   */
-  protected PostProcessor getPostProcessor() {
-    return new AbsPostProcessor();
-  }
+	/**
+	 * returns a custom PostProcessor for the CheckClassifier datasets..
+	 *
+	 * @return a custom PostProcessor
+	 * @see AbsPostProcessor
+	 */
+	protected PostProcessor getPostProcessor() {
+		return new AbsPostProcessor();
+	}
 
-  public static Test suite() {
-    return new TestSuite(NaiveBayesMultinomialTextTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(NaiveBayesMultinomialTextTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

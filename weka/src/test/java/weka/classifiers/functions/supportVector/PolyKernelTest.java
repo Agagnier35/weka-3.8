@@ -19,9 +19,6 @@
 
 package weka.classifiers.functions.supportVector;
 
-import weka.classifiers.functions.supportVector.AbstractKernelTest;
-import weka.classifiers.functions.supportVector.Kernel;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -32,23 +29,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class PolyKernelTest 
-  extends AbstractKernelTest {
+public class PolyKernelTest
+		extends AbstractKernelTest {
 
-  public PolyKernelTest(String name) { 
-    super(name);  
-  }
+	public PolyKernelTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default PolyKernel */
-  public Kernel getKernel() {
-    return new PolyKernel();
-  }
+	/** Creates a default PolyKernel */
+	public Kernel getKernel() {
+		return new PolyKernel();
+	}
 
-  public static Test suite() {
-    return new TestSuite(PolyKernelTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(PolyKernelTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

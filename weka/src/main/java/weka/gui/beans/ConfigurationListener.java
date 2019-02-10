@@ -31,17 +31,17 @@ package weka.gui.beans;
  * BeanCommon and store/delete reference(s) to ConfigurationProducers 
  * when connectionNotification() and disconnectionNotification() are
  * called on them.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}org)
  * @version $Revision $
  */
 public interface ConfigurationListener {
-  
-  /**
-   * Implementers do not have to do anything in this
-   * method (see the above documentation).
-   * 
-   * @param e a ConfigurationEvent
-   */
-  void acceptConfiguration(ConfigurationEvent e);
+
+	/**
+	 * Implementers do not have to do anything in this
+	 * method (see the above documentation).
+	 *
+	 * @param e a ConfigurationEvent
+	 */
+	void acceptConfiguration(ConfigurationEvent e);
 }

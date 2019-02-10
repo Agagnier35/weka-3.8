@@ -23,19 +23,14 @@ package weka.datagenerators;
 
 import java.io.Serializable;
 
-import weka.core.Attribute;
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.core.RevisionHandler;
-import weka.core.RevisionUtils;
-import weka.core.Utils;
+import weka.core.*;
 
 /**
  * Class to represent a test. <br/>
  * <br/>
  * The string representation of the test can be supplied in standard notation or
  * for a subset of types of attributes in Prolog notation.<br/>
- * 
+ *
  * Following examples for all possible tests that can be represented by this
  * class, given in standard notation.<br/>
  * <br/>
@@ -66,176 +61,176 @@ import weka.core.Utils;
  * <br/>
  * (Other nominal attributes are not supported by the Prolog notation.)<br/>
  * <br/>
- * 
+ *
  * @author Gabi Schmidberger (gabi@cs.waikato.ac.nz)
  * @version $Revision$
  **/
 
 public class Test implements Serializable, RevisionHandler {
 
-  /** for serialization */
-  static final long serialVersionUID = -8890645875887157782L;
+	/** for serialization */
+	static final long serialVersionUID = -8890645875887157782L;
 
-  /** the attribute index */
-  int m_AttIndex;
+	/** the attribute index */
+	int m_AttIndex;
 
-  /** the split */
-  double m_Split;
+	/** the split */
+	double m_Split;
 
-  /** whether to negate the test */
-  boolean m_Not;
+	/** whether to negate the test */
+	boolean m_Not;
 
-  /** the dataset */
-  Instances m_Dataset;
+	/** the dataset */
+	Instances m_Dataset;
 
-  /**
-   * Constructor
-   * 
-   * @param i the attribute index
-   * @param s the split
-   * @param dataset the dataset
-   */
-  public Test(int i, double s, Instances dataset) {
-    m_AttIndex = i;
-    m_Split = s;
-    m_Dataset = dataset;
+	/**
+	 * Constructor
+	 *
+	 * @param i the attribute index
+	 * @param s the split
+	 * @param dataset the dataset
+	 */
+	public Test(int i, double s, Instances dataset) {
+		m_AttIndex = i;
+		m_Split = s;
+		m_Dataset = dataset;
 
-    m_Not = false;
-  }
+		m_Not = false;
+	}
 
-  /**
-   * Constructor
-   * 
-   * @param i the attribute index
-   * @param s the split
-   * @param dataset the dataset
-   * @param n whether to negate the test
-   */
-  public Test(int i, double s, Instances dataset, boolean n) {
-    m_AttIndex = i;
-    m_Split = s;
-    m_Dataset = dataset;
-    m_Not = n;
-  }
+	/**
+	 * Constructor
+	 *
+	 * @param i the attribute index
+	 * @param s the split
+	 * @param dataset the dataset
+	 * @param n whether to negate the test
+	 */
+	public Test(int i, double s, Instances dataset, boolean n) {
+		m_AttIndex = i;
+		m_Split = s;
+		m_Dataset = dataset;
+		m_Not = n;
+	}
 
-  /**
-   * Negates the test.
-   * 
-   * @return the test itself negated
-   */
-  public Test getNot() { // returns a modified copy
-    return new Test(m_AttIndex, m_Split, m_Dataset, m_Not ? false : true);
-  }
+	/**
+	 * Negates the test.
+	 *
+	 * @return the test itself negated
+	 */
+	public Test getNot() { // returns a modified copy
+		return new Test(m_AttIndex, m_Split, m_Dataset, m_Not ? false : true);
+	}
 
-  /**
-   * Determines whether an instance passes the test.
-   * 
-   * @param inst the instance
-   * @return true if the instance satisfies the test, false otherwise
-   * @throws Exception if something goes wrong
-   */
-  public boolean passesTest(Instance inst) throws Exception {
-    if (inst.isMissing(m_AttIndex)) {
-      return false; // missing values fail
-    }
+	/**
+	 * Determines whether an instance passes the test.
+	 *
+	 * @param inst the instance
+	 * @return true if the instance satisfies the test, false otherwise
+	 * @throws Exception if something goes wrong
+	 */
+	public boolean passesTest(Instance inst) throws Exception {
+		if (inst.isMissing(m_AttIndex)) {
+			return false; // missing values fail
+		}
 
-    boolean isNominal = inst.attribute(m_AttIndex).isNominal();
-    double attribVal = inst.value(m_AttIndex);
-    if (!m_Not) {
-      if (isNominal) {
-        if (((int) attribVal) != ((int) m_Split)) {
-          return false;
-        }
-      } else if (attribVal >= m_Split) {
-        return false;
-      }
-    } else {
-      if (isNominal) {
-        if (((int) attribVal) == ((int) m_Split)) {
-          return false;
-        }
-      } else if (attribVal < m_Split) {
-        return false;
-      }
-    }
-    return true;
-  }
+		boolean isNominal = inst.attribute(m_AttIndex).isNominal();
+		double attribVal = inst.value(m_AttIndex);
+		if (!m_Not) {
+			if (isNominal) {
+				if (((int) attribVal) != ((int) m_Split)) {
+					return false;
+				}
+			} else if (attribVal >= m_Split) {
+				return false;
+			}
+		} else {
+			if (isNominal) {
+				if (((int) attribVal) == ((int) m_Split)) {
+					return false;
+				}
+			} else if (attribVal < m_Split) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-  /**
-   * Returns the test represented by a string.
-   * 
-   * @return a string representing the test
-   */
-  @Override
-  public String toString() {
-    return (m_Dataset.attribute(m_AttIndex).name() + " " + testComparisonString());
-  }
+	/**
+	 * Returns the test represented by a string.
+	 *
+	 * @return a string representing the test
+	 */
+	@Override
+	public String toString() {
+		return (m_Dataset.attribute(m_AttIndex).name() + " " + testComparisonString());
+	}
 
-  /**
-   * Returns the test represented by a string in Prolog notation.
-   * 
-   * @return a string representing the test in Prolog notation
-   */
-  public String toPrologString() {
-    Attribute att = m_Dataset.attribute(m_AttIndex);
-    StringBuffer str = new StringBuffer();
-    String attName = m_Dataset.attribute(m_AttIndex).name();
-    if (att.isNumeric()) {
-      str = str.append(attName + " ");
-      if (m_Not) {
-        str = str.append(">= " + Utils.doubleToString(m_Split, 3));
-      } else {
-        str = str.append("< " + Utils.doubleToString(m_Split, 3));
-      }
-    } else {
-      String value = att.value((int) m_Split);
+	/**
+	 * Returns the test represented by a string in Prolog notation.
+	 *
+	 * @return a string representing the test in Prolog notation
+	 */
+	public String toPrologString() {
+		Attribute att = m_Dataset.attribute(m_AttIndex);
+		StringBuffer str = new StringBuffer();
+		String attName = m_Dataset.attribute(m_AttIndex).name();
+		if (att.isNumeric()) {
+			str = str.append(attName + " ");
+			if (m_Not) {
+				str = str.append(">= " + Utils.doubleToString(m_Split, 3));
+			} else {
+				str = str.append("< " + Utils.doubleToString(m_Split, 3));
+			}
+		} else {
+			String value = att.value((int) m_Split);
 
-      if (value == "false") {
-        str = str.append("not(" + attName + ")");
-      } else {
-        str = str.append(attName);
-      }
-    }
-    return str.toString();
-  }
+			if (value == "false") {
+				str = str.append("not(" + attName + ")");
+			} else {
+				str = str.append(attName);
+			}
+		}
+		return str.toString();
+	}
 
-  /**
-   * Gives a string representation of the test, starting from the comparison
-   * symbol.
-   * 
-   * @return a string representing the test
-   */
-  private String testComparisonString() {
-    Attribute att = m_Dataset.attribute(m_AttIndex);
-    if (att.isNumeric()) {
-      return ((m_Not ? ">= " : "< ") + Utils.doubleToString(m_Split, 3));
-    } else {
-      if (att.numValues() != 2) {
-        return ((m_Not ? "!= " : "= ") + att.value((int) m_Split));
-      } else {
-        return ("= " + (m_Not ? att.value((int) m_Split == 0 ? 1 : 0) : att
-          .value((int) m_Split)));
-      }
-    }
-  }
+	/**
+	 * Gives a string representation of the test, starting from the comparison
+	 * symbol.
+	 *
+	 * @return a string representing the test
+	 */
+	private String testComparisonString() {
+		Attribute att = m_Dataset.attribute(m_AttIndex);
+		if (att.isNumeric()) {
+			return ((m_Not ? ">= " : "< ") + Utils.doubleToString(m_Split, 3));
+		} else {
+			if (att.numValues() != 2) {
+				return ((m_Not ? "!= " : "= ") + att.value((int) m_Split));
+			} else {
+				return ("= " + (m_Not ? att.value((int) m_Split == 0 ? 1 : 0) : att
+						.value((int) m_Split)));
+			}
+		}
+	}
 
-  /**
-   * Compares the test with the test that is given as parameter.
-   * 
-   * @param t the test the object is compared to
-   * @return true if the two Tests are equal
-   */
-  public boolean equalTo(Test t) {
-    return (m_AttIndex == t.m_AttIndex && m_Split == t.m_Split && m_Not == t.m_Not);
-  }
+	/**
+	 * Compares the test with the test that is given as parameter.
+	 *
+	 * @param t the test the object is compared to
+	 * @return true if the two Tests are equal
+	 */
+	public boolean equalTo(Test t) {
+		return (m_AttIndex == t.m_AttIndex && m_Split == t.m_Split && m_Not == t.m_Not);
+	}
 
-  /**
-   * Returns the revision string.
-   * 
-   * @return the revision
-   */
-  @Override
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	@Override
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
 }

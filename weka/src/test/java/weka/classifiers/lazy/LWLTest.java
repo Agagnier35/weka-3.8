@@ -19,11 +19,10 @@
 
 package weka.classifiers.lazy;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests LWL. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class LWLTest extends AbstractClassifierTest {
 
-  public LWLTest(String name) { super(name);  }
+	public LWLTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default LWL */
-  public Classifier getClassifier() {
-    return new LWL();
-  }
+	/** Creates a default LWL */
+	public Classifier getClassifier() {
+		return new LWL();
+	}
 
-  public static Test suite() {
-    return new TestSuite(LWLTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(LWLTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

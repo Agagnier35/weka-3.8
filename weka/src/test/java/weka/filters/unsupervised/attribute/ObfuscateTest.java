@@ -14,19 +14,18 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.filters.unsupervised.attribute;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests Obfuscate. Run from the command line with:<p>
@@ -36,52 +35,53 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class ObfuscateTest extends AbstractFilterTest {
-  
-  public ObfuscateTest(String name) { super(name);  }
 
-  protected FilteredClassifier getFilteredClassifier() {
-    FilteredClassifier result = super.getFilteredClassifier();
-    result.setDoNotCheckForModifiedClassAttribute(true);
+	public ObfuscateTest(String name) {
+		super(name);
+	}
 
-    return result;
-  }
+	protected FilteredClassifier getFilteredClassifier() {
+		FilteredClassifier result = super.getFilteredClassifier();
+		result.setDoNotCheckForModifiedClassAttribute(true);
 
-  /** Creates a default Obfuscate */
-  public Filter getFilter() {
-    return new Obfuscate();
-  }
+		return result;
+	}
 
-  public void testTypical() {
-    Instances result = useFilter();
-    // Number of attributes and instances shouldn't change
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-    
-    assertTrue(!m_Instances.relationName().equals(result.relationName()));
-    for (int i = 0; i < m_Instances.numAttributes(); i++) {
-      Attribute inatt = m_Instances.attribute(i);
-      Attribute outatt = result.attribute(i);
-      if (!inatt.isString() && !inatt.isDate()) {
-        assertTrue("Attribute names should be changed",
-               !inatt.name().equals(outatt.name()));
-        if (inatt.isNominal()) {
-          assertEquals("Number of nominal values shouldn't change",
-                       inatt.numValues(), outatt.numValues());
-          for (int j = 0; j < inatt.numValues(); j++) {
-            assertTrue("Nominal labels should be changed",
-                   !inatt.value(j).equals(outatt.value(j)));
-          }
-        }
-      }
-    }
-  }
+	/** Creates a default Obfuscate */
+	public Filter getFilter() {
+		return new Obfuscate();
+	}
 
-  public static Test suite() {
-    return new TestSuite(ObfuscateTest.class);
-  }
+	public void testTypical() {
+		Instances result = useFilter();
+		// Number of attributes and instances shouldn't change
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+		assertTrue(!m_Instances.relationName().equals(result.relationName()));
+		for (int i = 0; i < m_Instances.numAttributes(); i++) {
+			Attribute inatt = m_Instances.attribute(i);
+			Attribute outatt = result.attribute(i);
+			if (!inatt.isString() && !inatt.isDate()) {
+				assertTrue("Attribute names should be changed",
+						!inatt.name().equals(outatt.name()));
+				if (inatt.isNominal()) {
+					assertEquals("Number of nominal values shouldn't change",
+							inatt.numValues(), outatt.numValues());
+					for (int j = 0; j < inatt.numValues(); j++) {
+						assertTrue("Nominal labels should be changed",
+								!inatt.value(j).equals(outatt.value(j)));
+					}
+				}
+			}
+		}
+	}
 
+	public static Test suite() {
+		return new TestSuite(ObfuscateTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

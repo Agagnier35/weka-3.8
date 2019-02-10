@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests RandomCommittee. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class RandomCommitteeTest 
-  extends AbstractClassifierTest {
+public class RandomCommitteeTest
+		extends AbstractClassifierTest {
 
-  public RandomCommitteeTest(String name) { 
-    super(name);  
-  }
+	public RandomCommitteeTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default RandomCommittee */
-  public Classifier getClassifier() {
-    return new RandomCommittee();
-  }
+	/** Creates a default RandomCommittee */
+	public Classifier getClassifier() {
+		return new RandomCommittee();
+	}
 
-  public static Test suite() {
-    return new TestSuite(RandomCommitteeTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(RandomCommitteeTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

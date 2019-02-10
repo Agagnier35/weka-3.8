@@ -21,16 +21,15 @@
 
 package weka.gui.knowledgeflow.steps;
 
+import java.awt.BorderLayout;
+import java.util.List;
+
+import javax.swing.*;
+
 import weka.gui.knowledgeflow.StepEditorDialog;
 import weka.knowledgeflow.StepManager;
 import weka.knowledgeflow.StepManagerImpl;
 import weka.knowledgeflow.steps.Block;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.util.List;
 
 /**
  * Step editor dialog for the Block step
@@ -40,44 +39,44 @@ import java.util.List;
  */
 public class BlockStepEditorDialog extends StepEditorDialog {
 
-  private static final long serialVersionUID = 1183316309880876170L;
+	private static final long serialVersionUID = 1183316309880876170L;
 
-  /** The combo box for choosing the step to block on */
-  protected JComboBox<String> m_stepToBlockBox = new JComboBox<String>();
+	/** The combo box for choosing the step to block on */
+	protected JComboBox<String> m_stepToBlockBox = new JComboBox<String>();
 
-  /**
-   * Layout the component
-   */
-  @Override
-  public void layoutEditor() {
-    m_stepToBlockBox.setEditable(true);
+	/**
+	 * Layout the component
+	 */
+	@Override
+	public void layoutEditor() {
+		m_stepToBlockBox.setEditable(true);
 
-    StepManager sm = getStepToEdit().getStepManager();
-    List<StepManagerImpl> flowSteps =
-      getMainPerspective().getCurrentLayout().getFlow().getSteps();
-    for (StepManagerImpl smi : flowSteps) {
-      m_stepToBlockBox.addItem(smi.getName());
-    }
+		StepManager sm = getStepToEdit().getStepManager();
+		List<StepManagerImpl> flowSteps =
+				getMainPerspective().getCurrentLayout().getFlow().getSteps();
+		for (StepManagerImpl smi : flowSteps) {
+			m_stepToBlockBox.addItem(smi.getName());
+		}
 
-    JPanel p = new JPanel(new BorderLayout());
-    p.setBorder(BorderFactory.createTitledBorder("Choose step to wait for"));
-    p.add(m_stepToBlockBox, BorderLayout.NORTH);
+		JPanel p = new JPanel(new BorderLayout());
+		p.setBorder(BorderFactory.createTitledBorder("Choose step to wait for"));
+		p.add(m_stepToBlockBox, BorderLayout.NORTH);
 
-    add(p, BorderLayout.CENTER);
+		add(p, BorderLayout.CENTER);
 
-    String userSelected = ((Block) getStepToEdit()).getStepToWaitFor();
-    if (userSelected != null) {
-      m_stepToBlockBox.setSelectedItem(userSelected);
-    }
-  }
+		String userSelected = ((Block) getStepToEdit()).getStepToWaitFor();
+		if (userSelected != null) {
+			m_stepToBlockBox.setSelectedItem(userSelected);
+		}
+	}
 
-  /**
-   * Called when OK is pressed
-   */
-  @Override
-  public void okPressed() {
+	/**
+	 * Called when OK is pressed
+	 */
+	@Override
+	public void okPressed() {
 
-    String selected = (String) m_stepToBlockBox.getSelectedItem();
-    ((Block) getStepToEdit()).setStepToWaitFor(selected);
-  }
+		String selected = (String) m_stepToBlockBox.getSelectedItem();
+		((Block) getStepToEdit()).setStepToWaitFor(selected);
+	}
 }

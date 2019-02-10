@@ -5,26 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlList;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for REAL-SparseArray element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="REAL-SparseArray">
  *   &lt;complexType>
@@ -41,136 +34,135 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "indices",
-    "realEntries"
+		"indices",
+		"realEntries"
 })
 @XmlRootElement(name = "REAL-SparseArray")
 public class REALSparseArray {
 
-    @XmlList
-    @XmlElement(name = "Indices", namespace = "http://www.dmg.org/PMML-4_1", type = Integer.class)
-    protected List<Integer> indices;
-    @XmlList
-    @XmlElement(name = "REAL-Entries", namespace = "http://www.dmg.org/PMML-4_1", type = Double.class)
-    protected List<Double> realEntries;
-    @XmlAttribute
-    protected Double defaultValue;
-    @XmlAttribute
-    protected BigInteger n;
+	@XmlList
+	@XmlElement(name = "Indices", namespace = "http://www.dmg.org/PMML-4_1", type = Integer.class)
+	protected List<Integer> indices;
+	@XmlList
+	@XmlElement(name = "REAL-Entries", namespace = "http://www.dmg.org/PMML-4_1", type = Double.class)
+	protected List<Double> realEntries;
+	@XmlAttribute
+	protected Double defaultValue;
+	@XmlAttribute
+	protected BigInteger n;
 
-    /**
-     * Gets the value of the indices property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the indices property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIndices().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Integer }
-     * 
-     * 
-     */
-    public List<Integer> getIndices() {
-        if (indices == null) {
-            indices = new ArrayList<Integer>();
-        }
-        return this.indices;
-    }
+	/**
+	 * Gets the value of the indices property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the indices property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getIndices().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Integer }
+	 *
+	 *
+	 */
+	public List<Integer> getIndices() {
+		if (indices == null) {
+			indices = new ArrayList<Integer>();
+		}
+		return this.indices;
+	}
 
-    /**
-     * Gets the value of the realEntries property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the realEntries property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREALEntries().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Double }
-     * 
-     * 
-     */
-    public List<Double> getREALEntries() {
-        if (realEntries == null) {
-            realEntries = new ArrayList<Double>();
-        }
-        return this.realEntries;
-    }
+	/**
+	 * Gets the value of the realEntries property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the realEntries property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getREALEntries().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Double }
+	 *
+	 *
+	 */
+	public List<Double> getREALEntries() {
+		if (realEntries == null) {
+			realEntries = new ArrayList<Double>();
+		}
+		return this.realEntries;
+	}
 
-    /**
-     * Gets the value of the defaultValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public double getDefaultValue() {
-        if (defaultValue == null) {
-            return  0.0D;
-        } else {
-            return defaultValue;
-        }
-    }
+	/**
+	 * Gets the value of the defaultValue property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public double getDefaultValue() {
+		if (defaultValue == null) {
+			return 0.0D;
+		} else {
+			return defaultValue;
+		}
+	}
 
-    /**
-     * Sets the value of the defaultValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setDefaultValue(Double value) {
-        this.defaultValue = value;
-    }
+	/**
+	 * Sets the value of the defaultValue property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setDefaultValue(Double value) {
+		this.defaultValue = value;
+	}
 
-    /**
-     * Gets the value of the n property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getN() {
-        return n;
-    }
+	/**
+	 * Gets the value of the n property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getN() {
+		return n;
+	}
 
-    /**
-     * Sets the value of the n property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setN(BigInteger value) {
-        this.n = value;
-    }
-
+	/**
+	 * Sets the value of the n property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setN(BigInteger value) {
+		this.n = value;
+	}
 }

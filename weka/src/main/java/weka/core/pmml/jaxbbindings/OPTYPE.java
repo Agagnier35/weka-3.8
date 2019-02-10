@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for OPTYPE.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -26,34 +24,34 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum OPTYPE {
 
-    @XmlEnumValue("categorical")
-    CATEGORICAL("categorical"),
-    @XmlEnumValue("continuous")
-    CONTINUOUS("continuous"),
-    @XmlEnumValue("ordinal")
-    ORDINAL("ordinal");
-    private final String value;
+	@XmlEnumValue("categorical")
+	CATEGORICAL("categorical"),
+	@XmlEnumValue("continuous")
+	CONTINUOUS("continuous"),
+	@XmlEnumValue("ordinal")
+	ORDINAL("ordinal");
+	private final String value;
 
-    OPTYPE(String v) {
-        value = v;
-    }
+	OPTYPE(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static OPTYPE fromValue(String v) {
-        for (OPTYPE c: OPTYPE.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static OPTYPE fromValue(String v) {
+		for (OPTYPE c : OPTYPE.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

@@ -5,24 +5,18 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for PCovCell element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="PCovCell">
  *   &lt;complexType>
@@ -42,194 +36,193 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension"
+		"extension"
 })
 @XmlRootElement(name = "PCovCell")
 public class PCovCell {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlAttribute(required = true)
-    protected String pCol;
-    @XmlAttribute(required = true)
-    protected String pRow;
-    @XmlAttribute
-    protected String tCol;
-    @XmlAttribute
-    protected String tRow;
-    @XmlAttribute
-    protected String targetCategory;
-    @XmlAttribute(required = true)
-    protected double value;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlAttribute(required = true)
+	protected String pCol;
+	@XmlAttribute(required = true)
+	protected String pRow;
+	@XmlAttribute
+	protected String tCol;
+	@XmlAttribute
+	protected String tRow;
+	@XmlAttribute
+	protected String targetCategory;
+	@XmlAttribute(required = true)
+	protected double value;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the pCol property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPCol() {
-        return pCol;
-    }
+	/**
+	 * Gets the value of the pCol property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getPCol() {
+		return pCol;
+	}
 
-    /**
-     * Sets the value of the pCol property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPCol(String value) {
-        this.pCol = value;
-    }
+	/**
+	 * Sets the value of the pCol property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setPCol(String value) {
+		this.pCol = value;
+	}
 
-    /**
-     * Gets the value of the pRow property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPRow() {
-        return pRow;
-    }
+	/**
+	 * Gets the value of the pRow property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getPRow() {
+		return pRow;
+	}
 
-    /**
-     * Sets the value of the pRow property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPRow(String value) {
-        this.pRow = value;
-    }
+	/**
+	 * Sets the value of the pRow property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setPRow(String value) {
+		this.pRow = value;
+	}
 
-    /**
-     * Gets the value of the tCol property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTCol() {
-        return tCol;
-    }
+	/**
+	 * Gets the value of the tCol property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getTCol() {
+		return tCol;
+	}
 
-    /**
-     * Sets the value of the tCol property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTCol(String value) {
-        this.tCol = value;
-    }
+	/**
+	 * Sets the value of the tCol property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setTCol(String value) {
+		this.tCol = value;
+	}
 
-    /**
-     * Gets the value of the tRow property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTRow() {
-        return tRow;
-    }
+	/**
+	 * Gets the value of the tRow property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getTRow() {
+		return tRow;
+	}
 
-    /**
-     * Sets the value of the tRow property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTRow(String value) {
-        this.tRow = value;
-    }
+	/**
+	 * Sets the value of the tRow property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setTRow(String value) {
+		this.tRow = value;
+	}
 
-    /**
-     * Gets the value of the targetCategory property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTargetCategory() {
-        return targetCategory;
-    }
+	/**
+	 * Gets the value of the targetCategory property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getTargetCategory() {
+		return targetCategory;
+	}
 
-    /**
-     * Sets the value of the targetCategory property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTargetCategory(String value) {
-        this.targetCategory = value;
-    }
+	/**
+	 * Sets the value of the targetCategory property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setTargetCategory(String value) {
+		this.targetCategory = value;
+	}
 
-    /**
-     * Gets the value of the value property.
-     * 
-     */
-    public double getValue() {
-        return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 *
+	 */
+	public double getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     */
-    public void setValue(double value) {
-        this.value = value;
-    }
-
+	/**
+	 * Sets the value of the value property.
+	 *
+	 */
+	public void setValue(double value) {
+		this.value = value;
+	}
 }

@@ -5,23 +5,17 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for TimeCycle element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="TimeCycle">
  *   &lt;complexType>
@@ -38,119 +32,118 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "array"
+		"array"
 })
 @XmlRootElement(name = "TimeCycle")
 public class TimeCycle {
 
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
-    protected ArrayType array;
-    @XmlAttribute
-    protected String displayName;
-    @XmlAttribute
-    protected BigInteger length;
-    @XmlAttribute
-    protected VALIDTIMESPEC type;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
+	protected ArrayType array;
+	@XmlAttribute
+	protected String displayName;
+	@XmlAttribute
+	protected BigInteger length;
+	@XmlAttribute
+	protected VALIDTIMESPEC type;
 
-    /**
-     * Gets the value of the array property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArray() {
-        return array;
-    }
+	/**
+	 * Gets the value of the array property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public ArrayType getArray() {
+		return array;
+	}
 
-    /**
-     * Sets the value of the array property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArray(ArrayType value) {
-        this.array = value;
-    }
+	/**
+	 * Sets the value of the array property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public void setArray(ArrayType value) {
+		this.array = value;
+	}
 
-    /**
-     * Gets the value of the displayName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDisplayName() {
-        return displayName;
-    }
+	/**
+	 * Gets the value of the displayName property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getDisplayName() {
+		return displayName;
+	}
 
-    /**
-     * Sets the value of the displayName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDisplayName(String value) {
-        this.displayName = value;
-    }
+	/**
+	 * Sets the value of the displayName property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setDisplayName(String value) {
+		this.displayName = value;
+	}
 
-    /**
-     * Gets the value of the length property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLength() {
-        return length;
-    }
+	/**
+	 * Gets the value of the length property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getLength() {
+		return length;
+	}
 
-    /**
-     * Sets the value of the length property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLength(BigInteger value) {
-        this.length = value;
-    }
+	/**
+	 * Sets the value of the length property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setLength(BigInteger value) {
+		this.length = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link VALIDTIMESPEC }
-     *     
-     */
-    public VALIDTIMESPEC getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link VALIDTIMESPEC }
+	 *
+	 */
+	public VALIDTIMESPEC getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link VALIDTIMESPEC }
-     *     
-     */
-    public void setType(VALIDTIMESPEC value) {
-        this.type = value;
-    }
-
+	/**
+	 * Sets the value of the type property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link VALIDTIMESPEC }
+	 *
+	 */
+	public void setType(VALIDTIMESPEC value) {
+		this.type = value;
+	}
 }

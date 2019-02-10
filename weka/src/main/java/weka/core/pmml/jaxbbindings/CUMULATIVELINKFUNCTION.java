@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for CUMULATIVE-LINK-FUNCTION.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -28,38 +26,38 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum CUMULATIVELINKFUNCTION {
 
-    @XmlEnumValue("cauchit")
-    CAUCHIT("cauchit"),
-    @XmlEnumValue("cloglog")
-    CLOGLOG("cloglog"),
-    @XmlEnumValue("logit")
-    LOGIT("logit"),
-    @XmlEnumValue("loglog")
-    LOGLOG("loglog"),
-    @XmlEnumValue("probit")
-    PROBIT("probit");
-    private final String value;
+	@XmlEnumValue("cauchit")
+	CAUCHIT("cauchit"),
+	@XmlEnumValue("cloglog")
+	CLOGLOG("cloglog"),
+	@XmlEnumValue("logit")
+	LOGIT("logit"),
+	@XmlEnumValue("loglog")
+	LOGLOG("loglog"),
+	@XmlEnumValue("probit")
+	PROBIT("probit");
+	private final String value;
 
-    CUMULATIVELINKFUNCTION(String v) {
-        value = v;
-    }
+	CUMULATIVELINKFUNCTION(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static CUMULATIVELINKFUNCTION fromValue(String v) {
-        for (CUMULATIVELINKFUNCTION c: CUMULATIVELINKFUNCTION.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static CUMULATIVELINKFUNCTION fromValue(String v) {
+		for (CUMULATIVELINKFUNCTION c : CUMULATIVELINKFUNCTION.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

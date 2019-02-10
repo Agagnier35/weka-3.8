@@ -21,12 +21,12 @@
 
 package weka.gui.beans;
 
-
 /**
  * Bean info class for the training set maker bean
  *
  * @author <a href="mailto:mhall@cs.waikato.ac.nz">Mark Hall</a>
  * @version $Revision$
  */
-public class TrainingSetMakerBeanInfo 
-  extends AbstractTrainingSetProducerBeanInfo { }
+public class TrainingSetMakerBeanInfo
+		extends AbstractTrainingSetProducerBeanInfo {
+}

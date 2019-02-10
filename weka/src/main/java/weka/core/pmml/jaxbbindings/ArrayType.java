@@ -5,22 +5,17 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for ArrayType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ArrayType">
  *   &lt;complexContent>
@@ -39,92 +34,91 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayType", propOrder = {
-    "content"
+		"content"
 })
 public class ArrayType {
 
-    @XmlValue
-    protected String content;
-    @XmlAttribute
-    protected BigInteger n;
-    @XmlAttribute(required = true)
-    protected String type;
+	@XmlValue
+	protected String content;
+	@XmlAttribute
+	protected BigInteger n;
+	@XmlAttribute(required = true)
+	protected String type;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getContent() {
-        return content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getContent() {
+		return content;
+	}
 
-    /**
-     * Sets the value of the content property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setContent(String value) {
-        this.content = value;
-    }
+	/**
+	 * Sets the value of the content property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setContent(String value) {
+		this.content = value;
+	}
 
-    /**
-     * Gets the value of the n property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getN() {
-        return n;
-    }
+	/**
+	 * Gets the value of the n property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getN() {
+		return n;
+	}
 
-    /**
-     * Sets the value of the n property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setN(BigInteger value) {
-        this.n = value;
-    }
+	/**
+	 * Sets the value of the n property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setN(BigInteger value) {
+		this.n = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
-
+	/**
+	 * Sets the value of the type property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 }

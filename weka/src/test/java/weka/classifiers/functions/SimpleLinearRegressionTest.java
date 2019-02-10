@@ -19,11 +19,10 @@
 
 package weka.classifiers.functions;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests SimpleLinearRegression. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class SimpleLinearRegressionTest 
-  extends AbstractClassifierTest {
+public class SimpleLinearRegressionTest
+		extends AbstractClassifierTest {
 
-  public SimpleLinearRegressionTest(String name) { 
-    super(name);  
-  }
+	public SimpleLinearRegressionTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default SimpleLinearRegression */
-  public Classifier getClassifier() {
-    return new SimpleLinearRegression();
-  }
+	/** Creates a default SimpleLinearRegression */
+	public Classifier getClassifier() {
+		return new SimpleLinearRegression();
+	}
 
-  public static Test suite() {
-    return new TestSuite(SimpleLinearRegressionTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(SimpleLinearRegressionTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

@@ -21,7 +21,6 @@
 
 package weka.gui.graphvisualizer;
 
-
 /**
  * GraphConstants.java
  *
@@ -29,18 +28,17 @@ package weka.gui.graphvisualizer;
  * @author Ashraf M. Kibriya (amk14@cs.waikato.ac.nz)
  * @version $Revision$ - 24 Apr 2003 - Initial version (Ashraf M. Kibriya)
  */
-public interface GraphConstants  {
-  /** Types of Edges */
-  int DIRECTED=1,  REVERSED=2, DOUBLE=3;
-  
-  //Node types
-  /** SINGULAR_DUMMY node - node with only one outgoing edge
-   * i.e. one which represents a single edge and is inserted to close a gap */
-  int SINGULAR_DUMMY=1;
-  /** PLURAL_DUMMY node - node with more than one outgoing edge
-   * i.e. which represents an edge split and is inserted to close a gap */
-  int PLURAL_DUMMY=2;
-  /** NORMAL node - node actually contained in graphs description  */
-  int NORMAL=3;
-  
+public interface GraphConstants {
+	/** Types of Edges */
+	int DIRECTED = 1, REVERSED = 2, DOUBLE = 3;
+
+	//Node types
+	/** SINGULAR_DUMMY node - node with only one outgoing edge
+	 * i.e. one which represents a single edge and is inserted to close a gap */
+	int SINGULAR_DUMMY = 1;
+	/** PLURAL_DUMMY node - node with more than one outgoing edge
+	 * i.e. which represents an edge split and is inserted to close a gap */
+	int PLURAL_DUMMY = 2;
+	/** NORMAL node - node actually contained in graphs description  */
+	int NORMAL = 3;
 } // GraphConstants

@@ -19,40 +19,34 @@
 
 package weka.classifiers.evaluation;
 
-import java.io.IOException;
-import java.io.StringReader;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import weka.core.Instances;
+import junit.framework.*;
 
 /**
  * Tests Evaluation. So far just does a simple regression test for
  * classification with standard output and information retrieval stats.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision$
  */
 public class EvaluationTest extends TestCase {
 
-  public static final String DATA = "@relation test\n@attribute one numeric\n@attribute two numeric\n@attribute class {T, F}\n@data\n\n"
-      + "6.5,3.0,T\n"
-      + "6.2,3.4,T\n"
-      + "5.9,3.0,T\n"
-      + "7.0,3.2,F\n"
-      + "6.4,3.2,F\n" + "6.9,3.1,F\n";
+	public static final String DATA = "@relation test\n@attribute one numeric\n@attribute two numeric\n@attribute class {T, F}\n@data\n\n"
+			+ "6.5,3.0,T\n"
+			+ "6.2,3.4,T\n"
+			+ "5.9,3.0,T\n"
+			+ "7.0,3.2,F\n"
+			+ "6.4,3.2,F\n" + "6.9,3.1,F\n";
 
-  public static final double[][] PREDS = { { 0.231, 0.769 }, { 1, 0 },
-      { 0.956, 0.044 }, { 0.013, 0.987 }, { 0.484, 0.516 }, { 0.068, 0.932 } };
+	public static final double[][] PREDS = {{0.231, 0.769}, {1, 0},
+			{0.956, 0.044}, {0.013, 0.987}, {0.484, 0.516}, {0.068, 0.932}};
 
-  public EvaluationTest(String name) {
-    super(name);
-  }
+	public EvaluationTest(String name) {
+		super(name);
+	}
 
-  public void testRegression() throws Exception {
-    //This test does not work and is out of scope of the TP
-	  assertEquals(1,1);
+	public void testRegression() throws Exception {
+		//This test does not work and is out of scope of the TP
+		assertEquals(1, 1);
 
   	/*
   	Instances inst = new Instances(new StringReader(DATA));
@@ -82,13 +76,13 @@ public class EvaluationTest extends TestCase {
     } catch (IOException ex) {
       fail("Problem during regression testing.\n" + ex);
     }*/
-  }
+	}
 
-  public static Test suite() {
-    return new TestSuite(weka.classifiers.evaluation.EvaluationTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(weka.classifiers.evaluation.EvaluationTest.class);
+	}
 
-  public static void main(String[] args) {
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

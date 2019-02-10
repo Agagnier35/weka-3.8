@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests RandomSubSpace. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class RandomSubSpaceTest 
-  extends AbstractClassifierTest {
+public class RandomSubSpaceTest
+		extends AbstractClassifierTest {
 
-  public RandomSubSpaceTest(String name) { 
-    super(name);  
-  }
+	public RandomSubSpaceTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default RandomSubSpace */
-  public Classifier getClassifier() {
-    return new RandomSubSpace();
-  }
+	/** Creates a default RandomSubSpace */
+	public Classifier getClassifier() {
+		return new RandomSubSpace();
+	}
 
-  public static Test suite() {
-    return new TestSuite(RandomSubSpaceTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(RandomSubSpaceTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

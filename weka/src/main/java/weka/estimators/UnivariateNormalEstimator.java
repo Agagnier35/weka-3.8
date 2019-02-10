@@ -34,240 +34,241 @@ import weka.core.Statistics;
  * @version $Revision$
  */
 public class UnivariateNormalEstimator implements UnivariateDensityEstimator,
-                                                  UnivariateIntervalEstimator,
-                                                  UnivariateQuantileEstimator,
-                                                  Serializable {
+		UnivariateIntervalEstimator,
+		UnivariateQuantileEstimator,
+		Serializable {
 
-  /** For serialization */
-  private static final long serialVersionUID = -1669009817825826548L;
+	/** For serialization */
+	private static final long serialVersionUID = -1669009817825826548L;
 
-  /** The weighted sum of values */
-  protected double m_WeightedSum = 0;
+	/** The weighted sum of values */
+	protected double m_WeightedSum = 0;
 
-  /** The weighted sum of squared values */
-  protected double m_WeightedSumSquared = 0;
+	/** The weighted sum of squared values */
+	protected double m_WeightedSumSquared = 0;
 
-  /** The weight of the values collected so far */
-  protected double m_SumOfWeights = 0;
+	/** The weight of the values collected so far */
+	protected double m_SumOfWeights = 0;
 
-  /** The mean value (only updated when needed) */
-  protected double m_Mean = 0;
+	/** The mean value (only updated when needed) */
+	protected double m_Mean = 0;
 
-  /** The variance (only updated when needed) */
-  protected double m_Variance = Double.MAX_VALUE;
+	/** The variance (only updated when needed) */
+	protected double m_Variance = Double.MAX_VALUE;
 
-  /** The minimum allowed value of the variance (default: 1.0E-6 * 1.0E-6) */
-  protected double m_MinVar = 1.0E-6 * 1.0E-6;
+	/** The minimum allowed value of the variance (default: 1.0E-6 * 1.0E-6) */
+	protected double m_MinVar = 1.0E-6 * 1.0E-6;
 
-  /** Constant for Gaussian density */
-  public static final double CONST = Math.log(2 * Math.PI);
+	/** Constant for Gaussian density */
+	public static final double CONST = Math.log(2 * Math.PI);
 
-  /**
-   * Returns a string describing the estimator.
-   */
-  public String globalInfo() {
-    return "Estimates a univariate normal density.";
-  }
-  /**
-   * Adds a value to the density estimator.
-   *
-   * @param value the value to add
-   * @param weight the weight of the value
-   */
-  public void addValue(double value, double weight) {
+	/**
+	 * Returns a string describing the estimator.
+	 */
+	public String globalInfo() {
+		return "Estimates a univariate normal density.";
+	}
 
-    m_WeightedSum += value * weight;
-    m_WeightedSumSquared += value * value * weight;
-    m_SumOfWeights += weight;
-  }
+	/**
+	 * Adds a value to the density estimator.
+	 *
+	 * @param value the value to add
+	 * @param weight the weight of the value
+	 */
+	public void addValue(double value, double weight) {
 
-  /**
-   * Updates mean and variance based on sufficient statistics.
-   * Variance is set to m_MinVar if it becomes smaller than that
-   * value. It is set to Double.MAX_VALUE if the sum of weights is
-   * zero.
-   */
-  protected void updateMeanAndVariance() {
-    
-    // Compute mean
-    m_Mean = 0;
-    if (m_SumOfWeights > 0) {
-      m_Mean = m_WeightedSum / m_SumOfWeights;
-    }
+		m_WeightedSum += value * weight;
+		m_WeightedSumSquared += value * value * weight;
+		m_SumOfWeights += weight;
+	}
 
-    // Compute variance
-    m_Variance = Double.MAX_VALUE;
-    if (m_SumOfWeights > 0) {
-      m_Variance = m_WeightedSumSquared / m_SumOfWeights - m_Mean * m_Mean; 
-    }
+	/**
+	 * Updates mean and variance based on sufficient statistics.
+	 * Variance is set to m_MinVar if it becomes smaller than that
+	 * value. It is set to Double.MAX_VALUE if the sum of weights is
+	 * zero.
+	 */
+	protected void updateMeanAndVariance() {
 
-    // Hack for case where variance is 0
-    if (m_Variance <= m_MinVar) {
-      m_Variance = m_MinVar;
-    }
-  }
+		// Compute mean
+		m_Mean = 0;
+		if (m_SumOfWeights > 0) {
+			m_Mean = m_WeightedSum / m_SumOfWeights;
+		}
 
-  /**
-   * Returns the interval for the given confidence value. 
-   * 
-   * @param conf the confidence value in the interval [0, 1]
-   * @return the interval
-   */
-  public double[][] predictIntervals(double conf) {
-    
-    updateMeanAndVariance();
+		// Compute variance
+		m_Variance = Double.MAX_VALUE;
+		if (m_SumOfWeights > 0) {
+			m_Variance = m_WeightedSumSquared / m_SumOfWeights - m_Mean * m_Mean;
+		}
 
-    double val = Statistics.normalInverse(1.0 - (1.0 - conf) / 2.0);
+		// Hack for case where variance is 0
+		if (m_Variance <= m_MinVar) {
+			m_Variance = m_MinVar;
+		}
+	}
 
-    double[][] arr = new double[1][2];
-    arr[0][1] = m_Mean + val * Math.sqrt(m_Variance);
-    arr[0][0] = m_Mean - val * Math.sqrt(m_Variance);
+	/**
+	 * Returns the interval for the given confidence value.
+	 *
+	 * @param conf the confidence value in the interval [0, 1]
+	 * @return the interval
+	 */
+	public double[][] predictIntervals(double conf) {
 
-    return arr;
-  }
+		updateMeanAndVariance();
 
-  /**
-   * Returns the quantile for the given percentage.
-   * 
-   * @param percentage the percentage
-   * @return the quantile
-   */
-  public double predictQuantile(double percentage) {
-    
-    updateMeanAndVariance();
+		double val = Statistics.normalInverse(1.0 - (1.0 - conf) / 2.0);
 
-    return m_Mean + Statistics.normalInverse(percentage) * Math.sqrt(m_Variance);
-  }
+		double[][] arr = new double[1][2];
+		arr[0][1] = m_Mean + val * Math.sqrt(m_Variance);
+		arr[0][0] = m_Mean - val * Math.sqrt(m_Variance);
 
-  /**
-   * Returns the natural logarithm of the density estimate at the given
-   * point.
-   *
-   * @param value the value at which to evaluate
-   * @return the natural logarithm of the density estimate at the given
-   * value
-   */
-  public double logDensity(double value) {
-    
-    updateMeanAndVariance();
+		return arr;
+	}
 
-    // Return natural logarithm of density
-    double val = -0.5 * (CONST + Math.log(m_Variance) + 
-                         (value - m_Mean) * (value - m_Mean) / m_Variance); 
+	/**
+	 * Returns the quantile for the given percentage.
+	 *
+	 * @param percentage the percentage
+	 * @return the quantile
+	 */
+	public double predictQuantile(double percentage) {
 
-    return val;
-  }
+		updateMeanAndVariance();
 
-  /**
-   * Returns textual description of this estimator.
-   */
-  public String toString() {
+		return m_Mean + Statistics.normalInverse(percentage) * Math.sqrt(m_Variance);
+	}
 
-    updateMeanAndVariance();
+	/**
+	 * Returns the natural logarithm of the density estimate at the given
+	 * point.
+	 *
+	 * @param value the value at which to evaluate
+	 * @return the natural logarithm of the density estimate at the given
+	 * value
+	 */
+	public double logDensity(double value) {
 
-    return "Mean: " + m_Mean + "\t" + "Variance: " + m_Variance;
-  }
+		updateMeanAndVariance();
 
-  /**
-   * Returns the revision string.
-   * 
-   * @return the revision
-   */
-  @Override
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+		// Return natural logarithm of density
+		double val = -0.5 * (CONST + Math.log(m_Variance) +
+				(value - m_Mean) * (value - m_Mean) / m_Variance);
 
-  /**
-   * Main method, used for testing this class.
-   */
-  public static void main(String[] args) {
+		return val;
+	}
 
-    // Get random number generator initialized by system
-    Random r = new Random();
+	/**
+	 * Returns textual description of this estimator.
+	 */
+	public String toString() {
 
-    // Create density estimator
-    UnivariateNormalEstimator e = new UnivariateNormalEstimator();
+		updateMeanAndVariance();
 
-    // Output the density estimator
-    System.out.println(e);
+		return "Mean: " + m_Mean + "\t" + "Variance: " + m_Variance;
+	}
 
-    // Monte Carlo integration
-    double sum = 0;
-    for (int i = 0; i < 100000; i++) {
-      sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
-    }
-    System.out.println("Approximate integral: " + 10.0 * sum / 100000);
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	@Override
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
 
-    // Add Gaussian values into it
-    for (int i = 0; i < 100000; i++) {
-      e.addValue(r.nextGaussian(), 1);
-      e.addValue(r.nextGaussian() * 2.0, 3);
-    }
+	/**
+	 * Main method, used for testing this class.
+	 */
+	public static void main(String[] args) {
 
-    // Output the density estimator
-    System.out.println(e);
+		// Get random number generator initialized by system
+		Random r = new Random();
 
-    // Monte Carlo integration
-    sum = 0;
-    for (int i = 0; i < 100000; i++) {
-      sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
-    }
-    System.out.println("Approximate integral: " + 10.0 * sum / 100000);
+		// Create density estimator
+		UnivariateNormalEstimator e = new UnivariateNormalEstimator();
 
-    // Create density estimator
-    e = new UnivariateNormalEstimator();
+		// Output the density estimator
+		System.out.println(e);
 
-    // Add Gaussian values into it
-    for (int i = 0; i < 100000; i++) {
-      e.addValue(r.nextGaussian(), 1);
-      e.addValue(r.nextGaussian() * 2.0, 1);
-      e.addValue(r.nextGaussian() * 2.0, 1);
-      e.addValue(r.nextGaussian() * 2.0, 1);
-    }
+		// Monte Carlo integration
+		double sum = 0;
+		for (int i = 0; i < 100000; i++) {
+			sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
+		}
+		System.out.println("Approximate integral: " + 10.0 * sum / 100000);
 
-    // Output the density estimator
-    System.out.println(e);
+		// Add Gaussian values into it
+		for (int i = 0; i < 100000; i++) {
+			e.addValue(r.nextGaussian(), 1);
+			e.addValue(r.nextGaussian() * 2.0, 3);
+		}
 
-    // Monte Carlo integration
-    sum = 0;
-    for (int i = 0; i < 100000; i++) {
-      sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
-    }
-    System.out.println("Approximate integral: " + 10.0 * sum / 100000);
+		// Output the density estimator
+		System.out.println(e);
 
-    // Create density estimator
-    e = new UnivariateNormalEstimator();
+		// Monte Carlo integration
+		sum = 0;
+		for (int i = 0; i < 100000; i++) {
+			sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
+		}
+		System.out.println("Approximate integral: " + 10.0 * sum / 100000);
 
-    // Add Gaussian values into it
-    for (int i = 0; i < 100000; i++) {
-      e.addValue(r.nextGaussian() * 5.0 + 3.0 , 1);
-    }
+		// Create density estimator
+		e = new UnivariateNormalEstimator();
 
-    // Output the density estimator
-    System.out.println(e);
+		// Add Gaussian values into it
+		for (int i = 0; i < 100000; i++) {
+			e.addValue(r.nextGaussian(), 1);
+			e.addValue(r.nextGaussian() * 2.0, 1);
+			e.addValue(r.nextGaussian() * 2.0, 1);
+			e.addValue(r.nextGaussian() * 2.0, 1);
+		}
 
-    // Check interval estimates
-    double[][] intervals = e.predictIntervals(0.95);
-    System.out.println("Lower: " + intervals[0][0] + " Upper: " + intervals[0][1]);
-    double covered = 0;
-    for (int i = 0; i < 100000; i++) {
-      double val = r.nextGaussian() * 5.0 + 3.0;
-      if (val >= intervals[0][0] && val <= intervals[0][1]) {
-        covered++;
-      }
-    }
-    System.out.println("Coverage: " + covered / 100000);
+		// Output the density estimator
+		System.out.println(e);
 
-    intervals = e.predictIntervals(0.8);
-    System.out.println("Lower: " + intervals[0][0] + " Upper: " + intervals[0][1]);
-    covered = 0;
-    for (int i = 0; i < 100000; i++) {
-      double val = r.nextGaussian() * 5.0 + 3.0;
-      if (val >= intervals[0][0] && val <= intervals[0][1]) {
-        covered++;
-      }
-    }
-    System.out.println("Coverage: " + covered / 100000);
-  }
+		// Monte Carlo integration
+		sum = 0;
+		for (int i = 0; i < 100000; i++) {
+			sum += Math.exp(e.logDensity(r.nextDouble() * 10.0 - 5.0));
+		}
+		System.out.println("Approximate integral: " + 10.0 * sum / 100000);
+
+		// Create density estimator
+		e = new UnivariateNormalEstimator();
+
+		// Add Gaussian values into it
+		for (int i = 0; i < 100000; i++) {
+			e.addValue(r.nextGaussian() * 5.0 + 3.0, 1);
+		}
+
+		// Output the density estimator
+		System.out.println(e);
+
+		// Check interval estimates
+		double[][] intervals = e.predictIntervals(0.95);
+		System.out.println("Lower: " + intervals[0][0] + " Upper: " + intervals[0][1]);
+		double covered = 0;
+		for (int i = 0; i < 100000; i++) {
+			double val = r.nextGaussian() * 5.0 + 3.0;
+			if (val >= intervals[0][0] && val <= intervals[0][1]) {
+				covered++;
+			}
+		}
+		System.out.println("Coverage: " + covered / 100000);
+
+		intervals = e.predictIntervals(0.8);
+		System.out.println("Lower: " + intervals[0][0] + " Upper: " + intervals[0][1]);
+		covered = 0;
+		for (int i = 0; i < 100000; i++) {
+			double val = r.nextGaussian() * 5.0 + 3.0;
+			if (val >= intervals[0][0] && val <= intervals[0][1]) {
+				covered++;
+			}
+		}
+		System.out.println("Coverage: " + covered / 100000);
+	}
 }

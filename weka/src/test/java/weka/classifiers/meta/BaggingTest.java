@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests Bagging. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class BaggingTest extends AbstractClassifierTest {
 
-  public BaggingTest(String name) { super(name);  }
+	public BaggingTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default Bagging */
-  public Classifier getClassifier() {
-    return new Bagging();
-  }
+	/** Creates a default Bagging */
+	public Classifier getClassifier() {
+		return new Bagging();
+	}
 
-  public static Test suite() {
-    return new TestSuite(BaggingTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(BaggingTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

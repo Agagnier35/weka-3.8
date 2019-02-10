@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.classification;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests LED24. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class LED24Test 
-  extends AbstractDataGeneratorTest {
+public class LED24Test
+		extends AbstractDataGeneratorTest {
 
-  public LED24Test(String name) { 
-    super(name);  
-  }
+	public LED24Test(String name) {
+		super(name);
+	}
 
-  /** Creates a default LED24 */
-  public DataGenerator getGenerator() {
-    return new LED24();
-  }
+	/** Creates a default LED24 */
+	public DataGenerator getGenerator() {
+		return new LED24();
+	}
 
-  public static Test suite() {
-    return new TestSuite(LED24Test.class);
-  }
+	public static Test suite() {
+		return new TestSuite(LED24Test.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

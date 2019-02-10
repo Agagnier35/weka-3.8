@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for TIMESERIES-USAGE.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -26,34 +24,34 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum TIMESERIESUSAGE {
 
-    @XmlEnumValue("logical")
-    LOGICAL("logical"),
-    @XmlEnumValue("original")
-    ORIGINAL("original"),
-    @XmlEnumValue("prediction")
-    PREDICTION("prediction");
-    private final String value;
+	@XmlEnumValue("logical")
+	LOGICAL("logical"),
+	@XmlEnumValue("original")
+	ORIGINAL("original"),
+	@XmlEnumValue("prediction")
+	PREDICTION("prediction");
+	private final String value;
 
-    TIMESERIESUSAGE(String v) {
-        value = v;
-    }
+	TIMESERIESUSAGE(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static TIMESERIESUSAGE fromValue(String v) {
-        for (TIMESERIESUSAGE c: TIMESERIESUSAGE.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static TIMESERIESUSAGE fromValue(String v) {
+		for (TIMESERIESUSAGE c : TIMESERIESUSAGE.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

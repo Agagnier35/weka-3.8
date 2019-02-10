@@ -32,5 +32,5 @@ import java.util.EventListener;
  * @see EventListener
  */
 public interface DataSourceListener extends EventListener {
-  void acceptDataSet(DataSetEvent e);
+	void acceptDataSet(DataSetEvent e);
 }

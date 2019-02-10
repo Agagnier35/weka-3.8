@@ -19,12 +19,11 @@
 
 package weka.filters.unsupervised.attribute;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests NumericCleaner. Run from the command line with: <p/>
@@ -33,49 +32,47 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class NumericCleanerTest 
-  extends AbstractFilterTest {
-  
-  public NumericCleanerTest(String name) { 
-    super(name);  
-  }
+public class NumericCleanerTest
+		extends AbstractFilterTest {
 
-  /** Creates a default NumericCleaner */
-  public Filter getFilter() {
-    return new NumericCleaner();
-  }
+	public NumericCleanerTest(String name) {
+		super(name);
+	}
 
-  /**
-   * runs a simple test
-   */
-  public void testTypical() {
-    Instances icopy = new Instances(m_Instances);
-    Instances result = null;
-    try {
-      m_Filter.setInputFormat(icopy);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
-    }
-    try {
-      result = Filter.useFilter(icopy, m_Filter);
-      assertNotNull(result);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on useFilter(): \n" + ex.getMessage());
-    }
+	/** Creates a default NumericCleaner */
+	public Filter getFilter() {
+		return new NumericCleaner();
+	}
 
-    assertEquals(icopy.numAttributes(), result.numAttributes());
-    assertEquals(icopy.numInstances(), result.numInstances());
-  }
+	/**
+	 * runs a simple test
+	 */
+	public void testTypical() {
+		Instances icopy = new Instances(m_Instances);
+		Instances result = null;
+		try {
+			m_Filter.setInputFormat(icopy);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
+		}
+		try {
+			result = Filter.useFilter(icopy, m_Filter);
+			assertNotNull(result);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on useFilter(): \n" + ex.getMessage());
+		}
 
-  public static Test suite() {
-    return new TestSuite(NumericCleanerTest.class);
-  }
+		assertEquals(icopy.numAttributes(), result.numAttributes());
+		assertEquals(icopy.numInstances(), result.numInstances());
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static Test suite() {
+		return new TestSuite(NumericCleanerTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

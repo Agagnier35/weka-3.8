@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for Counts element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="Counts">
  *   &lt;complexType>
@@ -41,142 +35,141 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "extension"
+		"extension"
 })
 @XmlRootElement(name = "Counts")
 public class Counts {
 
-    @XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
-    protected List<Extension> extension;
-    @XmlAttribute
-    protected BigInteger cardinality;
-    @XmlAttribute
-    protected Double invalidFreq;
-    @XmlAttribute
-    protected Double missingFreq;
-    @XmlAttribute(required = true)
-    protected double totalFreq;
+	@XmlElement(name = "Extension", namespace = "http://www.dmg.org/PMML-4_1", required = true)
+	protected List<Extension> extension;
+	@XmlAttribute
+	protected BigInteger cardinality;
+	@XmlAttribute
+	protected Double invalidFreq;
+	@XmlAttribute
+	protected Double missingFreq;
+	@XmlAttribute(required = true)
+	protected double totalFreq;
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the extension property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getExtension().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Extension }
-     * 
-     * 
-     */
-    public List<Extension> getExtension() {
-        if (extension == null) {
-            extension = new ArrayList<Extension>();
-        }
-        return this.extension;
-    }
+	/**
+	 * Gets the value of the extension property.
+	 *
+	 * <p>
+	 * This accessor method returns a reference to the live list,
+	 * not a snapshot. Therefore any modification you make to the
+	 * returned list will be present inside the JAXB object.
+	 * This is why there is not a <CODE>set</CODE> method for the extension property.
+	 *
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * <pre>
+	 *    getExtension().add(newItem);
+	 * </pre>
+	 *
+	 *
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Extension }
+	 *
+	 *
+	 */
+	public List<Extension> getExtension() {
+		if (extension == null) {
+			extension = new ArrayList<Extension>();
+		}
+		return this.extension;
+	}
 
-    /**
-     * Gets the value of the cardinality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getCardinality() {
-        return cardinality;
-    }
+	/**
+	 * Gets the value of the cardinality property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getCardinality() {
+		return cardinality;
+	}
 
-    /**
-     * Sets the value of the cardinality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCardinality(BigInteger value) {
-        this.cardinality = value;
-    }
+	/**
+	 * Sets the value of the cardinality property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setCardinality(BigInteger value) {
+		this.cardinality = value;
+	}
 
-    /**
-     * Gets the value of the invalidFreq property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getInvalidFreq() {
-        return invalidFreq;
-    }
+	/**
+	 * Gets the value of the invalidFreq property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getInvalidFreq() {
+		return invalidFreq;
+	}
 
-    /**
-     * Sets the value of the invalidFreq property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setInvalidFreq(Double value) {
-        this.invalidFreq = value;
-    }
+	/**
+	 * Sets the value of the invalidFreq property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setInvalidFreq(Double value) {
+		this.invalidFreq = value;
+	}
 
-    /**
-     * Gets the value of the missingFreq property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getMissingFreq() {
-        return missingFreq;
-    }
+	/**
+	 * Gets the value of the missingFreq property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getMissingFreq() {
+		return missingFreq;
+	}
 
-    /**
-     * Sets the value of the missingFreq property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setMissingFreq(Double value) {
-        this.missingFreq = value;
-    }
+	/**
+	 * Sets the value of the missingFreq property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setMissingFreq(Double value) {
+		this.missingFreq = value;
+	}
 
-    /**
-     * Gets the value of the totalFreq property.
-     * 
-     */
-    public double getTotalFreq() {
-        return totalFreq;
-    }
+	/**
+	 * Gets the value of the totalFreq property.
+	 *
+	 */
+	public double getTotalFreq() {
+		return totalFreq;
+	}
 
-    /**
-     * Sets the value of the totalFreq property.
-     * 
-     */
-    public void setTotalFreq(double value) {
-        this.totalFreq = value;
-    }
-
+	/**
+	 * Sets the value of the totalFreq property.
+	 *
+	 */
+	public void setTotalFreq(double value) {
+		this.totalFreq = value;
+	}
 }

@@ -19,7 +19,6 @@
  *
  */
 
-
 package weka.gui.sql.event;
 
 import java.util.EventListener;
@@ -28,13 +27,13 @@ import java.util.EventListener;
  * A listener that is notified if another Result is activated in the
  * ResultPanel.
  *
- * @author      FracPete (fracpete at waikato dot ac dot nz)
- * @version     $Revision$
+ * @author FracPete (fracpete at waikato dot ac dot nz)
+ * @version $Revision$
  */
 
 public interface ResultChangedListener extends EventListener {
-  /**
-   * This method gets called when a query has been executed.
-   */
-  public void resultChanged(ResultChangedEvent evt);
+	/**
+	 * This method gets called when a query has been executed.
+	 */
+	public void resultChanged(ResultChangedEvent evt);
 }

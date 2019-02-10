@@ -29,27 +29,27 @@ package weka.core;
  * @version $Revision$
  */
 public class NoSupportForMissingValuesException
-  extends WekaException {
+		extends WekaException {
 
-  /** for serialization */
-  private static final long serialVersionUID = 5161175307725893973L;
+	/** for serialization */
+	private static final long serialVersionUID = 5161175307725893973L;
 
-  /**
-   * Creates a new NoSupportForMissingValuesException with no message.
-   *
-   */
-  public NoSupportForMissingValuesException() {
+	/**
+	 * Creates a new NoSupportForMissingValuesException with no message.
+	 *
+	 */
+	public NoSupportForMissingValuesException() {
 
-    super();
-  }
+		super();
+	}
 
-  /**
-   * Creates a new NoSupportForMissingValuesException.
-   *
-   * @param message the reason for raising an exception.
-   */
-  public NoSupportForMissingValuesException(String message) {
+	/**
+	 * Creates a new NoSupportForMissingValuesException.
+	 *
+	 * @param message the reason for raising an exception.
+	 */
+	public NoSupportForMissingValuesException(String message) {
 
-    super(message);
-  }
+		super(message);
+	}
 }

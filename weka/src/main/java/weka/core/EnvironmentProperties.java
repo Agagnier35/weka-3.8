@@ -21,7 +21,6 @@
 package weka.core;
 
 import java.util.Properties;
-import java.util.Set;
 
 /**
  * Extends Properties to allow the value of a system property (if set) to
@@ -34,28 +33,28 @@ import java.util.Set;
  */
 public class EnvironmentProperties extends Properties {
 
-  protected transient Environment m_env = Environment.getSystemWide();
+	protected transient Environment m_env = Environment.getSystemWide();
 
-  public EnvironmentProperties() {
-    super();
-  }
+	public EnvironmentProperties() {
+		super();
+	}
 
-  public EnvironmentProperties(Properties props) {
-    super(props);
-  }
+	public EnvironmentProperties(Properties props) {
+		super(props);
+	}
 
-  @Override
-  public String getProperty(String key) {
-    // allow system-wide properties to override
-    if (m_env == null) {
-      m_env = Environment.getSystemWide();
-    }
-    String result = m_env.getVariableValue(key);
+	@Override
+	public String getProperty(String key) {
+		// allow system-wide properties to override
+		if (m_env == null) {
+			m_env = Environment.getSystemWide();
+		}
+		String result = m_env.getVariableValue(key);
 
-    if (result == null) {
-      result = super.getProperty(key);
-    }
+		if (result == null) {
+			result = super.getProperty(key);
+		}
 
-    return result;
-  }
+		return result;
+	}
 }

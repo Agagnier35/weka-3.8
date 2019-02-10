@@ -21,7 +21,6 @@
 
 package weka.gui.beans;
 
-
 /**
  * Interface to something that can produce test sets
  *
@@ -30,18 +29,17 @@ package weka.gui.beans;
  */
 public interface TestSetProducer {
 
-  /**
-   * Add a listener for test set events
-   *
-   * @param tsl a <code>TestSetListener</code> value
-   */
-  void addTestSetListener(TestSetListener tsl);
+	/**
+	 * Add a listener for test set events
+	 *
+	 * @param tsl a <code>TestSetListener</code> value
+	 */
+	void addTestSetListener(TestSetListener tsl);
 
-  /**
-   * Remove a listener for test set events
-   *
-   * @param tsl a <code>TestSetListener</code> value
-   */
-  void removeTestSetListener(TestSetListener tsl);
-
+	/**
+	 * Remove a listener for test set events
+	 *
+	 * @param tsl a <code>TestSetListener</code> value
+	 */
+	void removeTestSetListener(TestSetListener tsl);
 }

@@ -19,9 +19,7 @@
  *
  */
 
-
 package weka.gui.streams;
-
 
 /**
  * Defines an interface for objects able to produce two output streams of
@@ -31,6 +29,6 @@ package weka.gui.streams;
  * @version $Revision$
  */
 public interface SerialInstanceListener extends java.util.EventListener {
-  
-  void secondInstanceProduced(InstanceEvent e);
+
+	void secondInstanceProduced(InstanceEvent e);
 }

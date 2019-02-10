@@ -38,47 +38,47 @@ import weka.gui.scripting.ScriptingPanel;
  * @version $Revision$
  */
 public class SimpleCLI
-  extends JFrame {
-  
-  /** for serialization. */
-  static final long serialVersionUID = -50661410800566036L;
-  
-  /**
-   * Constructor.
-   *
-   * @throws Exception if an error occurs
-   */
-  public SimpleCLI() throws Exception {
-    SimpleCLIPanel	panel;
+		extends JFrame {
 
-    panel = new SimpleCLIPanel();
-    
-    setLayout(new BorderLayout());
-    setTitle(panel.getTitle());
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    setIconImage(panel.getIcon().getImage());
-    add(panel);
-    pack();
-    setSize(600, 500);
-    setLocationRelativeTo(null);
-    setVisible(true);
-  }
+	/** for serialization. */
+	static final long serialVersionUID = -50661410800566036L;
 
-  /**
-   * Method to start up the simple cli.
-   *
-   * @param args 	Not used.
-   */
-  public static void main(String[] args) {
+	/**
+	 * Constructor.
+	 *
+	 * @throws Exception if an error occurs
+	 */
+	public SimpleCLI() throws Exception {
+		SimpleCLIPanel panel;
 
-    weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO,
-            "Logging started");
+		panel = new SimpleCLIPanel();
 
-    LookAndFeel.setLookAndFeel();
-    // make sure that packages are loaded and the GenericPropertiesCreator
-    // executes to populate the lists correctly
-    weka.gui.GenericObjectEditor.determineClasses();
+		setLayout(new BorderLayout());
+		setTitle(panel.getTitle());
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(panel.getIcon().getImage());
+		add(panel);
+		pack();
+		setSize(600, 500);
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
 
-    ScriptingPanel.showPanel(new SimpleCLIPanel(), args, 600, 500);
-  }
+	/**
+	 * Method to start up the simple cli.
+	 *
+	 * @param args    Not used.
+	 */
+	public static void main(String[] args) {
+
+		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO,
+				"Logging started");
+
+		LookAndFeel.setLookAndFeel();
+		// make sure that packages are loaded and the GenericPropertiesCreator
+		// executes to populate the lists correctly
+		weka.gui.GenericObjectEditor.determineClasses();
+
+		ScriptingPanel.showPanel(new SimpleCLIPanel(), args, 600, 500);
+	}
 }

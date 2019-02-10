@@ -21,10 +21,7 @@
 package weka.gui.knowledgeflow;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -47,200 +44,200 @@ import weka.knowledgeflow.steps.Step;
  * in the settings editor. There is also a {@code closePressed()} method that is
  * called when the close button is pressed. Subclasses can override this method
  * as necessary.
- * 
+ *
  * @author Mark Hall (mhall{[at]}pentaho{[dot]}com)
  * @version $Revision: $
  */
 public abstract class BaseInteractiveViewer extends JPanel implements
-  StepInteractiveViewer {
+		StepInteractiveViewer {
 
-  private static final long serialVersionUID = -1191494001428785466L;
+	private static final long serialVersionUID = -1191494001428785466L;
 
-  /** Holds the step that this interactive viewer relates to */
-  protected Step m_step;
+	/** Holds the step that this interactive viewer relates to */
+	protected Step m_step;
 
-  /** The close button, for closing the viewer */
-  protected JButton m_closeBut = new JButton("Close");
+	/** The close button, for closing the viewer */
+	protected JButton m_closeBut = new JButton("Close");
 
-  /** Holds buttons displayed at the bottom of the window */
-  protected JPanel m_buttonHolder = new JPanel(new GridLayout());
+	/** Holds buttons displayed at the bottom of the window */
+	protected JPanel m_buttonHolder = new JPanel(new GridLayout());
 
-  /** The parent window */
-  protected Window m_parent;
+	/** The parent window */
+	protected Window m_parent;
 
-  /** The main Knowledge Flow perspective */
-  protected MainKFPerspective m_mainPerspective;
+	/** The main Knowledge Flow perspective */
+	protected MainKFPerspective m_mainPerspective;
 
-  /**
-   * Constructor
-   */
-  public BaseInteractiveViewer() {
-    super();
-    setLayout(new BorderLayout());
+	/**
+	 * Constructor
+	 */
+	public BaseInteractiveViewer() {
+		super();
+		setLayout(new BorderLayout());
 
-    JPanel tempP = new JPanel(new BorderLayout());
-    tempP.add(m_buttonHolder, BorderLayout.WEST);
-    add(tempP, BorderLayout.SOUTH);
+		JPanel tempP = new JPanel(new BorderLayout());
+		tempP.add(m_buttonHolder, BorderLayout.WEST);
+		add(tempP, BorderLayout.SOUTH);
 
-    m_closeBut.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        close();
-      }
-    });
-    addButton(m_closeBut);
+		m_closeBut.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				close();
+			}
+		});
+		addButton(m_closeBut);
 
-    if (getDefaultSettings() != null) {
-      JButton editSettings = new JButton("Settings");
-      editSettings.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          // popup single settings editor
-          // String ID = getDefaultSettings().getID();
-          try {
-            if (SettingsEditor.showSingleSettingsEditor(getMainKFPerspective()
-              .getMainApplication().getApplicationSettings(),
-              getDefaultSettings().getID(), getViewerName(),
-              BaseInteractiveViewer.this) == JOptionPane.OK_OPTION) {
-              applySettings(getSettings());
-            }
-          } catch (IOException ex) {
-            getMainKFPerspective().getMainApplication().showErrorDialog(ex);
-          }
-        }
-      });
-      addButton(editSettings);
-    }
-  }
+		if (getDefaultSettings() != null) {
+			JButton editSettings = new JButton("Settings");
+			editSettings.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// popup single settings editor
+					// String ID = getDefaultSettings().getID();
+					try {
+						if (SettingsEditor.showSingleSettingsEditor(getMainKFPerspective()
+										.getMainApplication().getApplicationSettings(),
+								getDefaultSettings().getID(), getViewerName(),
+								BaseInteractiveViewer.this) == JOptionPane.OK_OPTION) {
+							applySettings(getSettings());
+						}
+					} catch (IOException ex) {
+						getMainKFPerspective().getMainApplication().showErrorDialog(ex);
+					}
+				}
+			});
+			addButton(editSettings);
+		}
+	}
 
-  /**
-   * Get the settings object for the application
-   *
-   * @return the settings object the settings object
-   */
-  @Override
-  public Settings getSettings() {
-    return m_mainPerspective.getMainApplication().getApplicationSettings();
-  }
+	/**
+	 * Get the settings object for the application
+	 *
+	 * @return the settings object the settings object
+	 */
+	@Override
+	public Settings getSettings() {
+		return m_mainPerspective.getMainApplication().getApplicationSettings();
+	}
 
-  /**
-   * No-op implementation. Subcasses should override to be notified about, and
-   * apply, any changed settings
-   * 
-   * @param settings the settings object that might (or might not) have been
-   *          altered by the user
-   */
-  public void applySettings(Settings settings) {
+	/**
+	 * No-op implementation. Subcasses should override to be notified about, and
+	 * apply, any changed settings
+	 *
+	 * @param settings the settings object that might (or might not) have been
+	 *          altered by the user
+	 */
+	public void applySettings(Settings settings) {
 
-  }
+	}
 
-  /**
-   * Set the main knowledge flow perspective. Implementations can then access
-   * application settings if necessary
-   *
-   * @param perspective the main knowledge flow perspective
-   */
-  @Override
-  public void setMainKFPerspective(MainKFPerspective perspective) {
-    m_mainPerspective = perspective;
+	/**
+	 * Set the main knowledge flow perspective. Implementations can then access
+	 * application settings if necessary
+	 *
+	 * @param perspective the main knowledge flow perspective
+	 */
+	@Override
+	public void setMainKFPerspective(MainKFPerspective perspective) {
+		m_mainPerspective = perspective;
 
-    m_mainPerspective.getMainApplication().getApplicationSettings()
-      .applyDefaults(getDefaultSettings());
-  }
+		m_mainPerspective.getMainApplication().getApplicationSettings()
+				.applyDefaults(getDefaultSettings());
+	}
 
-  /**
-   * Get the main knowledge flow perspective. Implementations can the access
-   * application settings if necessary
-   *
-   * @return
-   */
-  @Override
-  public MainKFPerspective getMainKFPerspective() {
-    return m_mainPerspective;
-  }
+	/**
+	 * Get the main knowledge flow perspective. Implementations can the access
+	 * application settings if necessary
+	 *
+	 * @return
+	 */
+	@Override
+	public MainKFPerspective getMainKFPerspective() {
+		return m_mainPerspective;
+	}
 
-  /**
-   * Set the step that owns this viewer. Implementations may want to access data
-   * that has been computed by the step in question.
-   *
-   * @param theStep the step that owns this viewer
-   */
-  @Override
-  public void setStep(Step step) {
-    m_step = step;
-  }
+	/**
+	 * Set the step that owns this viewer. Implementations may want to access data
+	 * that has been computed by the step in question.
+	 *
+	 * @param theStep the step that owns this viewer
+	 */
+	@Override
+	public void setStep(Step step) {
+		m_step = step;
+	}
 
-  /**
-   * Get the step that owns this viewer.
-   *
-   * @return the {@code Step} that owns this viewer
-   */
-  public Step getStep() {
-    return m_step;
-  }
+	/**
+	 * Get the step that owns this viewer.
+	 *
+	 * @return the {@code Step} that owns this viewer
+	 */
+	public Step getStep() {
+		return m_step;
+	}
 
-  /**
-   * Called by the KnowledgeFlow application once the enclosing JFrame is
-   * visible
-   */
-  @Override
-  public void nowVisible() {
-    // no-op. Subclasses to override if necessary
-  }
+	/**
+	 * Called by the KnowledgeFlow application once the enclosing JFrame is
+	 * visible
+	 */
+	@Override
+	public void nowVisible() {
+		// no-op. Subclasses to override if necessary
+	}
 
-  /**
-   * Set the parent window for this viewer
-   *
-   * @param parent the parent window
-   */
-  @Override
-  public void setParentWindow(Window parent) {
-    m_parent = parent;
-    m_parent.addWindowListener(new WindowAdapter() {
-      @Override
-      public void windowClosing(WindowEvent e) {
-        super.windowClosing(e);
-        closePressed();
-      }
-    });
-  }
+	/**
+	 * Set the parent window for this viewer
+	 *
+	 * @param parent the parent window
+	 */
+	@Override
+	public void setParentWindow(Window parent) {
+		m_parent = parent;
+		m_parent.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				super.windowClosing(e);
+				closePressed();
+			}
+		});
+	}
 
-  /**
-   * Adds a button to the bottom of the window.
-   *
-   * @param button the button to add.
-   */
-  public void addButton(JButton button) {
-    m_buttonHolder.add(button);
-  }
+	/**
+	 * Adds a button to the bottom of the window.
+	 *
+	 * @param button the button to add.
+	 */
+	public void addButton(JButton button) {
+		m_buttonHolder.add(button);
+	}
 
-  private void close() {
-    closePressed();
+	private void close() {
+		closePressed();
 
-    if (m_parent != null) {
-      m_parent.dispose();
-    }
-  }
+		if (m_parent != null) {
+			m_parent.dispose();
+		}
+	}
 
-  /**
-   * Called when the close button is pressed. Subclasses should override if they
-   * need to do something before the window is closed
-   */
-  public void closePressed() {
-    // subclasses to override if they need to do something before
-    // the window is closed
-  }
+	/**
+	 * Called when the close button is pressed. Subclasses should override if they
+	 * need to do something before the window is closed
+	 */
+	public void closePressed() {
+		// subclasses to override if they need to do something before
+		// the window is closed
+	}
 
-  /**
-   * Get default settings for the viewer. Default implementation returns null,
-   * i.e. no default settings. Subclasses can override if they have settings
-   * (with default values) that the user can edit.
-   *
-   * @return the default settings for this viewer, or null if there are no
-   *         user-editable settings
-   */
-  public Defaults getDefaultSettings() {
-    // subclasses to override if they have default settings
-    return null;
-  }
+	/**
+	 * Get default settings for the viewer. Default implementation returns null,
+	 * i.e. no default settings. Subclasses can override if they have settings
+	 * (with default values) that the user can edit.
+	 *
+	 * @return the default settings for this viewer, or null if there are no
+	 *         user-editable settings
+	 */
+	public Defaults getDefaultSettings() {
+		// subclasses to override if they have default settings
+		return null;
+	}
 }

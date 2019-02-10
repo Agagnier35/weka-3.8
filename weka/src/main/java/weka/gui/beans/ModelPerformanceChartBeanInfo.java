@@ -21,9 +21,7 @@
 
 package weka.gui.beans;
 
-import java.beans.BeanDescriptor;
-import java.beans.EventSetDescriptor;
-import java.beans.SimpleBeanInfo;
+import java.beans.*;
 
 /**
  * Bean info class for the model performance chart
@@ -32,36 +30,36 @@ import java.beans.SimpleBeanInfo;
  * @version $Revision$
  */
 public class ModelPerformanceChartBeanInfo extends SimpleBeanInfo {
-  
-  /**
-   * Get the event set descriptors for this bean
-   *
-   * @return an <code>EventSetDescriptor[]</code> value
-   */
-  public EventSetDescriptor [] getEventSetDescriptors() {
-    // hide all gui events
-    try {
-      EventSetDescriptor [] esds = { 
-          new EventSetDescriptor(ModelPerformanceChart.class, 
-              "image", 
-              ImageListener.class, 
-          "acceptImage")
-      };
-      return esds;
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      return null;
-    }
-  }
-  
-  /**
-   * Get the bean descriptor for this bean
-   *
-   * @return a <code>BeanDescriptor</code> value
-   */
-  public BeanDescriptor getBeanDescriptor() {
-    return new BeanDescriptor(weka.gui.beans.ModelPerformanceChart.class,
-                              ModelPerformanceChartCustomizer.class);
-  }
+
+	/**
+	 * Get the event set descriptors for this bean
+	 *
+	 * @return an <code>EventSetDescriptor[]</code> value
+	 */
+	public EventSetDescriptor[] getEventSetDescriptors() {
+		// hide all gui events
+		try {
+			EventSetDescriptor[] esds = {
+					new EventSetDescriptor(ModelPerformanceChart.class,
+							"image",
+							ImageListener.class,
+							"acceptImage")
+			};
+			return esds;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Get the bean descriptor for this bean
+	 *
+	 * @return a <code>BeanDescriptor</code> value
+	 */
+	public BeanDescriptor getBeanDescriptor() {
+		return new BeanDescriptor(weka.gui.beans.ModelPerformanceChart.class,
+				ModelPerformanceChartCustomizer.class);
+	}
 }
 

@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.classification;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests Agrawal. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class AgrawalTest 
-  extends AbstractDataGeneratorTest {
+public class AgrawalTest
+		extends AbstractDataGeneratorTest {
 
-  public AgrawalTest(String name) { 
-    super(name);  
-  }
+	public AgrawalTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default Agrawal */
-  public DataGenerator getGenerator() {
-    return new Agrawal();
-  }
+	/** Creates a default Agrawal */
+	public DataGenerator getGenerator() {
+		return new Agrawal();
+	}
 
-  public static Test suite() {
-    return new TestSuite(AgrawalTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(AgrawalTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

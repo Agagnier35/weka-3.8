@@ -19,7 +19,6 @@
  *
  */
 
-
 package weka.gui.graphvisualizer;
 
 /**
@@ -32,6 +31,6 @@ package weka.gui.graphvisualizer;
  * @version $Revision$ - 24 Apr 2003 - Initial version (Ashraf M. Kibriya)
  */
 public interface LayoutCompleteEventListener {
-  
-  void layoutCompleted(LayoutCompleteEvent le);
+
+	void layoutCompleted(LayoutCompleteEvent le);
 }

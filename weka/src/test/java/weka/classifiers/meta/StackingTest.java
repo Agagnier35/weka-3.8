@@ -19,11 +19,10 @@
 
 package weka.classifiers.meta;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests Stacking. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class StackingTest extends AbstractClassifierTest {
 
-  public StackingTest(String name) { super(name);  }
+	public StackingTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default Stacking */
-  public Classifier getClassifier() {
-    return new Stacking();
-  }
+	/** Creates a default Stacking */
+	public Classifier getClassifier() {
+		return new Stacking();
+	}
 
-  public static Test suite() {
-    return new TestSuite(StackingTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(StackingTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

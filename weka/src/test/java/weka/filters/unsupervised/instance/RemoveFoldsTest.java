@@ -14,17 +14,16 @@
  */
 
 /*
- * Copyright (C) 2002 University of Waikato 
+ * Copyright (C) 2002 University of Waikato
  */
 
 package weka.filters.unsupervised.instance;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests RemoveFolds. Run from the command line with:<p>
@@ -34,34 +33,35 @@ import junit.framework.TestSuite;
  * @version $Revision$
  */
 public class RemoveFoldsTest extends AbstractFilterTest {
-  
-  public RemoveFoldsTest(String name) { super(name);  }
 
-  /** Creates a default RemoveFolds */
-  public Filter getFilter() {
-    RemoveFolds f = new RemoveFolds();
-    return f;
-  }
+	public RemoveFoldsTest(String name) {
+		super(name);
+	}
 
-  public void testAllFolds() {
-    
-    int totInstances = 0;
-    for (int i = 0; i < 10; i++) {
-      ((RemoveFolds)m_Filter).setFold(i + 1);
-      Instances result = useFilter();
-      assertEquals(m_Instances.numAttributes(), result.numAttributes());
-      totInstances += result.numInstances();
-    }
-    assertEquals("Expecting output number of instances to match",
-                 m_Instances.numInstances(),  totInstances);
-  }
+	/** Creates a default RemoveFolds */
+	public Filter getFilter() {
+		RemoveFolds f = new RemoveFolds();
+		return f;
+	}
 
-  public static Test suite() {
-    return new TestSuite(RemoveFoldsTest.class);
-  }
+	public void testAllFolds() {
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+		int totInstances = 0;
+		for (int i = 0; i < 10; i++) {
+			((RemoveFolds) m_Filter).setFold(i + 1);
+			Instances result = useFilter();
+			assertEquals(m_Instances.numAttributes(), result.numAttributes());
+			totInstances += result.numInstances();
+		}
+		assertEquals("Expecting output number of instances to match",
+				m_Instances.numInstances(), totInstances);
+	}
 
+	public static Test suite() {
+		return new TestSuite(RemoveFoldsTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

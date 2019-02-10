@@ -19,16 +19,14 @@
 
 package weka.filters.unsupervised.attribute;
 
-import weka.core.Instances;
-import weka.filters.AbstractFilterTest;
-import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.Remove;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import weka.core.Instances;
+import weka.filters.AbstractFilterTest;
+import weka.filters.Filter;
 
 /**
  * Tests Transpose. Run from the command line with:<p>
@@ -38,51 +36,56 @@ import java.io.InputStreamReader;
  * @version $Revision: 8034 $
  */
 public class TransposeTest extends AbstractFilterTest {
-  
-  public TransposeTest(String name) { 
-    super(name);
-  }
 
-  /** Creates a default Transpose */
-  public Filter getFilter() {
-    return new Transpose();
-  }
+	public TransposeTest(String name) {
+		super(name);
+	}
 
-  protected void setUp() throws Exception {
-    m_Filter             = getFilter();
-    m_Instances          = new Instances(new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("weka/filters/data/FilterTest.arff"))));
-    Remove r = new Remove();
-    r.setAttributeIndices("1, 2, 4, 5");
-    r.setInputFormat(m_Instances);
-    m_Instances = Filter.useFilter(m_Instances, r);
-    m_OptionTester       = getOptionTester();
-    m_GOETester          = getGOETester();
-    m_FilteredClassifier = null;
-  }
+	/** Creates a default Transpose */
+	public Filter getFilter() {
+		return new Transpose();
+	}
 
-  /** This filter does not support batch filtering. */
-  public void testBatchFiltering() {
-    return;
-  }
-  public void testBatchFilteringSmaller() {
-    return;
-  }
-  public void testBatchFilteringLarger() {
-    return;
-  }
-  public void testChangesInputData() { return; }
+	protected void setUp() throws Exception {
+		m_Filter = getFilter();
+		m_Instances = new Instances(new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("weka/filters/data/FilterTest.arff"))));
+		Remove r = new Remove();
+		r.setAttributeIndices("1, 2, 4, 5");
+		r.setInputFormat(m_Instances);
+		m_Instances = Filter.useFilter(m_Instances, r);
+		m_OptionTester = getOptionTester();
+		m_GOETester = getGOETester();
+		m_FilteredClassifier = null;
+	}
 
-  public void testTypical() {
-    Instances result = useFilter();
-    // Number of instances should be number of attributes
-    assertEquals(m_Instances.numAttributes(), result.numInstances());
-  }
+	/** This filter does not support batch filtering. */
+	public void testBatchFiltering() {
+		return;
+	}
 
-  public static Test suite() {
-    return new TestSuite(TransposeTest.class);
-  }
+	public void testBatchFilteringSmaller() {
+		return;
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public void testBatchFilteringLarger() {
+		return;
+	}
+
+	public void testChangesInputData() {
+		return;
+	}
+
+	public void testTypical() {
+		Instances result = useFilter();
+		// Number of instances should be number of attributes
+		assertEquals(m_Instances.numAttributes(), result.numInstances());
+	}
+
+	public static Test suite() {
+		return new TestSuite(TransposeTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

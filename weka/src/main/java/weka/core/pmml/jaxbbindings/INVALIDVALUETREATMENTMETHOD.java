@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for INVALID-VALUE-TREATMENT-METHOD.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -26,34 +24,34 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum INVALIDVALUETREATMENTMETHOD {
 
-    @XmlEnumValue("asIs")
-    AS_IS("asIs"),
-    @XmlEnumValue("asMissing")
-    AS_MISSING("asMissing"),
-    @XmlEnumValue("returnInvalid")
-    RETURN_INVALID("returnInvalid");
-    private final String value;
+	@XmlEnumValue("asIs")
+	AS_IS("asIs"),
+	@XmlEnumValue("asMissing")
+	AS_MISSING("asMissing"),
+	@XmlEnumValue("returnInvalid")
+	RETURN_INVALID("returnInvalid");
+	private final String value;
 
-    INVALIDVALUETREATMENTMETHOD(String v) {
-        value = v;
-    }
+	INVALIDVALUETREATMENTMETHOD(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static INVALIDVALUETREATMENTMETHOD fromValue(String v) {
-        for (INVALIDVALUETREATMENTMETHOD c: INVALIDVALUETREATMENTMETHOD.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static INVALIDVALUETREATMENTMETHOD fromValue(String v) {
+		for (INVALIDVALUETREATMENTMETHOD c : INVALIDVALUETREATMENTMETHOD.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

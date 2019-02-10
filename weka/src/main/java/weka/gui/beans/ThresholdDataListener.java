@@ -32,20 +32,5 @@ import java.util.EventListener;
  * @see EventListener
  */
 public interface ThresholdDataListener extends EventListener {
-  void acceptDataSet(ThresholdDataEvent e);
+	void acceptDataSet(ThresholdDataEvent e);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

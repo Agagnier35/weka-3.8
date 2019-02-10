@@ -21,19 +21,9 @@
 
 package weka.datagenerators.classifiers.regression;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Random;
-import java.util.Vector;
+import java.util.*;
 
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.core.Option;
-import weka.core.RevisionUtils;
-import weka.core.Utils;
+import weka.core.*;
 import weka.filters.unsupervised.attribute.AddExpression;
 
 /**
@@ -45,69 +35,69 @@ import weka.filters.unsupervised.attribute.AddExpression;
  * can be added.
  * <p/>
  * <!-- globalinfo-end -->
- * 
+ *
  * <!-- options-start --> Valid options are:
  * <p/>
- * 
+ *
  * <pre>
  * -h
  *  Prints this help.
  * </pre>
- * 
+ *
  * <pre>
  * -o &lt;file&gt;
  *  The name of the output file, otherwise the generated data is
  *  printed to stdout.
  * </pre>
- * 
+ *
  * <pre>
  * -r &lt;name&gt;
  *  The name of the relation.
  * </pre>
- * 
+ *
  * <pre>
  * -d
  *  Whether to print debug informations.
  * </pre>
- * 
+ *
  * <pre>
  * -S
  *  The seed for random function (default 1)
  * </pre>
- * 
+ *
  * <pre>
  * -n &lt;num&gt;
  *  The number of examples to generate (default 100)
  * </pre>
- * 
+ *
  * <pre>
  * -A &lt;num&gt;
  *  The amplitude multiplier (default 1.0).
  * </pre>
- * 
+ *
  * <pre>
  * -R &lt;num&gt;..&lt;num&gt;
  *  The range x is randomly drawn from (default -10.0..10.0).
  * </pre>
- * 
+ *
  * <pre>
  * -N &lt;num&gt;
  *  The noise rate (default 0.0).
  * </pre>
- * 
+ *
  * <pre>
  * -V &lt;num&gt;
  *  The noise variance (default 1.0).
  * </pre>
- * 
+ *
  * <pre>
  * -E &lt;expression&gt;
  *  The expression to use for generating y out of x 
  *  (default sin(abs(a1)) / abs(a1)).
  * </pre>
- * 
+ *
  * <!-- options-end -->
- * 
+ *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  * @see AddExpression
@@ -116,373 +106,373 @@ import weka.filters.unsupervised.attribute.AddExpression;
 
 public class Expression extends MexicanHat {
 
-  /** for serialization */
-  static final long serialVersionUID = -4237047357682277211L;
+	/** for serialization */
+	static final long serialVersionUID = -4237047357682277211L;
 
-  /** the expression for computing y */
-  protected String m_Expression;
+	/** the expression for computing y */
+	protected String m_Expression;
 
-  /** the filter for generating y out of x */
-  protected AddExpression m_Filter;
+	/** the filter for generating y out of x */
+	protected AddExpression m_Filter;
 
-  /** the input data structure for the filter */
-  protected Instances m_RawData;
+	/** the input data structure for the filter */
+	protected Instances m_RawData;
 
-  /**
-   * initializes the generator
-   */
-  public Expression() {
-    super();
+	/**
+	 * initializes the generator
+	 */
+	public Expression() {
+		super();
 
-    setExpression(defaultExpression());
-  }
+		setExpression(defaultExpression());
+	}
 
-  /**
-   * Returns a string describing this data generator.
-   * 
-   * @return a description of the data generator suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  @Override
-  public String globalInfo() {
-    return "A data generator for generating y according to a given expression "
-      + "out of randomly generated x.\n"
-      + "E.g., the mexican hat can be generated like this:\n"
-      + "   sin(abs(a1)) / abs(a1)\n"
-      + "In addition to this function, the amplitude can be changed and "
-      + "gaussian noise can be added.";
-  }
+	/**
+	 * Returns a string describing this data generator.
+	 *
+	 * @return a description of the data generator suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	@Override
+	public String globalInfo() {
+		return "A data generator for generating y according to a given expression "
+				+ "out of randomly generated x.\n"
+				+ "E.g., the mexican hat can be generated like this:\n"
+				+ "   sin(abs(a1)) / abs(a1)\n"
+				+ "In addition to this function, the amplitude can be changed and "
+				+ "gaussian noise can be added.";
+	}
 
-  /**
-   * Returns an enumeration describing the available options.
-   * 
-   * @return an enumeration of all the available options
-   */
-  @Override
-  public Enumeration<Option> listOptions() {
+	/**
+	 * Returns an enumeration describing the available options.
+	 *
+	 * @return an enumeration of all the available options
+	 */
+	@Override
+	public Enumeration<Option> listOptions() {
 
-    Vector<Option> result = enumToVector(super.listOptions());
+		Vector<Option> result = enumToVector(super.listOptions());
 
-    result.addElement(new Option(
-      "\tThe expression to use for generating y out of x \n" + "\t(default "
-        + defaultExpression() + ").", "E", 1, "-E <expression>"));
+		result.addElement(new Option(
+				"\tThe expression to use for generating y out of x \n" + "\t(default "
+						+ defaultExpression() + ").", "E", 1, "-E <expression>"));
 
-    return result.elements();
-  }
+		return result.elements();
+	}
 
-  /**
-   * Parses a list of options for this object.
-   * <p/>
-   * 
-   * <!-- options-start --> Valid options are:
-   * <p/>
-   * 
-   * <pre>
-   * -h
-   *  Prints this help.
-   * </pre>
-   * 
-   * <pre>
-   * -o &lt;file&gt;
-   *  The name of the output file, otherwise the generated data is
-   *  printed to stdout.
-   * </pre>
-   * 
-   * <pre>
-   * -r &lt;name&gt;
-   *  The name of the relation.
-   * </pre>
-   * 
-   * <pre>
-   * -d
-   *  Whether to print debug informations.
-   * </pre>
-   * 
-   * <pre>
-   * -S
-   *  The seed for random function (default 1)
-   * </pre>
-   * 
-   * <pre>
-   * -n &lt;num&gt;
-   *  The number of examples to generate (default 100)
-   * </pre>
-   * 
-   * <pre>
-   * -A &lt;num&gt;
-   *  The amplitude multiplier (default 1.0).
-   * </pre>
-   * 
-   * <pre>
-   * -R &lt;num&gt;..&lt;num&gt;
-   *  The range x is randomly drawn from (default -10.0..10.0).
-   * </pre>
-   * 
-   * <pre>
-   * -N &lt;num&gt;
-   *  The noise rate (default 0.0).
-   * </pre>
-   * 
-   * <pre>
-   * -V &lt;num&gt;
-   *  The noise variance (default 1.0).
-   * </pre>
-   * 
-   * <pre>
-   * -E &lt;expression&gt;
-   *  The expression to use for generating y out of x 
-   *  (default sin(abs(a1)) / abs(a1)).
-   * </pre>
-   * 
-   * <!-- options-end -->
-   * 
-   * @param options the list of options as an array of strings
-   * @exception Exception if an option is not supported
-   */
-  @Override
-  public void setOptions(String[] options) throws Exception {
-    String tmpStr;
+	/**
+	 * Parses a list of options for this object.
+	 * <p/>
+	 *
+	 * <!-- options-start --> Valid options are:
+	 * <p/>
+	 *
+	 * <pre>
+	 * -h
+	 *  Prints this help.
+	 * </pre>
+	 *
+	 * <pre>
+	 * -o &lt;file&gt;
+	 *  The name of the output file, otherwise the generated data is
+	 *  printed to stdout.
+	 * </pre>
+	 *
+	 * <pre>
+	 * -r &lt;name&gt;
+	 *  The name of the relation.
+	 * </pre>
+	 *
+	 * <pre>
+	 * -d
+	 *  Whether to print debug informations.
+	 * </pre>
+	 *
+	 * <pre>
+	 * -S
+	 *  The seed for random function (default 1)
+	 * </pre>
+	 *
+	 * <pre>
+	 * -n &lt;num&gt;
+	 *  The number of examples to generate (default 100)
+	 * </pre>
+	 *
+	 * <pre>
+	 * -A &lt;num&gt;
+	 *  The amplitude multiplier (default 1.0).
+	 * </pre>
+	 *
+	 * <pre>
+	 * -R &lt;num&gt;..&lt;num&gt;
+	 *  The range x is randomly drawn from (default -10.0..10.0).
+	 * </pre>
+	 *
+	 * <pre>
+	 * -N &lt;num&gt;
+	 *  The noise rate (default 0.0).
+	 * </pre>
+	 *
+	 * <pre>
+	 * -V &lt;num&gt;
+	 *  The noise variance (default 1.0).
+	 * </pre>
+	 *
+	 * <pre>
+	 * -E &lt;expression&gt;
+	 *  The expression to use for generating y out of x
+	 *  (default sin(abs(a1)) / abs(a1)).
+	 * </pre>
+	 *
+	 * <!-- options-end -->
+	 *
+	 * @param options the list of options as an array of strings
+	 * @exception Exception if an option is not supported
+	 */
+	@Override
+	public void setOptions(String[] options) throws Exception {
+		String tmpStr;
 
-    super.setOptions(options);
+		super.setOptions(options);
 
-    tmpStr = Utils.getOption('E', options);
-    if (tmpStr.length() != 0) {
-      setExpression(tmpStr);
-    } else {
-      setExpression(defaultExpression());
-    }
-  }
+		tmpStr = Utils.getOption('E', options);
+		if (tmpStr.length() != 0) {
+			setExpression(tmpStr);
+		} else {
+			setExpression(defaultExpression());
+		}
+	}
 
-  /**
-   * Gets the current settings of the datagenerator BIRCHCluster.
-   * 
-   * @return an array of strings suitable for passing to setOptions
-   */
-  @Override
-  public String[] getOptions() {
-    Vector<String> result;
-    String[] options;
+	/**
+	 * Gets the current settings of the datagenerator BIRCHCluster.
+	 *
+	 * @return an array of strings suitable for passing to setOptions
+	 */
+	@Override
+	public String[] getOptions() {
+		Vector<String> result;
+		String[] options;
 
-    result = new Vector<String>();
-    options = super.getOptions();
-    Collections.addAll(result, options);
+		result = new Vector<String>();
+		options = super.getOptions();
+		Collections.addAll(result, options);
 
-    result.add("-E");
-    result.add("" + getExpression());
+		result.add("-E");
+		result.add("" + getExpression());
 
-    return result.toArray(new String[result.size()]);
-  }
+		return result.toArray(new String[result.size()]);
+	}
 
-  /**
-   * Returns the tip text for this property
-   * 
-   * @return tip text for this property suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  @Override
-  public String amplitudeTipText() {
-    return "The amplitude to multiply the y value with.";
-  }
+	/**
+	 * Returns the tip text for this property
+	 *
+	 * @return tip text for this property suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	@Override
+	public String amplitudeTipText() {
+		return "The amplitude to multiply the y value with.";
+	}
 
-  /**
-   * returns the default expression
-   * 
-   * @return the default expression
-   */
-  protected String defaultExpression() {
-    return "sin(abs(a1)) / abs(a1)";
-  }
+	/**
+	 * returns the default expression
+	 *
+	 * @return the default expression
+	 */
+	protected String defaultExpression() {
+		return "sin(abs(a1)) / abs(a1)";
+	}
 
-  /**
-   * Gets the mathematical expression for generating y out of x
-   * 
-   * @return the expression for computing y
-   */
-  public String getExpression() {
-    return m_Expression;
-  }
+	/**
+	 * Gets the mathematical expression for generating y out of x
+	 *
+	 * @return the expression for computing y
+	 */
+	public String getExpression() {
+		return m_Expression;
+	}
 
-  /**
-   * Sets the mathematical expression to generate y out of x.
-   * 
-   * @param value the expression for computing y
-   */
-  public void setExpression(String value) {
-    if (value.length() != 0) {
-      m_Expression = value;
-    } else {
-      throw new IllegalArgumentException("An expression has to be provided!");
-    }
-  }
+	/**
+	 * Sets the mathematical expression to generate y out of x.
+	 *
+	 * @param value the expression for computing y
+	 */
+	public void setExpression(String value) {
+		if (value.length() != 0) {
+			m_Expression = value;
+		} else {
+			throw new IllegalArgumentException("An expression has to be provided!");
+		}
+	}
 
-  /**
-   * Returns the tip text for this property
-   * 
-   * @return tip text for this property suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  public String expressionTipText() {
-    return "The expression for generating y out of x.";
-  }
+	/**
+	 * Returns the tip text for this property
+	 *
+	 * @return tip text for this property suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	public String expressionTipText() {
+		return "The expression for generating y out of x.";
+	}
 
-  /**
-   * Return if single mode is set for the given data generator mode depends on
-   * option setting and or generator type.
-   * 
-   * @return single mode flag
-   * @throws Exception if mode is not set yet
-   */
-  @Override
-  public boolean getSingleModeFlag() throws Exception {
-    return true;
-  }
+	/**
+	 * Return if single mode is set for the given data generator mode depends on
+	 * option setting and or generator type.
+	 *
+	 * @return single mode flag
+	 * @throws Exception if mode is not set yet
+	 */
+	@Override
+	public boolean getSingleModeFlag() throws Exception {
+		return true;
+	}
 
-  /**
-   * Initializes the format for the dataset produced. Must be called before the
-   * generateExample or generateExamples methods are used. Re-initializes the
-   * random number generator with the given seed.
-   * 
-   * @return the format for the dataset
-   * @throws Exception if the generating of the format failed
-   * @see #getSeed()
-   */
-  @Override
-  public Instances defineDataFormat() throws Exception {
-    ArrayList<Attribute> atts;
+	/**
+	 * Initializes the format for the dataset produced. Must be called before the
+	 * generateExample or generateExamples methods are used. Re-initializes the
+	 * random number generator with the given seed.
+	 *
+	 * @return the format for the dataset
+	 * @throws Exception if the generating of the format failed
+	 * @see #getSeed()
+	 */
+	@Override
+	public Instances defineDataFormat() throws Exception {
+		ArrayList<Attribute> atts;
 
-    // initialize input format
-    atts = new ArrayList<Attribute>();
-    atts.add(new Attribute("x"));
+		// initialize input format
+		atts = new ArrayList<Attribute>();
+		atts.add(new Attribute("x"));
 
-    m_RawData = new Instances(getRelationNameToUse(), atts, 0);
+		m_RawData = new Instances(getRelationNameToUse(), atts, 0);
 
-    m_Filter = new AddExpression();
-    m_Filter.setName("y");
-    m_Filter.setExpression(getExpression());
-    m_Filter.setInputFormat(m_RawData);
+		m_Filter = new AddExpression();
+		m_Filter.setName("y");
+		m_Filter.setExpression(getExpression());
+		m_Filter.setInputFormat(m_RawData);
 
-    return super.defineDataFormat();
-  }
+		return super.defineDataFormat();
+	}
 
-  /**
-   * Generates one example of the dataset.
-   * 
-   * @return the generated example
-   * @throws Exception if the format of the dataset is not yet defined
-   * @throws Exception if the generator only works with generateExamples which
-   *           means in non single mode
-   */
-  @Override
-  public Instance generateExample() throws Exception {
-    Instance result;
-    Random rand;
-    double x;
-    double y;
-    double[] atts;
-    Instance inst;
+	/**
+	 * Generates one example of the dataset.
+	 *
+	 * @return the generated example
+	 * @throws Exception if the format of the dataset is not yet defined
+	 * @throws Exception if the generator only works with generateExamples which
+	 *           means in non single mode
+	 */
+	@Override
+	public Instance generateExample() throws Exception {
+		Instance result;
+		Random rand;
+		double x;
+		double y;
+		double[] atts;
+		Instance inst;
 
-    rand = getRandom();
+		rand = getRandom();
 
-    if (m_DatasetFormat == null) {
-      throw new Exception("Dataset format not defined.");
-    }
+		if (m_DatasetFormat == null) {
+			throw new Exception("Dataset format not defined.");
+		}
 
-    // random x
-    x = rand.nextDouble();
-    // fit into range
-    x = x * (getMaxRange() - getMinRange()) + getMinRange();
+		// random x
+		x = rand.nextDouble();
+		// fit into range
+		x = x * (getMaxRange() - getMinRange()) + getMinRange();
 
-    // generate y
-    atts = new double[1];
-    atts[0] = x;
-    inst = new DenseInstance(1.0, atts);
-    inst.setDataset(m_RawData);
-    m_Filter.input(inst);
-    m_Filter.batchFinished();
-    inst = m_Filter.output();
+		// generate y
+		atts = new double[1];
+		atts[0] = x;
+		inst = new DenseInstance(1.0, atts);
+		inst.setDataset(m_RawData);
+		m_Filter.input(inst);
+		m_Filter.batchFinished();
+		inst = m_Filter.output();
 
-    // noise
-    y = inst.value(1) + getAmplitude() * m_NoiseRandom.nextGaussian()
-      * getNoiseRate() * getNoiseVariance();
+		// noise
+		y = inst.value(1) + getAmplitude() * m_NoiseRandom.nextGaussian()
+				* getNoiseRate() * getNoiseVariance();
 
-    // generate attributes
-    atts = new double[m_DatasetFormat.numAttributes()];
+		// generate attributes
+		atts = new double[m_DatasetFormat.numAttributes()];
 
-    atts[0] = x;
-    atts[1] = y;
-    result = new DenseInstance(1.0, atts);
+		atts[0] = x;
+		atts[1] = y;
+		result = new DenseInstance(1.0, atts);
 
-    // dataset reference
-    result.setDataset(m_DatasetFormat);
+		// dataset reference
+		result.setDataset(m_DatasetFormat);
 
-    return result;
-  }
+		return result;
+	}
 
-  /**
-   * Generates all examples of the dataset. Re-initializes the random number
-   * generator with the given seed, before generating instances.
-   * 
-   * @return the generated dataset
-   * @throws Exception if the format of the dataset is not yet defined
-   * @throws Exception if the generator only works with generateExample, which
-   *           means in single mode
-   * @see #getSeed()
-   */
-  @Override
-  public Instances generateExamples() throws Exception {
-    Instances result;
-    int i;
+	/**
+	 * Generates all examples of the dataset. Re-initializes the random number
+	 * generator with the given seed, before generating instances.
+	 *
+	 * @return the generated dataset
+	 * @throws Exception if the format of the dataset is not yet defined
+	 * @throws Exception if the generator only works with generateExample, which
+	 *           means in single mode
+	 * @see #getSeed()
+	 */
+	@Override
+	public Instances generateExamples() throws Exception {
+		Instances result;
+		int i;
 
-    result = new Instances(m_DatasetFormat, 0);
-    m_Random = new Random(getSeed());
+		result = new Instances(m_DatasetFormat, 0);
+		m_Random = new Random(getSeed());
 
-    for (i = 0; i < getNumExamplesAct(); i++) {
-      result.add(generateExample());
-    }
+		for (i = 0; i < getNumExamplesAct(); i++) {
+			result.add(generateExample());
+		}
 
-    return result;
-  }
+		return result;
+	}
 
-  /**
-   * Generates a comment string that documentates the data generator. By default
-   * this string is added at the beginning of the produced output as ARFF file
-   * type, next after the options.
-   * 
-   * @return string contains info about the generated rules
-   */
-  @Override
-  public String generateStart() {
-    return "";
-  }
+	/**
+	 * Generates a comment string that documentates the data generator. By default
+	 * this string is added at the beginning of the produced output as ARFF file
+	 * type, next after the options.
+	 *
+	 * @return string contains info about the generated rules
+	 */
+	@Override
+	public String generateStart() {
+		return "";
+	}
 
-  /**
-   * Generates a comment string that documentats the data generator. By default
-   * this string is added at the end of theproduces output as ARFF file type.
-   * 
-   * @return string contains info about the generated rules
-   * @throws Exception if the generating of the documentaion fails
-   */
-  @Override
-  public String generateFinished() throws Exception {
-    return "";
-  }
+	/**
+	 * Generates a comment string that documentats the data generator. By default
+	 * this string is added at the end of theproduces output as ARFF file type.
+	 *
+	 * @return string contains info about the generated rules
+	 * @throws Exception if the generating of the documentaion fails
+	 */
+	@Override
+	public String generateFinished() throws Exception {
+		return "";
+	}
 
-  /**
-   * Returns the revision string.
-   * 
-   * @return the revision
-   */
-  @Override
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	@Override
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
 
-  /**
-   * Main method for testing this class.
-   * 
-   * @param args should contain arguments for the data producer:
-   */
-  public static void main(String[] args) {
-    runDataGenerator(new Expression(), args);
-  }
+	/**
+	 * Main method for testing this class.
+	 *
+	 * @param args should contain arguments for the data producer:
+	 */
+	public static void main(String[] args) {
+		runDataGenerator(new Expression(), args);
+	}
 }

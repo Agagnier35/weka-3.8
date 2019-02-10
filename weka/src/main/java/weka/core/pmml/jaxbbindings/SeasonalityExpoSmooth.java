@@ -5,25 +5,19 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * <p>Java class for Seasonality_ExpoSmooth element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="Seasonality_ExpoSmooth">
  *   &lt;complexType>
@@ -49,172 +43,171 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "array"
+		"array"
 })
 @XmlRootElement(name = "Seasonality_ExpoSmooth")
 public class SeasonalityExpoSmooth {
 
-    @XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
-    protected ArrayType array;
-    @XmlAttribute
-    protected Double delta;
-    @XmlAttribute(required = true)
-    protected BigInteger period;
-    @XmlAttribute
-    protected BigInteger phase;
-    @XmlAttribute(required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String type;
-    @XmlAttribute
-    protected String unit;
+	@XmlElement(name = "Array", namespace = "http://www.dmg.org/PMML-4_1")
+	protected ArrayType array;
+	@XmlAttribute
+	protected Double delta;
+	@XmlAttribute(required = true)
+	protected BigInteger period;
+	@XmlAttribute
+	protected BigInteger phase;
+	@XmlAttribute(required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String type;
+	@XmlAttribute
+	protected String unit;
 
-    /**
-     * Gets the value of the array property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayType }
-     *     
-     */
-    public ArrayType getArray() {
-        return array;
-    }
+	/**
+	 * Gets the value of the array property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public ArrayType getArray() {
+		return array;
+	}
 
-    /**
-     * Sets the value of the array property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayType }
-     *     
-     */
-    public void setArray(ArrayType value) {
-        this.array = value;
-    }
+	/**
+	 * Sets the value of the array property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link ArrayType }
+	 *
+	 */
+	public void setArray(ArrayType value) {
+		this.array = value;
+	}
 
-    /**
-     * Gets the value of the delta property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getDelta() {
-        return delta;
-    }
+	/**
+	 * Gets the value of the delta property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getDelta() {
+		return delta;
+	}
 
-    /**
-     * Sets the value of the delta property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setDelta(Double value) {
-        this.delta = value;
-    }
+	/**
+	 * Sets the value of the delta property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setDelta(Double value) {
+		this.delta = value;
+	}
 
-    /**
-     * Gets the value of the period property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getPeriod() {
-        return period;
-    }
+	/**
+	 * Gets the value of the period property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getPeriod() {
+		return period;
+	}
 
-    /**
-     * Sets the value of the period property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setPeriod(BigInteger value) {
-        this.period = value;
-    }
+	/**
+	 * Sets the value of the period property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setPeriod(BigInteger value) {
+		this.period = value;
+	}
 
-    /**
-     * Gets the value of the phase property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getPhase() {
-        return phase;
-    }
+	/**
+	 * Gets the value of the phase property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getPhase() {
+		return phase;
+	}
 
-    /**
-     * Sets the value of the phase property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setPhase(BigInteger value) {
-        this.phase = value;
-    }
+	/**
+	 * Sets the value of the phase property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setPhase(BigInteger value) {
+		this.phase = value;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the unit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUnit() {
-        return unit;
-    }
+	/**
+	 * Gets the value of the unit property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *
+	 */
+	public String getUnit() {
+		return unit;
+	}
 
-    /**
-     * Sets the value of the unit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUnit(String value) {
-        this.unit = value;
-    }
-
+	/**
+	 * Sets the value of the unit property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *
+	 */
+	public void setUnit(String value) {
+		this.unit = value;
+	}
 }

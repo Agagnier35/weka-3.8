@@ -19,11 +19,10 @@
 
 package weka.datagenerators.clusterers;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests SubspaceCluster. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class SubspaceClusterTest 
-  extends AbstractDataGeneratorTest {
+public class SubspaceClusterTest
+		extends AbstractDataGeneratorTest {
 
-  public SubspaceClusterTest(String name) { 
-    super(name);  
-  }
+	public SubspaceClusterTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default SubspaceCluster */
-  public DataGenerator getGenerator() {
-    return new SubspaceCluster();
-  }
+	/** Creates a default SubspaceCluster */
+	public DataGenerator getGenerator() {
+		return new SubspaceCluster();
+	}
 
-  public static Test suite() {
-    return new TestSuite(SubspaceClusterTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(SubspaceClusterTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

@@ -19,13 +19,12 @@
 
 package weka.filters.unsupervised.attribute;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import weka.core.InstanceComparator;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
 
 /**
  * Tests AddNoise. Run from the command line with: <p/>
@@ -34,83 +33,86 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class AddNoiseTest 
-  extends AbstractFilterTest {
+public class AddNoiseTest
+		extends AbstractFilterTest {
 
-  /** for comparing the instances */
-  protected InstanceComparator m_Comparator;
-  
-  public AddNoiseTest(String name) { 
-    super(name);  
-  }
+	/** for comparing the instances */
+	protected InstanceComparator m_Comparator;
 
-  /** Need to remove non-nominal attributes, set class index */
-  protected void setUp() throws Exception {
-    super.setUp();
+	public AddNoiseTest(String name) {
+		super(name);
+	}
 
-    // class index
-    m_Instances.setClassIndex(1);
+	/** Need to remove non-nominal attributes, set class index */
+	protected void setUp() throws Exception {
+		super.setUp();
 
-    // only nominal attributes
-    int i = 0;
-    while (i < m_Instances.numAttributes()) {
-      if (!m_Instances.attribute(i).isNominal())
-        m_Instances.deleteAttributeAt(i);
-      else
-        i++;
-    }
+		// class index
+		m_Instances.setClassIndex(1);
 
-    m_Comparator = new InstanceComparator(true);
-  }
-  
-  /** Creates a default AddNoise */
-  public Filter getFilter() {
-    AddNoise f = new AddNoise();
-    return f;
-  }
+		// only nominal attributes
+		int i = 0;
+		while (i < m_Instances.numAttributes()) {
+			if (!m_Instances.attribute(i).isNominal()) {
+				m_Instances.deleteAttributeAt(i);
+			} else {
+				i++;
+			}
+		}
 
-  public void testTypical() {
-    m_Filter = getFilter();
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-    // at least one instance must be different
-    boolean equal = true;
-    for (int i = 0; i < m_Instances.numInstances(); i++) {
-      if (m_Comparator.compare(
-            m_Instances.instance(i), result.instance(i)) != 0) {
-        equal = false;
-        break;
-      }
-    }
-    if (equal)
-      fail("No noise added!");
-  }
+		m_Comparator = new InstanceComparator(true);
+	}
 
-  public void testNoNoise() {
-    m_Filter = getFilter();
-    ((AddNoise) m_Filter).setPercent(0);
-    Instances result = useFilter();
-    assertEquals(m_Instances.numAttributes(), result.numAttributes());
-    assertEquals(m_Instances.numInstances(), result.numInstances());
-    // all instance's must be the same
-    boolean equal = true;
-    for (int i = 0; i < m_Instances.numInstances(); i++) {
-      if (m_Comparator.compare(
-            m_Instances.instance(i), result.instance(i)) != 0) {
-        equal = false;
-        break;
-      }
-    }
-    if (!equal)
-      fail("Instances modified!");
-  }
+	/** Creates a default AddNoise */
+	public Filter getFilter() {
+		AddNoise f = new AddNoise();
+		return f;
+	}
 
-  public static Test suite() {
-    return new TestSuite(AddNoiseTest.class);
-  }
+	public void testTypical() {
+		m_Filter = getFilter();
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
+		// at least one instance must be different
+		boolean equal = true;
+		for (int i = 0; i < m_Instances.numInstances(); i++) {
+			if (m_Comparator.compare(
+					m_Instances.instance(i), result.instance(i)) != 0) {
+				equal = false;
+				break;
+			}
+		}
+		if (equal) {
+			fail("No noise added!");
+		}
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public void testNoNoise() {
+		m_Filter = getFilter();
+		((AddNoise) m_Filter).setPercent(0);
+		Instances result = useFilter();
+		assertEquals(m_Instances.numAttributes(), result.numAttributes());
+		assertEquals(m_Instances.numInstances(), result.numInstances());
+		// all instance's must be the same
+		boolean equal = true;
+		for (int i = 0; i < m_Instances.numInstances(); i++) {
+			if (m_Comparator.compare(
+					m_Instances.instance(i), result.instance(i)) != 0) {
+				equal = false;
+				break;
+			}
+		}
+		if (!equal) {
+			fail("Instances modified!");
+		}
+	}
+
+	public static Test suite() {
+		return new TestSuite(AddNoiseTest.class);
+	}
+
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

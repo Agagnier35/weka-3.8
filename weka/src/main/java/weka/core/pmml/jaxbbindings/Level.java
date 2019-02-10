@@ -5,21 +5,15 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for Level element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="Level">
  *   &lt;complexType>
@@ -32,65 +26,64 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "Level")
 public class Level {
 
-    @XmlAttribute
-    protected Double alpha;
-    @XmlAttribute
-    protected Double smoothedValue;
+	@XmlAttribute
+	protected Double alpha;
+	@XmlAttribute
+	protected Double smoothedValue;
 
-    /**
-     * Gets the value of the alpha property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getAlpha() {
-        return alpha;
-    }
+	/**
+	 * Gets the value of the alpha property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getAlpha() {
+		return alpha;
+	}
 
-    /**
-     * Sets the value of the alpha property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setAlpha(Double value) {
-        this.alpha = value;
-    }
+	/**
+	 * Sets the value of the alpha property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setAlpha(Double value) {
+		this.alpha = value;
+	}
 
-    /**
-     * Gets the value of the smoothedValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getSmoothedValue() {
-        return smoothedValue;
-    }
+	/**
+	 * Gets the value of the smoothedValue property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getSmoothedValue() {
+		return smoothedValue;
+	}
 
-    /**
-     * Sets the value of the smoothedValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setSmoothedValue(Double value) {
-        this.smoothedValue = value;
-    }
-
+	/**
+	 * Sets the value of the smoothedValue property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setSmoothedValue(Double value) {
+		this.smoothedValue = value;
+	}
 }

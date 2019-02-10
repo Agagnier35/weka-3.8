@@ -26,10 +26,7 @@ import java.util.Vector;
 
 import weka.classifiers.trees.m5.M5Base;
 import weka.classifiers.trees.m5.Rule;
-import weka.core.Drawable;
-import weka.core.Option;
-import weka.core.RevisionUtils;
-import weka.core.Utils;
+import weka.core.*;
 
 /**
  * <!-- globalinfo-start --> M5Base. Implements base routines for generating M5
@@ -47,9 +44,9 @@ import weka.core.Utils;
  * Learning, 1997.
  * <p/>
  * <!-- globalinfo-end -->
- * 
+ *
  * <!-- technical-bibtex-start --> BibTeX:
- * 
+ *
  * <pre>
  * &#64;inproceedings{Quinlan1992,
  *    address = {Singapore},
@@ -60,7 +57,7 @@ import weka.core.Utils;
  *    title = {Learning with Continuous Classes},
  *    year = {1992}
  * }
- * 
+ *
  * &#64;inproceedings{Wang1997,
  *    author = {Y. Wang and I. H. Witten},
  *    booktitle = {Poster papers of the 9th European Conference on Machine Learning},
@@ -71,231 +68,231 @@ import weka.core.Utils;
  * </pre>
  * <p/>
  * <!-- technical-bibtex-end -->
- * 
+ *
  * <!-- options-start --> Valid options are:
  * <p/>
- * 
+ *
  * <pre>
  * -N
  *  Use unpruned tree/rules
  * </pre>
- * 
+ *
  * <pre>
  * -U
  *  Use unsmoothed predictions
  * </pre>
- * 
+ *
  * <pre>
  * -R
  *  Build regression tree/rule rather than a model tree/rule
  * </pre>
- * 
+ *
  * <pre>
  * -M &lt;minimum number of instances&gt;
  *  Set minimum number of instances per leaf
  *  (default 4)
  * </pre>
- * 
+ *
  * <pre>
  * -L
  *  Save instances at the nodes in
  *  the tree (for visualization purposes)
  * </pre>
- * 
+ *
  * <!-- options-end -->
- * 
+ *
  * @author <a href="mailto:mhall@cs.waikato.ac.nz">Mark Hall</a>
  * @version $Revision$
  */
 public class M5P extends M5Base implements Drawable {
 
-  /** for serialization */
-  static final long serialVersionUID = -6118439039768244417L;
+	/** for serialization */
+	static final long serialVersionUID = -6118439039768244417L;
 
-  /**
-   * returns information about the classifier
-   *
-   * @return a description suitable for displaying in the explorer/experimenter
-   *         gui
-   */
-  public String globalInfo() {
-    return "Implements the M5' model tree algorithm. "
-            + "The original M5 algorithm was developed by R. Quinlan. Yong Wang "
-            + "made improvements leading to M5'.\n\n"
-            + "For more information see:\n\n"
-            + getTechnicalInformation().toString();
-  }
+	/**
+	 * returns information about the classifier
+	 *
+	 * @return a description suitable for displaying in the explorer/experimenter
+	 *         gui
+	 */
+	public String globalInfo() {
+		return "Implements the M5' model tree algorithm. "
+				+ "The original M5 algorithm was developed by R. Quinlan. Yong Wang "
+				+ "made improvements leading to M5'.\n\n"
+				+ "For more information see:\n\n"
+				+ getTechnicalInformation().toString();
+	}
 
-  /**
-   * Creates a new <code>M5P</code> instance.
-   */
-  public M5P() {
-    super();
-    setGenerateRules(false);
-  }
+	/**
+	 * Creates a new <code>M5P</code> instance.
+	 */
+	public M5P() {
+		super();
+		setGenerateRules(false);
+	}
 
-  /**
-   * Returns the type of graph this classifier represents.
-   * 
-   * @return Drawable.TREE
-   */
-  @Override
-  public int graphType() {
-    return Drawable.TREE;
-  }
+	/**
+	 * Returns the type of graph this classifier represents.
+	 *
+	 * @return Drawable.TREE
+	 */
+	@Override
+	public int graphType() {
+		return Drawable.TREE;
+	}
 
-  /**
-   * Return a dot style String describing the tree.
-   * 
-   * @return a <code>String</code> value
-   * @throws Exception if an error occurs
-   */
-  @Override
-  public String graph() throws Exception {
-    StringBuffer text = new StringBuffer();
+	/**
+	 * Return a dot style String describing the tree.
+	 *
+	 * @return a <code>String</code> value
+	 * @throws Exception if an error occurs
+	 */
+	@Override
+	public String graph() throws Exception {
+		StringBuffer text = new StringBuffer();
 
-    text.append("digraph M5Tree {\n");
-    Rule temp = m_ruleSet.get(0);
-    temp.topOfTree().graph(text);
-    text.append("}\n");
-    return text.toString();
-  }
+		text.append("digraph M5Tree {\n");
+		Rule temp = m_ruleSet.get(0);
+		temp.topOfTree().graph(text);
+		text.append("}\n");
+		return text.toString();
+	}
 
-  /**
-   * Returns the tip text for this property
-   * 
-   * @return tip text for this property suitable for displaying in the
-   *         explorer/experimenter gui
-   */
-  public String saveInstancesTipText() {
-    return "Whether to save instance data at each node in the tree for "
-      + "visualization purposes.";
-  }
+	/**
+	 * Returns the tip text for this property
+	 *
+	 * @return tip text for this property suitable for displaying in the
+	 *         explorer/experimenter gui
+	 */
+	public String saveInstancesTipText() {
+		return "Whether to save instance data at each node in the tree for "
+				+ "visualization purposes.";
+	}
 
-  /**
-   * Set whether to save instance data at each node in the tree for
-   * visualization purposes
-   * 
-   * @param save a <code>boolean</code> value
-   */
-  public void setSaveInstances(boolean save) {
-    m_saveInstances = save;
-  }
+	/**
+	 * Set whether to save instance data at each node in the tree for
+	 * visualization purposes
+	 *
+	 * @param save a <code>boolean</code> value
+	 */
+	public void setSaveInstances(boolean save) {
+		m_saveInstances = save;
+	}
 
-  /**
-   * Get whether instance data is being save.
-   * 
-   * @return a <code>boolean</code> value
-   */
-  public boolean getSaveInstances() {
-    return m_saveInstances;
-  }
+	/**
+	 * Get whether instance data is being save.
+	 *
+	 * @return a <code>boolean</code> value
+	 */
+	public boolean getSaveInstances() {
+		return m_saveInstances;
+	}
 
-  /**
-   * Returns an enumeration describing the available options
-   * 
-   * @return an enumeration of all the available options
-   */
-  @Override
-  public Enumeration<Option> listOptions() {
-    Enumeration<Option> superOpts = super.listOptions();
+	/**
+	 * Returns an enumeration describing the available options
+	 *
+	 * @return an enumeration of all the available options
+	 */
+	@Override
+	public Enumeration<Option> listOptions() {
+		Enumeration<Option> superOpts = super.listOptions();
 
-    Vector<Option> newVector = new Vector<Option>();
-    while (superOpts.hasMoreElements()) {
-      newVector.addElement(superOpts.nextElement());
-    }
+		Vector<Option> newVector = new Vector<Option>();
+		while (superOpts.hasMoreElements()) {
+			newVector.addElement(superOpts.nextElement());
+		}
 
-    newVector.addElement(new Option("\tSave instances at the nodes in\n"
-      + "\tthe tree (for visualization purposes)", "L", 0, "-L"));
-    return newVector.elements();
-  }
+		newVector.addElement(new Option("\tSave instances at the nodes in\n"
+				+ "\tthe tree (for visualization purposes)", "L", 0, "-L"));
+		return newVector.elements();
+	}
 
-  /**
-   * Parses a given list of options.
-   * <p/>
-   * 
-   * <!-- options-start --> Valid options are:
-   * <p/>
-   * 
-   * <pre>
-   * -N
-   *  Use unpruned tree/rules
-   * </pre>
-   * 
-   * <pre>
-   * -U
-   *  Use unsmoothed predictions
-   * </pre>
-   * 
-   * <pre>
-   * -R
-   *  Build regression tree/rule rather than a model tree/rule
-   * </pre>
-   * 
-   * <pre>
-   * -M &lt;minimum number of instances&gt;
-   *  Set minimum number of instances per leaf
-   *  (default 4)
-   * </pre>
-   * 
-   * <pre>
-   * -L
-   *  Save instances at the nodes in
-   *  the tree (for visualization purposes)
-   * </pre>
-   * 
-   * <!-- options-end -->
-   * 
-   * @param options the list of options as an array of strings
-   * @throws Exception if an option is not supported
-   */
-  @Override
-  public void setOptions(String[] options) throws Exception {
-    setSaveInstances(Utils.getFlag('L', options));
-    super.setOptions(options);
-  }
+	/**
+	 * Parses a given list of options.
+	 * <p/>
+	 *
+	 * <!-- options-start --> Valid options are:
+	 * <p/>
+	 *
+	 * <pre>
+	 * -N
+	 *  Use unpruned tree/rules
+	 * </pre>
+	 *
+	 * <pre>
+	 * -U
+	 *  Use unsmoothed predictions
+	 * </pre>
+	 *
+	 * <pre>
+	 * -R
+	 *  Build regression tree/rule rather than a model tree/rule
+	 * </pre>
+	 *
+	 * <pre>
+	 * -M &lt;minimum number of instances&gt;
+	 *  Set minimum number of instances per leaf
+	 *  (default 4)
+	 * </pre>
+	 *
+	 * <pre>
+	 * -L
+	 *  Save instances at the nodes in
+	 *  the tree (for visualization purposes)
+	 * </pre>
+	 *
+	 * <!-- options-end -->
+	 *
+	 * @param options the list of options as an array of strings
+	 * @throws Exception if an option is not supported
+	 */
+	@Override
+	public void setOptions(String[] options) throws Exception {
+		setSaveInstances(Utils.getFlag('L', options));
+		super.setOptions(options);
+	}
 
-  /**
-   * Gets the current settings of the classifier.
-   * 
-   * @return an array of strings suitable for passing to setOptions
-   */
-  @Override
-  public String[] getOptions() {
-    String[] superOpts = super.getOptions();
-    String[] options = new String[superOpts.length + 1];
-    int current = superOpts.length;
-    for (int i = 0; i < current; i++) {
-      options[i] = superOpts[i];
-    }
+	/**
+	 * Gets the current settings of the classifier.
+	 *
+	 * @return an array of strings suitable for passing to setOptions
+	 */
+	@Override
+	public String[] getOptions() {
+		String[] superOpts = super.getOptions();
+		String[] options = new String[superOpts.length + 1];
+		int current = superOpts.length;
+		for (int i = 0; i < current; i++) {
+			options[i] = superOpts[i];
+		}
 
-    if (getSaveInstances()) {
-      options[current++] = "-L";
-    }
+		if (getSaveInstances()) {
+			options[current++] = "-L";
+		}
 
-    while (current < options.length) {
-      options[current++] = "";
-    }
+		while (current < options.length) {
+			options[current++] = "";
+		}
 
-    return options;
-  }
+		return options;
+	}
 
-  /**
-   * Returns the revision string.
-   * 
-   * @return the revision
-   */
-  @Override
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision$");
-  }
+	/**
+	 * Returns the revision string.
+	 *
+	 * @return the revision
+	 */
+	@Override
+	public String getRevision() {
+		return RevisionUtils.extract("$Revision$");
+	}
 
-  /**
-   * Main method by which this class can be tested
-   * 
-   * @param args an array of options
-   */
-  public static void main(String[] args) {
-    runClassifier(new M5P(), args);
-  }
+	/**
+	 * Main method by which this class can be tested
+	 *
+	 * @param args an array of options
+	 */
+	public static void main(String[] args) {
+		runClassifier(new M5P(), args);
+	}
 }

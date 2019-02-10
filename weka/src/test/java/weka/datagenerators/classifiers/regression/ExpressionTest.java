@@ -19,11 +19,10 @@
 
 package weka.datagenerators.classifiers.regression;
 
-import weka.datagenerators.AbstractDataGeneratorTest;
-import weka.datagenerators.DataGenerator;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.datagenerators.AbstractDataGeneratorTest;
+import weka.datagenerators.DataGenerator;
 
 /**
  * Tests Expression. Run from the command line with:<p/>
@@ -32,23 +31,23 @@ import junit.framework.TestSuite;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
-public class ExpressionTest 
-  extends AbstractDataGeneratorTest {
+public class ExpressionTest
+		extends AbstractDataGeneratorTest {
 
-  public ExpressionTest(String name) { 
-    super(name);  
-  }
+	public ExpressionTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default Expression */
-  public DataGenerator getGenerator() {
-    return new Expression();
-  }
+	/** Creates a default Expression */
+	public DataGenerator getGenerator() {
+		return new Expression();
+	}
 
-  public static Test suite() {
-    return new TestSuite(ExpressionTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(ExpressionTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

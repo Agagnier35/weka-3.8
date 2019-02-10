@@ -5,23 +5,17 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for TimeValue element declaration.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;element name="TimeValue">
  *   &lt;complexType>
@@ -39,137 +33,136 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexType>
  * &lt;/element>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "timestamp"
+		"timestamp"
 })
 @XmlRootElement(name = "TimeValue")
 public class TimeValue {
 
-    @XmlElement(name = "Timestamp", namespace = "http://www.dmg.org/PMML-4_1")
-    protected Timestamp timestamp;
-    @XmlAttribute
-    protected BigInteger index;
-    @XmlAttribute
-    protected Double standardError;
-    @XmlAttribute
-    protected Double time;
-    @XmlAttribute(required = true)
-    protected double value;
+	@XmlElement(name = "Timestamp", namespace = "http://www.dmg.org/PMML-4_1")
+	protected Timestamp timestamp;
+	@XmlAttribute
+	protected BigInteger index;
+	@XmlAttribute
+	protected Double standardError;
+	@XmlAttribute
+	protected Double time;
+	@XmlAttribute(required = true)
+	protected double value;
 
-    /**
-     * Gets the value of the timestamp property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Timestamp }
-     *     
-     */
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
+	/**
+	 * Gets the value of the timestamp property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Timestamp }
+	 *
+	 */
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
 
-    /**
-     * Sets the value of the timestamp property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Timestamp }
-     *     
-     */
-    public void setTimestamp(Timestamp value) {
-        this.timestamp = value;
-    }
+	/**
+	 * Sets the value of the timestamp property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Timestamp }
+	 *
+	 */
+	public void setTimestamp(Timestamp value) {
+		this.timestamp = value;
+	}
 
-    /**
-     * Gets the value of the index property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getIndex() {
-        return index;
-    }
+	/**
+	 * Gets the value of the index property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public BigInteger getIndex() {
+		return index;
+	}
 
-    /**
-     * Sets the value of the index property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setIndex(BigInteger value) {
-        this.index = value;
-    }
+	/**
+	 * Sets the value of the index property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link BigInteger }
+	 *
+	 */
+	public void setIndex(BigInteger value) {
+		this.index = value;
+	}
 
-    /**
-     * Gets the value of the standardError property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getStandardError() {
-        return standardError;
-    }
+	/**
+	 * Gets the value of the standardError property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getStandardError() {
+		return standardError;
+	}
 
-    /**
-     * Sets the value of the standardError property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setStandardError(Double value) {
-        this.standardError = value;
-    }
+	/**
+	 * Sets the value of the standardError property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setStandardError(Double value) {
+		this.standardError = value;
+	}
 
-    /**
-     * Gets the value of the time property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getTime() {
-        return time;
-    }
+	/**
+	 * Gets the value of the time property.
+	 *
+	 * @return
+	 *     possible object is
+	 *     {@link Double }
+	 *
+	 */
+	public Double getTime() {
+		return time;
+	}
 
-    /**
-     * Sets the value of the time property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setTime(Double value) {
-        this.time = value;
-    }
+	/**
+	 * Sets the value of the time property.
+	 *
+	 * @param value
+	 *     allowed object is
+	 *     {@link Double }
+	 *
+	 */
+	public void setTime(Double value) {
+		this.time = value;
+	}
 
-    /**
-     * Gets the value of the value property.
-     * 
-     */
-    public double getValue() {
-        return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 *
+	 */
+	public double getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     */
-    public void setValue(double value) {
-        this.value = value;
-    }
-
+	/**
+	 * Sets the value of the value property.
+	 *
+	 */
+	public void setValue(double value) {
+		this.value = value;
+	}
 }

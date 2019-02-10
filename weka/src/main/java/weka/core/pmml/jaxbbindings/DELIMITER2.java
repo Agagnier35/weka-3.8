@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for DELIMITER.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -25,32 +23,32 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum DELIMITER2 {
 
-    @XmlEnumValue("acrossTimeWindows")
-    ACROSS_TIME_WINDOWS("acrossTimeWindows"),
-    @XmlEnumValue("sameTimeWindow")
-    SAME_TIME_WINDOW("sameTimeWindow");
-    private final String value;
+	@XmlEnumValue("acrossTimeWindows")
+	ACROSS_TIME_WINDOWS("acrossTimeWindows"),
+	@XmlEnumValue("sameTimeWindow")
+	SAME_TIME_WINDOW("sameTimeWindow");
+	private final String value;
 
-    DELIMITER2(String v) {
-        value = v;
-    }
+	DELIMITER2(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static DELIMITER2 fromValue(String v) {
-        for (DELIMITER2 c: DELIMITER2.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static DELIMITER2 fromValue(String v) {
+		for (DELIMITER2 c : DELIMITER2.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }

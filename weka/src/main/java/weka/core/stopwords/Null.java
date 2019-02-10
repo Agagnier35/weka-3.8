@@ -35,34 +35,34 @@ package weka.core.stopwords;
  *
  <!-- options-end -->
  *
- * @author  fracpete (fracpete at waikato dot ac dot nz)
+ * @author fracpete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
  */
 public class Null
-  extends AbstractStopwords {
+		extends AbstractStopwords {
 
-  /** for serialization. */
-  private static final long serialVersionUID = -3319681866579617385L;
+	/** for serialization. */
+	private static final long serialVersionUID = -3319681866579617385L;
 
-  /**
-   * Returns a string describing the stopwords scheme.
-   *
-   * @return a description suitable for displaying in the gui
-   */
-  @Override
-  public String globalInfo() {
-    return
-	"Dummy stopwords scheme, always returns false.";
-  }
+	/**
+	 * Returns a string describing the stopwords scheme.
+	 *
+	 * @return a description suitable for displaying in the gui
+	 */
+	@Override
+	public String globalInfo() {
+		return
+				"Dummy stopwords scheme, always returns false.";
+	}
 
-  /**
-   * Returns true if the given string is a stop word.
-   *
-   * @param word the word to test
-   * @return always false
-   */
-  @Override
-  protected boolean is(String word) {
-    return false;
-  }
+	/**
+	 * Returns true if the given string is a stop word.
+	 *
+	 * @param word the word to test
+	 * @return always false
+	 */
+	@Override
+	protected boolean is(String word) {
+		return false;
+	}
 }

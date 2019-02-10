@@ -33,47 +33,45 @@ import weka.filters.Filter;
  * @version $Revision: 8034 $
  */
 public class CartesianProductTest
-  extends AbstractFilterTest {
+		extends AbstractFilterTest {
 
-  public CartesianProductTest(String name) {
-    super(name);  
-  }
+	public CartesianProductTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default NumericCleaner */
-  public Filter getFilter() {
-    return new NumericCleaner();
-  }
+	/** Creates a default NumericCleaner */
+	public Filter getFilter() {
+		return new NumericCleaner();
+	}
 
-  /**
-   * runs a simple test
-   */
-  public void testTypical() {
-    Instances icopy = new Instances(m_Instances);
-    Instances result = null;
-    try {
-      m_Filter.setInputFormat(icopy);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
-    }
-    try {
-      result = Filter.useFilter(icopy, m_Filter);
-      assertNotNull(result);
-    } 
-    catch (Exception ex) {
-      ex.printStackTrace();
-      fail("Exception thrown on useFilter(): \n" + ex.getMessage());
-    }
+	/**
+	 * runs a simple test
+	 */
+	public void testTypical() {
+		Instances icopy = new Instances(m_Instances);
+		Instances result = null;
+		try {
+			m_Filter.setInputFormat(icopy);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on setInputFormat(): \n" + ex.getMessage());
+		}
+		try {
+			result = Filter.useFilter(icopy, m_Filter);
+			assertNotNull(result);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			fail("Exception thrown on useFilter(): \n" + ex.getMessage());
+		}
 
-    assertEquals(icopy.numInstances(), result.numInstances());
-  }
+		assertEquals(icopy.numInstances(), result.numInstances());
+	}
 
-  public static Test suite() {
-    return new TestSuite(CartesianProductTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(CartesianProductTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

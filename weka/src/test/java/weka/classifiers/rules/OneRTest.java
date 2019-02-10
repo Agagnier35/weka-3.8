@@ -19,11 +19,10 @@
 
 package weka.classifiers.rules;
 
-import weka.classifiers.AbstractClassifierTest;
-import weka.classifiers.Classifier;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import weka.classifiers.AbstractClassifierTest;
+import weka.classifiers.Classifier;
 
 /**
  * Tests OneR. Run from the command line with:<p>
@@ -34,19 +33,20 @@ import junit.framework.TestSuite;
  */
 public class OneRTest extends AbstractClassifierTest {
 
-  public OneRTest(String name) { super(name);  }
+	public OneRTest(String name) {
+		super(name);
+	}
 
-  /** Creates a default OneR */
-  public Classifier getClassifier() {
-    return new OneR();
-  }
+	/** Creates a default OneR */
+	public Classifier getClassifier() {
+		return new OneR();
+	}
 
-  public static Test suite() {
-    return new TestSuite(OneRTest.class);
-  }
+	public static Test suite() {
+		return new TestSuite(OneRTest.class);
+	}
 
-  public static void main(String[] args){
-    junit.textui.TestRunner.run(suite());
-  }
-
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(suite());
+	}
 }

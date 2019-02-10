@@ -5,16 +5,14 @@
 // Generated on: 2013.12.20 at 12:48:21 PM GMT 
 //
 
-
 package weka.core.pmml.jaxbbindings;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * <p>Java class for NO-TRUE-CHILD-STRATEGY.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -25,32 +23,32 @@ import javax.xml.bind.annotation.XmlEnumValue;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlEnum
 public enum NOTRUECHILDSTRATEGY {
 
-    @XmlEnumValue("returnLastPrediction")
-    RETURN_LAST_PREDICTION("returnLastPrediction"),
-    @XmlEnumValue("returnNullPrediction")
-    RETURN_NULL_PREDICTION("returnNullPrediction");
-    private final String value;
+	@XmlEnumValue("returnLastPrediction")
+	RETURN_LAST_PREDICTION("returnLastPrediction"),
+	@XmlEnumValue("returnNullPrediction")
+	RETURN_NULL_PREDICTION("returnNullPrediction");
+	private final String value;
 
-    NOTRUECHILDSTRATEGY(String v) {
-        value = v;
-    }
+	NOTRUECHILDSTRATEGY(String v) {
+		value = v;
+	}
 
-    public String value() {
-        return value;
-    }
+	public String value() {
+		return value;
+	}
 
-    public static NOTRUECHILDSTRATEGY fromValue(String v) {
-        for (NOTRUECHILDSTRATEGY c: NOTRUECHILDSTRATEGY.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v.toString());
-    }
+	public static NOTRUECHILDSTRATEGY fromValue(String v) {
+		for (NOTRUECHILDSTRATEGY c : NOTRUECHILDSTRATEGY.values()) {
+			if (c.value.equals(v)) {
+				return c;
+			}
+		}
+		throw new IllegalArgumentException(v.toString());
+	}
 
 }
