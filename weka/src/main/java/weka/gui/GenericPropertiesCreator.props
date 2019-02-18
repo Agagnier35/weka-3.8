@@ -30,14 +30,15 @@ weka.classifiers.Classifier=\
  weka.classifiers.misc,\
  weka.classifiers.scripting,\
  weka.classifiers.trees,\
- weka.classifiers.rules
+ weka.classifiers.rules,\
+ weka.classifiers.quality
 
 # Lists the IterativeClassifier objects I want to choose from
 weka.classifiers.IterativeClassifier=\
  weka.classifiers.functions,\
  weka.classifiers.meta,\
  weka.classifiers.trees
- 
+
 # Lists the AbstractClassificationOutput-packages I want to choose from
 weka.classifiers.evaluation.output.prediction.AbstractOutput=\
   weka.classifiers.evaluation.output.prediction
@@ -94,14 +95,14 @@ weka.core.neighboursearch.balltrees.BallTreeConstructor =\
 # Lists the ball splitters
 weka.core.neighboursearch.balltrees.BallSplitter =\
  weka.core.neighboursearch.balltrees
- 
+
 # Lists the kd tree splitters
 weka.core.neighboursearch.kdtrees.KDTreeNodeSplitter =\
  weka.core.neighboursearch.kdtrees
 
 # Lists the distance functions for use nearest neighbour search
 weka.core.DistanceFunction =\
- weka.core 
+ weka.core
 
 # Lists the Search algorithm for Bayes net structure learning-Packages I want to choose from
 weka.classifiers.bayes.net.search.SearchAlgorithm=\
@@ -167,7 +168,7 @@ weka.gui.visualize.plugins.GraphVisualizePlugin=\
 # List of Explorer error visualization plugins (classification panel)
 weka.gui.visualize.plugins.ErrorVisualizePlugin=\
  weka.gui.visualize.plugins
- 
+
 #List of Explorer association rule visualization plugins (associations panel)
 weka.gui.visualize.plugins.AssociationRuleVisualizePlugin=\
  weka.gui.visualize.plugins

@@ -1,2 +1,6 @@
 
 weka/\.idea/
+
+weka/build/
+
+weka/dist/
